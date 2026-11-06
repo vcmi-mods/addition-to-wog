@@ -1,0 +1,25 @@
+{
+	"name": "WoG Town Building Names with Upgrade Marks",
+	"description": "Gives town buildings the names used by the Russian WoG localization, so that the build window shows meaningful names instead of the generic \"Dwelling, Level N\".\n\nEvery dwelling receives its own name, and an upgraded dwelling repeats the name of its base building with a short prefix, so that upgrades are easy to tell apart at a glance in the town build window.\n\nThe same naming is applied to the levels of the Mage Guild, the Citadel and the Castle, the town hall chain and the Horde buildings.\n\nThe names are visible everywhere a building name appears: in the build window, in tooltips and in the in-game wiki.",
+	"author": "Igor Korsukov, DeepSeek",
+	"version": "1.0",
+	"modType": "Interface",
+	"compatibility": {
+		"min": "1.7.0"
+	},
+	"factions": [
+		"config/factions/castle.json",
+		"config/factions/rampart.json",
+		"config/factions/tower.json",
+		"config/factions/inferno.json",
+		"config/factions/necropolis.json",
+		"config/factions/dungeon.json",
+		"config/factions/stronghold.json",
+		"config/factions/fortress.json",
+		"config/factions/conflux.json"
+	],
+	"russian": {
+		"name": "Названия городских построек из WoG с пометкой обновления",
+		"description": "Даёт городским зданиям названия из русской локализации WoG.\n\nКаждое жилище получает собственное имя, а улучшенное повторяет название базового с короткой приставкой «Ул.», чтобы улучшения было легко отличить в окне постройки.\n\nТак же названы этажи Гильдии магов, Цитадель и Замок, цепочка ратуши и постройки Орды.\n\nНазвания видны везде, где показывается имя здания: в окне постройки, в подсказках и во внутриигровой вики."
+	}
+}

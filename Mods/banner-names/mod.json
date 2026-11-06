@@ -1,0 +1,25 @@
+{
+	"name": "Distinct Warlord's Banners",
+	"description": "Gives every Warlord's Banner variant its own name.\n\nIn the Wake of Gods mod all nine banners share the same name and picture, so in the inventory you cannot tell which bonus you are holding. This mod names each one after its effect, while the picture stays the same.\n\nFor example: Banner of Health, Banner of Attack, Banner of Defence, Banner of Damage, Banner of Speed, Banner of Experience, Banner of Piercing, Banner of Protection and Banner of Retaliation.\n\nThe descriptions also spell out exactly what each banner does.\n\nOne thing to know: the game does not let you pick a bonus when equipping an artifact, so you still have to find the banner you want rather than choosing its effect.",
+	"author": "Igor Korsukov, DeepSeek",
+	"version": "1.0",
+	"modType": "Artifacts",
+	"compatibility": {
+		"min": "1.7.0"
+	},
+	"depends": [
+		"wake-of-gods.stackartifacts"
+	],
+	"changelog": {
+		"1.0": [
+			"Each Warlord's Banner variant now has a unique name"
+		]
+	},
+	"artifacts": [
+		"config/warlordBanners.json"
+	],
+	"russian": {
+		"name": "Различимые знамёна полководца",
+		"description": "Даёт каждому варианту знамени полководца своё название.\n\nВ моде Wake of Gods все девять знамён выглядят и называются одинаково, поэтому в инвентаре невозможно понять, какой бонус вы держите. Этот мод называет каждое знамя по его эффекту, а картинка остаётся прежней.\n\nНапример: знамя здоровья, знамя атаки, знамя защиты, знамя урона, знамя скорости, знамя опыта, знамя пробивания, знамя защиты от урона и знамя ответного удара.\n\nВ описаниях также точно сказано, что делает каждое знамя.\n\nОдин момент: игра не позволяет выбрать бонус при надевании артефакта, поэтому нужное знамя всё равно придётся найти, а не выбрать его эффект."
+	}
+}

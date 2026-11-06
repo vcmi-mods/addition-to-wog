@@ -1,0 +1,24 @@
+{
+	"name": "New Chest Types",
+	"description": "Adds two new kinds of treasure chest and turns off the five decorative chest variants that come with the Wake of Gods decoration pack.\n\n## Resource or skill chest\n\nFive options on opening: take five units of a random resource, or raise one of the hero's four primary skills by one point.\n\n## Spell or mana chest\n\nHolds a scroll with a random spell and a choice of what to do with it: keep the scroll, or burn it for spell points. The spell circle grows with the hero's level: circles 1-2 up to level 5, 2-3 up to 11, 3-4 up to 17 and 4-5 from level 18. Burning the scroll restores spell points equal to 30 per circle: 45, 75, 105 or 135.\n\n## What is switched off\n\nThe five decorative chest variants from the Wake of Gods decoration pack (the dark wooden one, the one with coins spilling out, the orange one and two others) are removed from the random map generator, so only the regular chest and the two new ones appear.\n\nAll new chests have the same chance to appear on a generated map, roughly a quarter of the weight of the regular chest.",
+	"author": "Igor Korsukov, DeepSeek",
+	"version": "1.0",
+	"modType": "Objects",
+	"compatibility": {
+		"min": "1.7.0"
+	},
+	"depends": [
+		"wake-of-gods.mapdecorations"
+	],
+	"objects": [
+		"config/objects/chestResourceOrSkill.json",
+		"config/objects/chestSpellOrMana.json"
+	],
+	"russian": {
+		"name": "Новые типы сундуков",
+		"description": "Добавляет два новых вида сундуков с сокровищами и отключает пять декоративных вариантов сундука из набора украшений Wake of Gods.\n\n## Сундук «ресурс или навык»\n\nПри открытии пять вариантов на выбор: взять пять единиц случайного ресурса или повысить один из четырёх основных навыков героя на единицу.\n\n## Сундук «свиток или мана»\n\nВ нём лежат свиток со случайным заклинанием и выбор, что с ним делать: оставить свиток себе или сжечь его ради очков заклинаний. Круг заклинания растёт с уровнем героя: 1–2 до 5-го уровня, 2–3 до 11-го, 3–4 до 17-го и 4–5 с 18-го уровня. За сожжённый свиток дают 30 очков заклинаний за каждый круг: 45, 75, 105 или 135.\n\n## Что отключено\n\nПять декоративных вариантов сундука из набора украшений Wake of Gods (тёмный деревянный, с высыпавшимися монетами, оранжевый и ещё два) убраны из генератора случайных карт, поэтому встречаются только обычный сундук и два новых.\n\nВсе новые сундуки имеют одинаковый шанс появления на сгенерированной карте — примерно четверть от веса обычного сундука.",
+		"translations": [
+			"config/translations/russian.json"
+		]
+	}
+}

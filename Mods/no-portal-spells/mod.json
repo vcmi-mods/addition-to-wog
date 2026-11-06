@@ -1,0 +1,25 @@
+{
+	"name": "No Portal Spells and Angel Wings",
+	"description": "Removes the Town Portal and Dimension Door spells, and also the Angel Wings artifact.\n\n## Spells\n\nNeither spell will appear anywhere: not in Mage Guilds, not in shrines, tomes or scrolls, not as a level-up choice and not as a starting spell for any hero. They cannot be obtained in any other way either.\n\n## Angel Wings\n\nThe artifact will not appear in treasure chests, on the adventure map, in shops or as any random reward. It is removed from the game completely.\n\nNote that if a hero in an existing save already knows these spells or already carries the artifact, they stay. The artifact stops working as a reliable way to fly, because it no longer appears anywhere to pick up.",
+	"author": "Igor Korsukov, DeepSeek",
+	"version": "1.0",
+	"modType": "Spells",
+	"compatibility": {
+		"min": "1.7.0"
+	},
+	"changelog": {
+		"1.0": [
+			"Town Portal and Dimension Door excluded from all spell pools"
+		]
+	},
+	"spells": [
+		"config/spells/noPortalSpells.json"
+	],
+	"russian": {
+		"name": "Без портальных заклинаний и Крыльев Ангела",
+		"description": "Убирает заклинания Городской портал и Дверь измерения, а также артефакт Крылья Ангела.\n\n## Заклинания\n\nНи одно из заклинаний нигде не появится: ни в Гильдиях магов, ни в святилищах, томах и свитках, ни при повышении уровня, ни как стартовое заклинание героя. Получить их другим способом тоже нельзя.\n\n## Крылья Ангела\n\nАртефакт не появится в сундуках, на карте, в магазинах и в случайных наградах. Он полностью исчезает из игры.\n\nУчтите: если в уже начатом сохранении герой знает эти заклинания или уже носит артефакт, они останутся. Но новых копий в игре больше не будет."
+	},
+	"artifacts": [
+		"config/artifacts/noAngelWings.json"
+	]
+}

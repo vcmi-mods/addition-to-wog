@@ -1,0 +1,9 @@
+{
+	"wake-of-gods.artifacts:dragonheart" : {
+		"text" : {
+			"name" : "Dragonheart",
+			"description" : "{Dragonheart}\r\n\r\nThis ancient relic summons dragons for the duration of a battle. The total health of summoned dragons equals [100 x SP], where SP is the hero's Spell Power.\r\nIn addition, dragons in a hero's army always have positive morale.",
+			"event" : "You pick up the Dragonheart and feel the powerful drum-beat of ten thousand dragon hearts reverberating through your soul. When you need them, the dragons will come."
+		}
+	}
+}

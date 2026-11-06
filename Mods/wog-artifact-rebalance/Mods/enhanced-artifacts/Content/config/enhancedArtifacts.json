@@ -1,0 +1,405 @@
+{
+	"core:pendantOfLife": {
+		"class": "MAJOR",
+		"value": 5000,
+		"bonuses": {
+			"livingHealth1": {
+				"type": "STACK_HEALTH",
+				"val": 1,
+				"valueType": "ADDITIVE_VALUE",
+				"limiters": [
+					{
+						"type": "HAS_ANOTHER_BONUS_LIMITER",
+						"bonusType": "LIVING"
+					},
+					{
+						"type": "CREATURE_LEVEL_LIMITER",
+						"minLevel": 1,
+						"maxlevel": 2
+					}
+				]
+			},
+			"livingHealth2": {
+				"type": "STACK_HEALTH",
+				"val": 3,
+				"valueType": "ADDITIVE_VALUE",
+				"limiters": [
+					{
+						"type": "HAS_ANOTHER_BONUS_LIMITER",
+						"bonusType": "LIVING"
+					},
+					{
+						"type": "CREATURE_LEVEL_LIMITER",
+						"minLevel": 2,
+						"maxlevel": 3
+					}
+				]
+			},
+			"livingHealth3": {
+				"type": "STACK_HEALTH",
+				"val": 6,
+				"valueType": "ADDITIVE_VALUE",
+				"limiters": [
+					{
+						"type": "HAS_ANOTHER_BONUS_LIMITER",
+						"bonusType": "LIVING"
+					},
+					{
+						"type": "CREATURE_LEVEL_LIMITER",
+						"minLevel": 3,
+						"maxlevel": 4
+					}
+				]
+			},
+			"livingHealth4": {
+				"type": "STACK_HEALTH",
+				"val": 10,
+				"valueType": "ADDITIVE_VALUE",
+				"limiters": [
+					{
+						"type": "HAS_ANOTHER_BONUS_LIMITER",
+						"bonusType": "LIVING"
+					},
+					{
+						"type": "CREATURE_LEVEL_LIMITER",
+						"minLevel": 4,
+						"maxlevel": 5
+					}
+				]
+			},
+			"livingHealth5": {
+				"type": "STACK_HEALTH",
+				"val": 15,
+				"valueType": "ADDITIVE_VALUE",
+				"limiters": [
+					{
+						"type": "HAS_ANOTHER_BONUS_LIMITER",
+						"bonusType": "LIVING"
+					},
+					{
+						"type": "CREATURE_LEVEL_LIMITER",
+						"minLevel": 5,
+						"maxlevel": 6
+					}
+				]
+			},
+			"livingHealth6": {
+				"type": "STACK_HEALTH",
+				"val": 25,
+				"valueType": "ADDITIVE_VALUE",
+				"limiters": [
+					{
+						"type": "HAS_ANOTHER_BONUS_LIMITER",
+						"bonusType": "LIVING"
+					},
+					{
+						"type": "CREATURE_LEVEL_LIMITER",
+						"minLevel": 6,
+						"maxlevel": 7
+					}
+				]
+			},
+			"livingHealth7": {
+				"type": "STACK_HEALTH",
+				"val": 50,
+				"valueType": "ADDITIVE_VALUE",
+				"limiters": [
+					{
+						"type": "HAS_ANOTHER_BONUS_LIMITER",
+						"bonusType": "LIVING"
+					},
+					{
+						"type": "CREATURE_LEVEL_LIMITER",
+						"minLevel": 7,
+						"maxlevel": 99
+					}
+				]
+			}
+		}
+	},
+	"core:pendantOfDeath": {
+		"class": "MAJOR",
+		"value": 4000,
+		"bonuses": {
+			"undeadAttack": {
+				"type": "PRIMARY_SKILL",
+				"subtype": "primarySkill.attack",
+				"val": 5,
+				"valueType": "BASE_NUMBER",
+				"limiters": [
+					"IS_UNDEAD"
+				]
+			},
+			"undeadDefence": {
+				"type": "PRIMARY_SKILL",
+				"subtype": "primarySkill.defence",
+				"val": 5,
+				"valueType": "BASE_NUMBER",
+				"limiters": [
+					"IS_UNDEAD"
+				]
+			},
+			"undeadSpeed": {
+				"type": "STACKS_SPEED",
+				"val": 1,
+				"valueType": "BASE_NUMBER",
+				"limiters": [
+					"IS_UNDEAD"
+				]
+			}
+		}
+	},
+	"core:pendantOfTotalRecall": {
+		"class": "MINOR",
+		"bonuses": {
+			"precision": {
+				"type": "OPENING_BATTLE_SPELL",
+				"subtype": "spell.precision",
+				"val": 50,
+				"valueType": "BASE_NUMBER",
+				"addInfo": 3
+			}
+		}
+	},
+	"core:pendantOfSecondSight": {
+		"class": "MINOR",
+		"bonuses": {
+			"airShield": {
+				"type": "OPENING_BATTLE_SPELL",
+				"subtype": "spell.airShield",
+				"val": 50,
+				"valueType": "BASE_NUMBER",
+				"addInfo": 3
+			}
+		}
+	},
+	"core:pendantOfHoliness": {
+		"class": "MAJOR",
+		"bonuses": {
+			"bless": {
+				"type": "OPENING_BATTLE_SPELL",
+				"subtype": "spell.bless",
+				"val": 50,
+				"valueType": "BASE_NUMBER",
+				"addInfo": 3
+			}
+		}
+	},
+	"core:pendantOfDispassion": {
+		"class": "MINOR",
+		"bonuses": {
+			"bloodlust": {
+				"type": "OPENING_BATTLE_SPELL",
+				"subtype": "spell.bloodlust",
+				"val": 50,
+				"valueType": "BASE_NUMBER",
+				"addInfo": 3
+			}
+		}
+	},
+	"core:pendantOfFreeWill": {
+		"class": "MINOR",
+		"bonuses": {
+			"stoneSkin": {
+				"type": "OPENING_BATTLE_SPELL",
+				"subtype": "spell.stoneSkin",
+				"val": 50,
+				"valueType": "BASE_NUMBER",
+				"addInfo": 3
+			}
+		}
+	},
+	"core:orbOfVulnerability": {
+		"bonuses": {
+			"disease": {
+				"type": "OPENING_BATTLE_SPELL",
+				"subtype": "spell.disease",
+				"val": 50,
+				"valueType": "BASE_NUMBER",
+				"addInfo": 3
+			}
+		}
+	},
+	"core:orbOfTheFirmament": {
+		"bonuses": {
+			"protectAir": {
+				"type": "OPENING_BATTLE_SPELL",
+				"subtype": "spell.protectAir",
+				"val": 50,
+				"valueType": "BASE_NUMBER",
+				"addInfo": 3
+			}
+		}
+	},
+	"core:orbOfSilt": {
+		"bonuses": {
+			"protectEarth": {
+				"type": "OPENING_BATTLE_SPELL",
+				"subtype": "spell.protectEarth",
+				"val": 50,
+				"valueType": "BASE_NUMBER",
+				"addInfo": 3
+			}
+		}
+	},
+	"core:orbOfTempestuousFire": {
+		"bonuses": {
+			"protectFire": {
+				"type": "OPENING_BATTLE_SPELL",
+				"subtype": "spell.protectFire",
+				"val": 50,
+				"valueType": "BASE_NUMBER",
+				"addInfo": 3
+			}
+		}
+	},
+	"core:orbOfDrivingRain": {
+		"bonuses": {
+			"protectWater": {
+				"type": "OPENING_BATTLE_SPELL",
+				"subtype": "spell.protectWater",
+				"val": 50,
+				"valueType": "BASE_NUMBER",
+				"addInfo": 3
+			}
+		}
+	},
+	"core:sphereOfPermanence": {
+		"bonuses": {
+			"health": {
+				"type": "STACK_HEALTH",
+				"val": 10,
+				"valueType": "ADDITIVE_VALUE",
+				"limiters": [
+					"anyOf",
+					{
+						"type": "HAS_ANOTHER_BONUS_LIMITER",
+						"bonusType": "NON_LIVING"
+					},
+					{
+						"type": "HAS_ANOTHER_BONUS_LIMITER",
+						"bonusType": "MECHANICAL"
+					}
+				]
+			}
+		}
+	},
+	"core:collarOfConjuring": {
+		"bonuses": {
+			"spellDamage": {
+				"type": "SPELL_DAMAGE",
+				"subtype": "spellSchool.any",
+				"val": 5,
+				"valueType": "BASE_NUMBER"
+			}
+		}
+	},
+	"core:ringOfConjuring": {
+		"bonuses": {
+			"spellDamage": {
+				"type": "SPELL_DAMAGE",
+				"subtype": "spellSchool.any",
+				"val": 10,
+				"valueType": "BASE_NUMBER"
+			}
+		}
+	},
+	"core:capeOfConjuring": {
+		"bonuses": {
+			"spellDamage": {
+				"type": "SPELL_DAMAGE",
+				"subtype": "spellSchool.any",
+				"val": 15,
+				"valueType": "BASE_NUMBER"
+			}
+		}
+	},
+	"core:ringOfTheMagi": {
+		"bonuses": {
+			"spellDamage": {
+				"type": "SPELL_DAMAGE",
+				"subtype": "spellSchool.any",
+				"val": 20,
+				"valueType": "BASE_NUMBER"
+			}
+		}
+	},
+	"core:deadMansBoots": {
+		"bonuses": {
+			"skeletonUpgrade": {
+				"type": "SPECIAL_UPGRADE",
+				"subtype": "creature.skeleton",
+				"addInfo": "creature.skeletonWarrior"
+			}
+		}
+	},
+	"core:vampiresCowl": {
+		"bonuses": {
+			"vampireUpgrade": {
+				"type": "SPECIAL_UPGRADE",
+				"subtype": "creature.vampire",
+				"addInfo": "creature.vampireLord"
+			}
+		}
+	},
+	"core:amuletOfTheUndertaker": {
+		"bonuses": {
+			"walkingDeadUpgrade": {
+				"type": "SPECIAL_UPGRADE",
+				"subtype": "creature.walkingDead",
+				"addInfo": "creature.zombieLord"
+			}
+		}
+	},
+	"core:centaurAxe": {
+		"bonuses": {
+			"centaurUpgrade": {
+				"type": "SPECIAL_UPGRADE",
+				"subtype": "creature.centaur",
+				"addInfo": "creature.centaurCaptain"
+			}
+		}
+	},
+	"core:shieldOfTheDwarvenLords": {
+		"bonuses": {
+			"dwarfUpgrade": {
+				"type": "SPECIAL_UPGRADE",
+				"subtype": "creature.dwarf",
+				"addInfo": "creature.battleDwarf"
+			}
+		}
+	},
+	"core:breastplateOfPetrifiedWood": {
+		"bonuses": {
+			"dendroidUpgrade": {
+				"type": "SPECIAL_UPGRADE",
+				"subtype": "creature.dendroidGuard",
+				"addInfo": "creature.dendroidSoldier"
+			}
+		}
+	},
+	"core:helmOfTheAlabasterUnicorn": {
+		"bonuses": {
+			"unicornUpgrade": {
+				"type": "SPECIAL_UPGRADE",
+				"subtype": "creature.unicorn",
+				"addInfo": "creature.warUnicorn"
+			}
+		}
+	},
+	"core:statesmansMedal": {
+		"class": "TREASURE"
+	},
+	"core:diplomatsRing": {
+		"class": "TREASURE"
+	},
+	"core:ambassadorsSash": {
+		"class": "TREASURE"
+	},
+	"core:ringOfLife": {
+		"class": "TREASURE"
+	},
+	"core:vialOfLifeblood": {
+		"class": "MINOR"
+	}
+}

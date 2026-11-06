@@ -1,0 +1,21 @@
+{
+	"name": "Artifact Boost",
+	"description": "Gives extra abilities to artifacts that are usually considered too weak. In the original expansion these bonuses were mostly granted once per week.\n\nSince the weekly part cannot be reproduced here, the bonuses are permanent instead:\n\n- artifacts that used to bring creatures every week now increase the growth of the matching creatures in towns\n- artifacts that used to bring gold every week now produce gold every day\n- artifacts that used to grant experience now increase all experience your hero gains\n- artifacts that used to upgrade troops once per week now let you upgrade those troops for free in your hero's army\n- artifacts that used to be traded for something else now grant a permanent bonus of similar value",
+	"author": "Igor Korsukov, DeepSeek",
+	"version": "1.0",
+	"modType": "Artifacts",
+	"compatibility": {
+		"min": "1.7.0"
+	},
+	"artifacts": [
+		"config/artifactBoost.json",
+		"config/artifactBoostText.json"
+	],
+	"russian": {
+		"name": "Усиление артефактов",
+		"description": "Даёт дополнительные свойства артефактам, которые обычно считаются слишком слабыми. В оригинальном дополнении эти бонусы в основном выдавались раз в неделю.\n\nПоскольку еженедельную часть здесь воспроизвести нельзя, бонусы стали постоянными:\n\n- артефакты, приносившие существ каждую неделю, теперь увеличивают прирост соответствующих существ в городах\n- артефакты, приносившие золото, теперь дают золото каждый день\n- артефакты, дававшие опыт, теперь увеличивают весь опыт, получаемый героем\n- артефакты, улучшавшие войска раз в неделю, теперь позволяют бесплатно улучшать этих существ в армии героя\n- артефакты, которые обменивались на что-то другое, теперь дают постоянный бонус сопоставимой ценности",
+		"translations": [
+			"config/translations/russian.json"
+		]
+	}
+}

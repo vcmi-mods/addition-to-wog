@@ -1,0 +1,175 @@
+{
+	"core:treasureChest": {
+		"types": {
+			"spellOrManaChest": {
+				"aiValue": 2000,
+				"rmg": {
+					"value": 1500,
+					"rarity": 300
+				},
+				"compatibilityIdentifiers": [
+					"object"
+				],
+				"blockedVisitable": true,
+				"onSelectMessage": "{Treasure Chest}\r\n\r\nYou find a chest holding a sealed scroll and a flask of magic essence. The scroll would be useful on its own, but you could also burn it to draw the raw magic straight into your spell points. You can take only one thing.",
+				"visitMode": "unlimited",
+				"selectMode": "selectPlayer",
+				"rewards": [
+					{
+						"limiter": {
+							"noneOf": [
+								{
+									"heroLevel": 6
+								}
+							]
+						},
+						"message": "{Treasure Chest}\r\n\r\nThe scroll turns out to be a spell of the first or second circle. You put it in your backpack.\r\n\r\nYou could instead burn the scroll for 45 spell points.",
+						"removeObject": true,
+						"scrolls": [
+							{
+								"anyOf": [
+									{
+										"level": 1
+									},
+									{
+										"level": 2
+									}
+								]
+							}
+						]
+					},
+					{
+						"limiter": {
+							"noneOf": [
+								{
+									"heroLevel": 6
+								}
+							]
+						},
+						"message": "{Treasure Chest}\r\n\r\nYou burn the scroll and draw the released magic into your spell points. Your hero gains 45 spell points on top of what he already has.\r\n\r\nYou could instead keep the scroll.",
+						"removeObject": true,
+						"manaPoints": 45,
+						"manaOverflowFactor": 100
+					},
+					{
+						"limiter": {
+							"heroLevel": 6,
+							"noneOf": [
+								{
+									"heroLevel": 12
+								}
+							]
+						},
+						"message": "{Treasure Chest}\r\n\r\nThe scroll turns out to be a spell of the second or third circle. You put it in your backpack.\r\n\r\nYou could instead burn the scroll for 75 spell points.",
+						"removeObject": true,
+						"scrolls": [
+							{
+								"anyOf": [
+									{
+										"level": 2
+									},
+									{
+										"level": 3
+									}
+								]
+							}
+						]
+					},
+					{
+						"limiter": {
+							"heroLevel": 6,
+							"noneOf": [
+								{
+									"heroLevel": 12
+								}
+							]
+						},
+						"message": "{Treasure Chest}\r\n\r\nYou burn the scroll and draw the released magic into your spell points. Your hero gains 75 spell points on top of what he already has.\r\n\r\nYou could instead keep the scroll.",
+						"removeObject": true,
+						"manaPoints": 75,
+						"manaOverflowFactor": 100
+					},
+					{
+						"limiter": {
+							"heroLevel": 12,
+							"noneOf": [
+								{
+									"heroLevel": 18
+								}
+							]
+						},
+						"message": "{Treasure Chest}\r\n\r\nThe scroll turns out to be a spell of the third or fourth circle. You put it in your backpack.\r\n\r\nYou could instead burn the scroll for 105 spell points.",
+						"removeObject": true,
+						"scrolls": [
+							{
+								"anyOf": [
+									{
+										"level": 3
+									},
+									{
+										"level": 4
+									}
+								]
+							}
+						]
+					},
+					{
+						"limiter": {
+							"heroLevel": 12,
+							"noneOf": [
+								{
+									"heroLevel": 18
+								}
+							]
+						},
+						"message": "{Treasure Chest}\r\n\r\nYou burn the scroll and draw the released magic into your spell points. Your hero gains 105 spell points on top of what he already has.\r\n\r\nYou could instead keep the scroll.",
+						"removeObject": true,
+						"manaPoints": 105,
+						"manaOverflowFactor": 100
+					},
+					{
+						"limiter": {
+							"heroLevel": 18
+						},
+						"message": "{Treasure Chest}\r\n\r\nThe scroll turns out to be a spell of the fourth or fifth circle. You put it in your backpack.\r\n\r\nYou could instead burn the scroll for 135 spell points.",
+						"removeObject": true,
+						"scrolls": [
+							{
+								"anyOf": [
+									{
+										"level": 4
+									},
+									{
+										"level": 5
+									}
+								]
+							}
+						]
+					},
+					{
+						"limiter": {
+							"heroLevel": 18
+						},
+						"message": "{Treasure Chest}\r\n\r\nYou burn the scroll and draw the released magic into your spell points. Your hero gains 135 spell points on top of what he already has.\r\n\r\nYou could instead keep the scroll.",
+						"removeObject": true,
+						"manaPoints": 135,
+						"manaOverflowFactor": 100
+					}
+				],
+				"templates": {
+					"spellOrManaChest": {
+						"animation": "objects/spellOrManaChest.def",
+						"mask": [
+							"VA"
+						],
+						"visitableFrom": [
+							"+++",
+							"+-+",
+							"+++"
+						]
+					}
+				}
+			}
+		}
+	}
+}

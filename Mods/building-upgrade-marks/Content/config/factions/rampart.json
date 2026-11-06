@@ -1,0 +1,86 @@
+{
+	"core:rampart": {
+		"town": {
+			"buildings": {
+				"mageGuild2": {
+					"name": "Гильдия магов 2 уровня"
+				},
+				"mageGuild3": {
+					"name": "Гильдия магов 3 уровня"
+				},
+				"mageGuild4": {
+					"name": "Гильдия магов 4 уровня"
+				},
+				"mageGuild5": {
+					"name": "Гильдия магов 5 уровня"
+				},
+				"citadel": {
+					"name": "Цитадель"
+				},
+				"castle": {
+					"name": "Замок"
+				},
+				"townHall": {
+					"name": "Префектура"
+				},
+				"cityHall": {
+					"name": "Муниципалитет"
+				},
+				"capitol": {
+					"name": "Капитолий"
+				},
+				"dwellingLvl1": {
+					"name": "Конюшни кентавров"
+				},
+				"dwellingLvl2": {
+					"name": "Коттедж гномов"
+				},
+				"dwellingLvl3": {
+					"name": "Усадьба"
+				},
+				"dwellingLvl4": {
+					"name": "Заколдованный ручей"
+				},
+				"dwellingLvl5": {
+					"name": "Арка дендроидов"
+				},
+				"dwellingLvl6": {
+					"name": "Лужайка единорогов"
+				},
+				"dwellingLvl7": {
+					"name": "Драконьи скалы"
+				},
+				"dwellingUpLvl1": {
+					"name": "Ул. конюшни кентавров"
+				},
+				"dwellingUpLvl2": {
+					"name": "Ул. коттедж гномов"
+				},
+				"dwellingUpLvl3": {
+					"name": "Ул. усадьба"
+				},
+				"dwellingUpLvl4": {
+					"name": "Ул. заколдованный ручей"
+				},
+				"dwellingUpLvl5": {
+					"name": "Ул. арка дендроидов"
+				},
+				"dwellingUpLvl6": {
+					"name": "Ул. лужайка единорогов"
+				},
+				"dwellingUpLvl7": {
+					"name": "Ул. драконьи скалы"
+				},
+				"horde1": {
+					"name": "Гильдия горняков"
+				},
+				"horde1Upgr": {
+					"name": "Ул. гильдия горняков"
+				},
+				"villageHall": {
+					"name": "Сельская управа"
+				}
+			}
+		}
+	}
+}

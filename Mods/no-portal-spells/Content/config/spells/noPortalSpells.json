@@ -1,0 +1,19 @@
+{
+	"core:dimensionDoor" : {
+		"flags" : {
+			"special" : true
+		}
+	},
+
+	"core:townPortal" : {
+		"flags" : {
+			"special" : true
+		}
+	},
+
+	"core:fly" : {
+		"flags" : {
+			"special" : true
+		}
+	}
+}

@@ -1,0 +1,15 @@
+{
+	"mapObject.addition-to-wog.resource-or-skill-chest.treasureChest.spellOrManaChest.onSelect": "{Сундук с сокровищами}\n\nВ сундуке лежат запечатанный свиток и склянка с магической эссенцией. Свиток пригодится сам по себе, но его можно и сжечь, чтобы обратить освобождённую магию прямо в очки заклинаний. Взять можно только одну вещь.",
+
+	"mapObject.addition-to-wog.resource-or-skill-chest.treasureChest.spellOrManaChest.rewards.0": "{Сундук с сокровищами}\n\nНа свитке заклинание первого или второго круга. Вы убираете его в рюкзак.\n\nВместо этого свиток можно сжечь и получить 45 очков заклинаний.",
+	"mapObject.addition-to-wog.resource-or-skill-chest.treasureChest.spellOrManaChest.rewards.1": "{Сундук с сокровищами}\n\nВы сжигаете свиток, и освобождённая магия вливается в очки заклинаний. Герой получает 45 очков заклинаний сверх того, что у него было.\n\nВместо этого свиток можно было оставить.",
+
+	"mapObject.addition-to-wog.resource-or-skill-chest.treasureChest.spellOrManaChest.rewards.2": "{Сундук с сокровищами}\n\nНа свитке заклинание второго или третьего круга. Вы убираете его в рюкзак.\n\nВместо этого свиток можно сжечь и получить 75 очков заклинаний.",
+	"mapObject.addition-to-wog.resource-or-skill-chest.treasureChest.spellOrManaChest.rewards.3": "{Сундук с сокровищами}\n\nВы сжигаете свиток, и освобождённая магия вливается в очки заклинаний. Герой получает 75 очков заклинаний сверх того, что у него было.\n\nВместо этого свиток можно было оставить.",
+
+	"mapObject.addition-to-wog.resource-or-skill-chest.treasureChest.spellOrManaChest.rewards.4": "{Сундук с сокровищами}\n\nНа свитке заклинание третьего или четвёртого круга. Вы убираете его в рюкзак.\n\nВместо этого свиток можно сжечь и получить 105 очков заклинаний.",
+	"mapObject.addition-to-wog.resource-or-skill-chest.treasureChest.spellOrManaChest.rewards.5": "{Сундук с сокровищами}\n\nВы сжигаете свиток, и освобождённая магия вливается в очки заклинаний. Герой получает 105 очков заклинаний сверх того, что у него было.\n\nВместо этого свиток можно было оставить.",
+
+	"mapObject.addition-to-wog.resource-or-skill-chest.treasureChest.spellOrManaChest.rewards.6": "{Сундук с сокровищами}\n\nНа свитке заклинание четвёртого или пятого круга. Вы убираете его в рюкзак.\n\nВместо этого свиток можно сжечь и получить 135 очков заклинаний.",
+	"mapObject.addition-to-wog.resource-or-skill-chest.treasureChest.spellOrManaChest.rewards.7": "{Сундук с сокровищами}\n\nВы сжигаете свиток, и освобождённая магия вливается в очки заклинаний. Герой получает 135 очков заклинаний сверх того, что у него было.\n\nВместо этого свиток можно было оставить."
+}

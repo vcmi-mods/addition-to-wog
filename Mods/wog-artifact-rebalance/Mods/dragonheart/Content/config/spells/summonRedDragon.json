@@ -1,0 +1,10 @@
+{
+	"wake-of-gods.artifacts:summonRedDragon" : {
+		"levels" : {
+			"base" : {
+				"description" : "{Summon Dragon}\r\n\r\nSummons dragons at the beginning of the battle, based on the hero's Spell Power.",
+				"power" : 100
+			}
+		}
+	}
+}

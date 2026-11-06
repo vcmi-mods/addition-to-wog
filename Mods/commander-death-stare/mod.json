@@ -1,0 +1,19 @@
+{
+	"name": "Commander Death Stare",
+	"description": "Makes the Commander's Death Stare work exactly like the Mighty Gorgon's ability.\n\nIn the original expansion the commander had its own weaker version, which barely did anything at low levels. Now the commander kills enemy creatures the same way the Mighty Gorgon does:\n\n- **10% chance per creature** in the stack to instantly kill one enemy creature\n- the number of kills is limited by the size of the attacking stack\n- works in melee combat; shooting does not trigger the ability\n\nThe ability still becomes available when the commander has both the Damage and the Spell Power skills.",
+	"author": "Igor Korsukov, DeepSeek",
+	"version": "1.0",
+	"modType": "Mechanics",
+	"compatibility": {
+		"min": "1.7.0"
+	},
+	"changelog": {
+		"1.0": [
+			"Commander Death Stare now works like the Mighty Gorgon ability"
+		]
+	},
+	"russian": {
+		"name": "Смертельный взгляд командира",
+		"description": "Заставляет смертельный взгляд командира работать точно так же, как способность Могучего Горгона.\n\nВ оригинальном дополнении у командира была своя, более слабая версия, которая на низких уровнях почти ничего не делала. Теперь командир убивает врагов так же, как Могучий Горгон:\n\n- **10% шанс на каждое существо** в стеке мгновенно убить одно вражеское существо\n- число убийств ограничено размером атакующего стека\n- работает в ближнем бою; при стрельбе способность не срабатывает\n\nСпособность по-прежнему открывается, когда у командира есть навыки Урон и Сила магии."
+	}
+}

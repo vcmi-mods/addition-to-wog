@@ -1,0 +1,22 @@
+{
+	"name": "Original Commander Ability Icons",
+	"description": "Brings back the original ability icons from the Wake of Gods expansion for the commander skills.\n\nThe icon set that comes with VCMI replaces many ability pictures with redrawn versions, which is why the commander skill icons look different from the original game. This submod restores the classic pictures for all sixteen commander abilities.\n\nThe icons appear in the commander skill screen and in the tooltips of the corresponding abilities.",
+	"author": "Igor Korsukov, DeepSeek",
+	"version": "1.0",
+	"modType": "Graphical",
+	"compatibility": {
+		"min": "1.7.0"
+	},
+	"changelog": {
+		"1.0": [
+			"Restored original ability icons from the Wake of Gods expansion"
+		]
+	},
+	"bonuses": [
+		"config/bonusIcons.json"
+	],
+	"russian": {
+		"name": "Оригинальные иконки способностей командира",
+		"description": "Возвращает оригинальные иконки способностей из дополнения Wake of Gods для умений командира.\n\nНабор иконок, который идёт вместе с VCMI, заменяет многие изображения перерисованными версиями — именно поэтому умения командира выглядят не так, как в оригинальной игре. Этот подмод восстанавливает классические картинки для всех шестнадцати способностей командира.\n\nИконки отображаются в экране умений командира и в подсказках соответствующих способностей."
+	}
+}

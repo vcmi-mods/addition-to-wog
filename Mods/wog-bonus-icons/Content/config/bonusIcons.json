@@ -1,0 +1,82 @@
+{
+	"core:ADDITIONAL_ATTACK": {
+		"graphics": {
+			"icon": "wogicons/E_DOUBLE"
+		}
+	},
+	"core:ATTACKS_ALL_ADJACENT": {
+		"graphics": {
+			"icon": "wogicons/E_ROUND"
+		}
+	},
+	"core:BLOCKS_RETALIATION": {
+		"graphics": {
+			"icon": "wogicons/E_RETAIL"
+		}
+	},
+	"core:DEATH_STARE": {
+		"graphics": {
+			"icon": "wogicons/E_DEATH"
+		}
+	},
+	"core:ENEMY_DEFENCE_REDUCTION": {
+		"graphics": {
+			"icon": "wogicons/E_RDEF"
+		}
+	},
+	"core:FEARFUL": {
+		"graphics": {
+			"icon": "wogicons/E_FEAR"
+		}
+	},
+	"core:FLYING": {
+		"graphics": {
+			"icon": "wogicons/E_FLY"
+		}
+	},
+	"core:HP_REGENERATION": {
+		"graphics": {
+			"icon": "wogicons/E_TROLL"
+		}
+	},
+	"core:JOUSTING": {
+		"graphics": {
+			"icon": "wogicons/E_CHAMP"
+		}
+	},
+	"core:NO_MELEE_PENALTY": {
+		"graphics": {
+			"icon": "wogicons/E_MELEE"
+		}
+	},
+	"core:SHOOTER": {
+		"graphics": {
+			"icon": "wogicons/E_SHOOT"
+		}
+	},
+	"core:SPELL_AFTER_ATTACK": {
+		"graphics": {
+			"icon": "wogicons/E_CAST"
+		}
+	},
+	"core:ALWAYS_MAXIMUM_DAMAGE": {
+		"graphics": {
+			"icon": "wogicons/E_MAX"
+		}
+	},
+	"core:UNLIMITED_RETALIATIONS": {
+		"graphics": {
+			"icon": "wogicons/E_URET"
+		}
+	},
+	"core:GENERAL_DAMAGE_REDUCTION": {
+		"graphics": {
+			"icon": "wogicons/E_DRED"
+		}
+	},
+	"core:FIRE_SHIELD": {
+		"graphics": {
+			"icon": "wogicons/E_FIRE"
+		}
+	}
+}

@@ -1,0 +1,129 @@
+{
+	"core:treasureChest": {
+		"types": {
+			"zchst1": {
+				"rmg": {
+					"value": 0
+				}
+			},
+			"zchst2": {
+				"rmg": {
+					"value": 0
+				}
+			},
+			"zchst3": {
+				"rmg": {
+					"value": 0
+				}
+			},
+			"zchst4": {
+				"rmg": {
+					"value": 0
+				}
+			},
+			"zchst5": {
+				"rmg": {
+					"value": 0
+				}
+			},
+			"resourceOrSkillChest": {
+				"aiValue": 2000,
+				"rmg": {
+					"value": 1500,
+					"rarity": 300
+				},
+				"compatibilityIdentifiers": [
+					"object"
+				],
+				"blockedVisitable": true,
+				"onSelectMessage": "{Treasure Chest}\r\n\r\nYou find a treasure chest. Inside you can see supplies and old tomes of knowledge. You can take only one thing.",
+				"visitMode": "unlimited",
+				"selectMode": "selectPlayer",
+				"rewards": [
+					{
+						"appearChance": {
+							"max": 95
+						},
+						"message": "{Treasure Chest}\r\n\r\nYou take the supplies stored in the chest. Your hero receives 5 units of a random resource.\n\nYou could instead study the old tomes to improve one of your skills.",
+						"removeObject": true,
+						"resources": [
+							{
+								"anyOf": [
+									"wood",
+									"ore",
+									"mercury",
+									"gems",
+									"sulfur",
+									"crystal"
+								],
+								"amount": 5
+							}
+						]
+					},
+					{
+						"appearChance": {
+							"max": 95
+						},
+						"message": "{Treasure Chest}\r\n\r\nThe tomes teach the art of war. Your hero's Attack increases by 1.\n\nYou could instead take the supplies from the chest.",
+						"removeObject": true,
+						"primary": {
+							"attack": 1
+						}
+					},
+					{
+						"appearChance": {
+							"max": 95
+						},
+						"message": "{Treasure Chest}\r\n\r\nThe tomes teach the art of defense. Your hero's Defense increases by 1.\n\nYou could instead take the supplies from the chest.",
+						"removeObject": true,
+						"primary": {
+							"defence": 1
+						}
+					},
+					{
+						"appearChance": {
+							"max": 95
+						},
+						"message": "{Treasure Chest}\r\n\r\nThe tomes teach the secrets of magic. Your hero's Spell Power increases by 1.\n\nYou could instead take the supplies from the chest.",
+						"removeObject": true,
+						"primary": {
+							"spellpower": 1
+						}
+					},
+					{
+						"appearChance": {
+							"max": 95
+						},
+						"message": "{Treasure Chest}\r\n\r\nThe tomes broaden your understanding of the world. Your hero's Knowledge increases by 1.\n\nYou could instead take the supplies from the chest.",
+						"removeObject": true,
+						"primary": {
+							"knowledge": 1
+						}
+					}
+				],
+				"templates": {
+					"chestResourceOrSkill": {
+						"animation": "objects/chestResourceOrSkill.def",
+						"mask": [
+							"VA"
+						],
+						"visitableFrom": [
+							"+++",
+							"+-+",
+							"+++"
+						]
+					}
+				}
+			}
+		}
+	},
+	"wake-of-gods.mapdecorations:barrel": {
+		"types": {
+			"treasureChest": {
+				"rmg": {
+					"value": 0
+				}
+			}
+		}
+	}
+}

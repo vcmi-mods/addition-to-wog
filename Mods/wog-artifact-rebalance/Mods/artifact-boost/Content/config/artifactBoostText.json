@@ -1,0 +1,163 @@
+{
+	"core:birdOfPerception": {
+		"text": {
+			"name": "Bird of Perception",
+			"description": "{Bird of Perception}\n\nIncreases your Eagle Eye skill by 5% and grants 6 Royal Griffins per week to the town you are visiting.\n\n(WoG script02: 6 Royal Griffins weekly.)",
+			"event": "You notice a small bird figurine lying in the grass. It seems to watch the sky, and griffins answer its call."
+		}
+	},
+	"core:pendantOfLife": {
+		"text": {
+			"name": "Pendant of Life",
+			"description": "{Pendant of Life}\n\nRenders your units immune to the Death Ripple spell and grants 24 Sprites per week to the town you are visiting.\n\n(WoG script02: 24 Sprites weekly.)",
+			"event": "A warm pendant pulses in your hand, and sprites gather around it."
+		}
+	},
+	"core:pendantOfDeath": {
+		"text": {
+			"name": "Pendant of Death",
+			"description": "{Pendant of Death}\n\nRenders your undead units immune to the Destroy Undead spell and grants 12 Zombies per week to the town you are visiting.\n\n(WoG script02: 12 Zombies weekly.)",
+			"event": "The pendant grows cold, and shambling shapes follow you out of the dark."
+		}
+	},
+	"core:pendantOfTotalRecall": {
+		"text": {
+			"name": "Pendant of Total Recall",
+			"description": "{Pendant of Total Recall}\n\nRenders your units immune to the Forgetfulness spell. Increases all experience your hero gains by 25%.\n\nAt the start of every battle casts Expert Precision on all your troops (+6 Attack to shooters, 50 rounds).\n\n(WoG script02: 1000 experience weekly.)",
+			"event": "You pick up the Pendant of Total Recall."
+		}
+	},
+	"core:emblemOfCognizance": {
+		"text": {
+			"name": "Emblem of Cognizance",
+			"description": "{Emblem of Cognizance}\n\nIncreases your Eagle Eye skill by 15% and produces 15 gold per day.\n\n(WoG script02: 15 gold per troop weekly.)",
+			"event": "Your troops notice that nothing escapes your gaze, and they stop pocketing the loot."
+		}
+	},
+	"core:stoicWatchman": {
+		"text": {
+			"name": "Stoic Watchman",
+			"description": "{Stoic Watchman}\n\nIncreases your Eagle Eye skill by 10% and increases your scouting radius by 10.\n\n(WoG script02: revealed a large map area weekly.)",
+			"event": "The stone figure's eyes seem to follow the horizon, and your own sight follows."
+		}
+	},
+	"core:pendantOfSecondSight": {
+		"text": {
+			"name": "Pendant of Second Sight",
+			"description": "{Pendant of Second Sight}\n\nRenders your units immune to the Blind spell. Lets you upgrade low-level shooters for free in the hero's army: Archers, Wood Elves, Gremlins, Gogs, Beholders, Orcs, Lizardmen and Air Elementals.\n\nAt the start of every battle casts Expert Air Shield on all your troops (ranged damage reduced, 50 rounds).\n\n(WoG script02: upgraded them weekly.)",
+			"event": "You pick up the Pendant of Second Sight."
+		}
+	},
+	"core:pendantOfHoliness": {
+		"text": {
+			"name": "Pendant of Holiness",
+			"description": "{Pendant of Holiness}\n\nRenders your units immune to the Curse spell. Teaches your hero Bless, Cure, Prayer and Resurrection.\n\nAt the start of every battle casts Expert Bless on all your troops (+1 to maximum damage, 50 rounds).\n\n(WoG script02: gave a random holy spell weekly.)",
+			"event": "You pick up the Pendant of Holiness."
+		}
+	},
+	"core:bootsOfPolarity": {
+		"text": {
+			"name": "Boots of Polarity",
+			"description": "{Boots of Polarity}\n\nIncreases your Magic Resistance by 15% and adds 600 movement points on land.\n\n(WoG script02: could be traded for a one-time movement bonus.)",
+			"event": "Your steps feel strangely light in these boots."
+		}
+	},
+	"core:garnitureOfInterference": {
+		"text": {
+			"name": "Garniture of Interference",
+			"description": "{Garniture of Interference}\n\nIncreases your Magic Resistance by 5% and raises the mastery of every magic school by one level.\n\n(WoG script02: could be traded to learn a magic skill.)",
+			"event": "The garniture hums, and spells come to you more easily."
+		}
+	},
+	"core:pendantOfDispassion": {
+		"text": {
+			"name": "Pendant of Dispassion",
+			"description": "{Pendant of Dispassion}\n\nRenders your units immune to the Berserk spell. Increases your Knowledge by 1.\n\nAt the start of every battle casts Expert Bloodlust on all your troops (+6 Attack, 50 rounds).\n\n(WoG script02: +1 Knowledge weekly.)",
+			"event": "You pick up the Pendant of Dispassion."
+		}
+	},
+	"core:pendantOfFreeWill": {
+		"text": {
+			"name": "Pendant of Free Will",
+			"description": "{Pendant of Free Will}\n\nRenders your units immune to the Hypnotize spell. Lets you upgrade Peasants to Rogues and Stone Golems to Iron, Gold and Diamond Golems for free in the hero's army.\n\nAt the start of every battle casts Expert Stone Skin on all your troops (+6 Defense, 50 rounds).\n\n(WoG script02: upgraded them weekly.)",
+			"event": "You pick up the Pendant of Free Will."
+		}
+	},
+	"core:diplomatsRing": {
+		"text": {
+			"name": "Diplomat's Ring",
+			"description": "{Diplomat's Ring}\n\nReduces the cost of surrendering by 10% and grants 8 additional level 1 creatures per week to the town you are visiting.\n\n(WoG script02: could be traded to double all level 1 stacks.)",
+			"event": "The ring glints, and recruits seem eager to follow you."
+		}
+	},
+	"core:surcoatOfCounterpoise": {
+		"text": {
+			"name": "Surcoat of Counterpoise",
+			"description": "{Surcoat of Counterpoise}\n\nIncreases your Magic Resistance by 10%, your Knowledge by 1 and your scouting radius by 3, and produces 15 gold per day.\n\n(WoG script02: doubled the effects of the other boosted artifacts.)",
+			"event": "The surcoat grows warm, then cold, then warm again. It is clearly doing something."
+		}
+	},
+	"core:orbOfVulnerability": {
+		"text": {
+			"name": "Orb of Vulnerability",
+			"description": "{Orb of Vulnerability}\n\nNegates the natural magic resistance of all creatures on the battlefield. Grants 1 Archmage per week to the town you are visiting.\n\nAt the start of every battle casts Expert Disease on all enemy troops (-2 Attack and -2 Defense, 50 rounds).\n\n(WoG script02: 1 Archmage plus one per Wisdom level weekly.)",
+			"event": "You pick up the Orb of Vulnerability."
+		}
+	},
+	"core:sphereOfPermanence": {
+		"text": {
+			"name": "Sphere of Permanence",
+			"description": "{Sphere of Permanence}\n\nRenders your units immune to the Dispel Magic spell and adds 1 hit point to your non-living and mechanical troops.\n\n(WoG script02: 1 Mighty Gorgon plus one per 10 Defense weekly.)",
+			"event": "The sphere steadies your constructs, and they stand more firmly."
+		}
+	},
+	"core:statesmansMedal": {
+		"text": {
+			"name": "Statesman's Medal",
+			"description": "{Statesman's Medal}\n\nReduces the cost of surrendering by 10% and produces 250 gold per day.\n\n(WoG script02: could be traded at a town to build up to three structures.)",
+			"event": "The medal lends weight to your words, and to your treasury."
+		}
+	},
+	"core:targOfTheRampagingOgre": {
+		"text": {
+			"name": "Targ of the Rampaging Ogre",
+			"description": "{Targ of the Rampaging Ogre}\n\nIncreases your Defense skill by 5 and grants 3 additional level 4 creatures per week to the town you are visiting.\n\n(WoG script02: provoked a fight with 30 Ogres weekly.)",
+			"event": "The shield still carries the smell of ogre camps."
+		}
+	},
+	"core:deadMansBoots": {
+		"text": {
+			"name": "Dead Man's Boots",
+			"description": "{Dead Man's Boots}\n\nIncreases your Necromancy skill by 15% and grants 5 additional level 1 creatures per week to the town you are visiting. Each copy worn stacks.\n\n(WoG script02: produced a copy of itself weekly.)",
+			"event": "Eventually, everyone dies..."
+		}
+	},
+	"core:orbOfTheFirmament": {
+		"text": {
+			"name": "Orb of the Firmament",
+			"description": "{Orb of the Firmament}\n\nIncreases the damage of your Air Magic spells by 50%. At the start of every battle casts Expert Protection from Air on all your troops.",
+			"event": "You pick up the Orb of the Firmament."
+		}
+	},
+	"core:orbOfSilt": {
+		"text": {
+			"name": "Orb of Silt",
+			"description": "{Orb of Silt}\n\nIncreases the damage of your Earth Magic spells by 50%. At the start of every battle casts Expert Protection from Earth on all your troops.",
+			"event": "You pick up the Orb of Silt."
+		}
+	},
+	"core:orbOfTempestuousFire": {
+		"text": {
+			"name": "Orb of Tempestuous Fire",
+			"description": "{Orb of Tempestuous Fire}\n\nIncreases the damage of your Fire Magic spells by 50%. At the start of every battle casts Expert Protection from Fire on all your troops.",
+			"event": "You pick up the Orb of Tempestuous Fire."
+		}
+	},
+	"core:orbOfDrivingRain": {
+		"text": {
+			"name": "Orb of Driving Rain",
+			"description": "{Orb of Driving Rain}\n\nIncreases the damage of your Water Magic spells by 50%. At the start of every battle casts Expert Protection from Water on all your troops.",
+			"event": "You pick up the Orb of Driving Rain."
+		}
+	}
+}

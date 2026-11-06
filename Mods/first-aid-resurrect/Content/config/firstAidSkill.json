@@ -1,0 +1,19 @@
+{
+	"core:firstAid" : {
+		"basic" : {
+			"effects" : {
+				"main" : { "val" : 100 }
+			}
+		},
+		"advanced" : {
+			"effects" : {
+				"main" : { "val" : 150 }
+			}
+		},
+		"expert" : {
+			"effects" : {
+				"main" : { "val" : 200 }
+			}
+		}
+	}
+}

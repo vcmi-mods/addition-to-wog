@@ -1,0 +1,39 @@
+{
+	"core:tactics" : {
+		"name" : "Tactics",
+		"specialty" : [],
+		"base" : {
+			"effects" : {
+				"main" : {
+					"type" : "STACKS_SPEED",
+					"valueType" : "BASE_NUMBER",
+					"limiters" : [
+						"noneOf",
+						{
+							"type" : "HAS_ANOTHER_BONUS_LIMITER",
+							"bonusType" : "SIEGE_WEAPON"
+						}
+					]
+				}
+			}
+		},
+		"basic" : {
+			"description" : "{Tactics}\n\nBasic Tactics does not allow repositioning of troops before combat, but instead increases the Speed of all your troops by +1.",
+			"effects" : {
+				"main" : { "val" : 1 }
+			}
+		},
+		"advanced" : {
+			"description" : "{Tactics}\n\nAdvanced Tactics does not allow repositioning of troops before combat, but instead increases the Speed of all your troops by +2.",
+			"effects" : {
+				"main" : { "val" : 2 }
+			}
+		},
+		"expert" : {
+			"description" : "{Tactics}\n\nExpert Tactics does not allow repositioning of troops before combat, but instead increases the Speed of all your troops by +3.",
+			"effects" : {
+				"main" : { "val" : 3 }
+			}
+		}
+	}
+}

@@ -1,0 +1,14 @@
+{
+	"core:firstAidTent" : {
+		"abilities" : {
+			// Hit points restored per tent action. Stacks with the First Aid secondary skill,
+			// which adds 0 / 100 / 150 / 200 for none / basic / advanced / expert.
+			// Lower this value to weaken the tent, raise it to make resurrection stronger.
+			"firstAidPower" : {
+				"type" : "SPECIFIC_SPELL_POWER",
+				"subtype" : "spell.firstAid",
+				"val" : 50
+			}
+		}
+	}
+}

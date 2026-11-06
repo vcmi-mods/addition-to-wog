@@ -1,0 +1,25 @@
+{
+	"name": "Dwelling Accumulation",
+	"description": "Makes creatures pile up in dwellings instead of being reset every week.\n\nNormally a dwelling always offers only one week's worth of creatures: if you do not visit it, the unspent creatures are lost. With this mod the available creatures keep accumulating until you finally recruit them.\n\nBoth cases are covered:\n\n- dwellings without an owner, the ones you find on the adventure map\n- dwellings and town dwellings that belong to a player\n\nThe Refugee Camp is not affected, because it offers a different random creature every week and has nothing to accumulate.",
+	"author": "Igor Korsukov, DeepSeek",
+	"version": "1.0",
+	"modType": "Mechanics",
+	"compatibility": {
+		"min": "1.7.0"
+	},
+	"changelog": {
+		"1.0": [
+			"Creatures now accumulate in neutral and owned dwellings"
+		]
+	},
+	"settings": {
+		"dwellings": {
+			"accumulateWhenNeutral": true,
+			"accumulateWhenOwned": true
+		}
+	},
+	"russian": {
+		"name": "Накопление существ в жилищах",
+		"description": "Заставляет существ накапливаться в жилищах, вместо того чтобы сбрасываться каждую неделю.\n\nОбычно жилище всегда предлагает только недельный прирост: если вы туда не зайдёте, неиспользованные существа пропадают. С этим модом доступные существа копятся, пока вы их наконец не заберёте.\n\nУчтены оба случая:\n\n- жилища без владельца — те, что встречаются на карте приключений\n- жилища и городские постройки, принадлежащие игроку\n\nЛагерь беженцев не затронут, потому что он каждую неделю предлагает другое случайное существо, и копить там нечего."
+	}
+}

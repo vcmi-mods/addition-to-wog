@@ -1,0 +1,22 @@
+{
+	"core:firstAid" : {
+		"levels" : {
+			"base" : {
+				"battleEffects" : {
+					"heal" : {
+						"healLevel" : "resurrect"
+					}
+				}
+			}
+		},
+		"targetCondition" : {
+			"noneOf" : {
+				"bonus.SIEGE_WEAPON" : "absolute",
+				"bonus.NON_LIVING" : "absolute",
+				"bonus.MECHANICAL" : "absolute",
+				"bonus.UNDEAD" : "absolute",
+				"bonus.GARGOYLE" : "absolute"
+			}
+		}
+	}
+}

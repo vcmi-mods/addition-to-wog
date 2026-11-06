@@ -1,0 +1,26 @@
+{
+	"name": "Dragonheart Rebalance",
+	"description": "Makes the Dragonheart relic noticeably stronger.\n\nOriginally the artifact summoned dragons worth a small amount of health, so the summoning only started once the hero had plenty of Spell Power. With this mod the total health of summoned dragons is about a hundred times the hero's Spell Power, so the relic becomes useful much earlier.\n\nA small note: the game calculates the amount strictly from Spell Power, without a fixed extra portion, so the result is roughly one dragon per point of Spell Power instead of an exact \"100 plus 100 per point\".",
+	"author": "Igor Korsukov, DeepSeek",
+	"version": "1.0",
+	"modType": "Artifacts",
+	"compatibility": {
+		"min": "1.7.0"
+	},
+	"depends": [
+		"wake-of-gods.artifacts"
+	],
+	"artifacts": [
+		"config/artifacts/dragonheart.json"
+	],
+	"spells": [
+		"config/spells/summonRedDragon.json"
+	],
+	"russian": {
+		"name": "Драконье сердце: усиление",
+		"description": "Делает реликвию Драконье сердце заметно сильнее.\n\nИзначально артефакт призывал драконов на небольшой запас здоровья, поэтому призыв начинался только когда у героя уже много Силы магии. С этим модом суммарное здоровье призванных драконов примерно в сто раз превышает Силу магии героя, и реликвия становится полезной гораздо раньше.\n\nНебольшое пояснение: игра считает количество строго от Силы магии, без фиксированной добавки, поэтому получается примерно один дракон за каждую единицу Силы магии, а не точное «100 плюс 100 за каждую единицу».",
+		"translations": [
+			"config/translations/russian.json"
+		]
+	}
+}

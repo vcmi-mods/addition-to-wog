@@ -1,0 +1,22 @@
+{
+	"name": "WoG Tactics",
+	"description": "Replaces the usual Tactics skill with the version from the Wake of Gods expansion.\n\nThe deployment phase before battle is gone completely. Instead, the skill grants bonus speed to your own troops:\n\n- Basic: +1 speed\n- Advanced: +2 speed\n- Expert: +3 speed\n\nThe bonus applies to all friendly creatures except war machines. Unlike the original, the bonus is permanent while the hero has the skill, so it is also visible in the creature information window.",
+	"author": "Igor Korsukov, DeepSeek",
+	"version": "1.0",
+	"modType": "Skills",
+	"compatibility": {
+		"min": "1.7.0"
+	},
+	"changelog": {
+		"1.0": [
+			"Tactics now gives +1/+2/+3 speed instead of pre-battle deployment"
+		]
+	},
+	"skills": [
+		"config/tactics.json"
+	],
+	"russian": {
+		"name": "Тактика по WoG",
+		"description": "Заменяет обычный навык Тактика на версию из дополнения Wake of Gods.\n\nФаза расстановки войск перед боем убирается полностью. Вместо неё навык даёт бонус к скорости вашим войскам:\n\n- Базовый: +1 к скорости\n- Продвинутый: +2 к скорости\n- Экспертный: +3 к скорости\n\nБонус получают все дружественные существа, кроме боевых машин. В отличие от оригинала, бонус действует постоянно, пока у героя есть навык, поэтому он виден и в окне информации о существе."
+	}
+}

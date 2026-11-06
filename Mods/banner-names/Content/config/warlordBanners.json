@@ -1,0 +1,73 @@
+{
+	"wake-of-gods.stackartifacts:warlordsBannerHealth" : {
+		"text" : {
+			"name" : "Warlord's Banner of Health",
+			"description" : "{Warlord's Banner of Health}\r\n\r\nIncreases stack's Health by 2 and additionally doubles the stack's current Health bonus in combat.",
+			"event" : "You pick up the Warlord's Banner of Health."
+		}
+	},
+
+	"wake-of-gods.stackartifacts:warlordsBannerAttack" : {
+		"text" : {
+			"name" : "Warlord's Banner of Attack",
+			"description" : "{Warlord's Banner of Attack}\r\n\r\nIncreases stack's Attack by 2 and additionally doubles the stack's current Attack bonus in combat.",
+			"event" : "You pick up the Warlord's Banner of Attack."
+		}
+	},
+
+	"wake-of-gods.stackartifacts:warlordsBannerDefence" : {
+		"text" : {
+			"name" : "Warlord's Banner of Defence",
+			"description" : "{Warlord's Banner of Defence}\r\n\r\nIncreases stack's Defense by 2 and additionally doubles the stack's current Defense bonus in combat.",
+			"event" : "You pick up the Warlord's Banner of Defence."
+		}
+	},
+
+	"wake-of-gods.stackartifacts:warlordsBannerDamage" : {
+		"text" : {
+			"name" : "Warlord's Banner of Damage",
+			"description" : "{Warlord's Banner of Damage}\r\n\r\nIncreases stack's Damage by 1 and additionally doubles the stack's current Damage bonus in combat.",
+			"event" : "You pick up the Warlord's Banner of Damage."
+		}
+	},
+
+	"wake-of-gods.stackartifacts:warlordsBannerSpeed" : {
+		"text" : {
+			"name" : "Warlord's Banner of Speed",
+			"description" : "{Warlord's Banner of Speed}\r\n\r\nIncreases stack's Speed by 1 and additionally doubles the stack's current Speed bonus in combat.",
+			"event" : "You pick up the Warlord's Banner of Speed."
+		}
+	},
+
+	"wake-of-gods.stackartifacts:warlordsBannerExperience" : {
+		"text" : {
+			"name" : "Warlord's Banner of Experience",
+			"description" : "{Warlord's Banner of Experience}\r\n\r\nIncreases the experience this stack gains from battle by 50%.",
+			"event" : "You pick up the Warlord's Banner of Experience."
+		}
+	},
+
+	"wake-of-gods.stackartifacts:warlordsBannerReducer" : {
+		"text" : {
+			"name" : "Warlord's Banner of Piercing",
+			"description" : "{Warlord's Banner of Piercing}\r\n\r\nReduces the Defense of the attacked enemy stack by 25%.",
+			"event" : "You pick up the Warlord's Banner of Piercing."
+		}
+	},
+
+	"wake-of-gods.stackartifacts:warlordsBannerBlocker" : {
+		"text" : {
+			"name" : "Warlord's Banner of Protection",
+			"description" : "{Warlord's Banner of Protection}\r\n\r\nReduces all damage this stack receives by 25%.",
+			"event" : "You pick up the Warlord's Banner of Protection."
+		}
+	},
+
+	"wake-of-gods.stackartifacts:warlordsBannerRetaliate" : {
+		"text" : {
+			"name" : "Warlord's Banner of Retaliation",
+			"description" : "{Warlord's Banner of Retaliation}\r\n\r\nAllows this stack to retaliate two additional times per round.",
+			"event" : "You pick up the Warlord's Banner of Retaliation."
+		}
+	}
+}

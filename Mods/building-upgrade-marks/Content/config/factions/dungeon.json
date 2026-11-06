@@ -1,0 +1,86 @@
+{
+	"core:dungeon": {
+		"town": {
+			"buildings": {
+				"mageGuild2": {
+					"name": "Гильдия магов 2 уровня"
+				},
+				"mageGuild3": {
+					"name": "Гильдия магов 3 уровня"
+				},
+				"mageGuild4": {
+					"name": "Гильдия магов 4 уровня"
+				},
+				"mageGuild5": {
+					"name": "Гильдия магов 5 уровня"
+				},
+				"citadel": {
+					"name": "Цитадель"
+				},
+				"castle": {
+					"name": "Замок"
+				},
+				"townHall": {
+					"name": "Префектура"
+				},
+				"cityHall": {
+					"name": "Муниципалитет"
+				},
+				"capitol": {
+					"name": "Капитолий"
+				},
+				"dwellingLvl1": {
+					"name": "Загон"
+				},
+				"dwellingLvl2": {
+					"name": "Чердак гарпий"
+				},
+				"dwellingLvl3": {
+					"name": "Камень глаз"
+				},
+				"dwellingLvl4": {
+					"name": "Часовня безмолвия"
+				},
+				"dwellingLvl5": {
+					"name": "Лабиринт"
+				},
+				"dwellingLvl6": {
+					"name": "Логово мантикоры"
+				},
+				"dwellingLvl7": {
+					"name": "Пещера дракона"
+				},
+				"dwellingUpLvl1": {
+					"name": "Ул. загон"
+				},
+				"dwellingUpLvl2": {
+					"name": "Ул. чердак гарпий"
+				},
+				"dwellingUpLvl3": {
+					"name": "Ул. камень глаз"
+				},
+				"dwellingUpLvl4": {
+					"name": "Ул. часовня безмолвия"
+				},
+				"dwellingUpLvl5": {
+					"name": "Ул. лабиринт"
+				},
+				"dwellingUpLvl6": {
+					"name": "Ул. логово мантикоры"
+				},
+				"dwellingUpLvl7": {
+					"name": "Ул. пещера дракона"
+				},
+				"horde1": {
+					"name": "Грибные кольца"
+				},
+				"horde1Upgr": {
+					"name": "Ул. грибные кольца"
+				},
+				"villageHall": {
+					"name": "Сельская управа"
+				}
+			}
+		}
+	}
+}

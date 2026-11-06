@@ -1,0 +1,87 @@
+{
+	"wake-of-gods.mapobjects:waterMagicMushroom" : {
+		"types" : {
+			"waterMagicMushroom" : {
+				"name" : "Magic Water Mushroom",
+				"description" : "(grants expert Water Magic permanently)",
+				"onVisitedMessage" : "{Magic Water Mushroom}\r\n\r\nYour hero already learned everything this mushroom had to offer.",
+				"visitMode" : "hero",
+				"rewards" : [
+					{
+						"secondary" : {
+							"waterMagic" : 3
+						},
+						"message" : "{Magic Water Mushroom}\r\n\r\nThe influence of this mysterious mushroom awakens your affinity for Water Magic. Your hero attains expert level in Water Magic permanently."
+					}
+				],
+				"templates" : {
+					"zobj008" : {
+						"animation" : "mapObjects/zobj012.def"
+					}
+				}
+			}
+		}
+	},
+
+	"wake-of-gods.mapobjects:airMagicMushroom" : {
+		"types" : {
+			"airMagicMushroom" : {
+				"name" : "Magic Air Mushroom",
+				"description" : "(grants expert Air Magic permanently)",
+				"onVisitedMessage" : "{Magic Air Mushroom}\r\n\r\nYour hero already learned everything this mushroom had to offer.",
+				"visitMode" : "hero",
+				"rewards" : [
+					{
+						"secondary" : {
+							"airMagic" : 3
+						},
+						"message" : "{Magic Air Mushroom}\r\n\r\nThe influence of this mysterious mushroom awakens your affinity for Air Magic. Your hero attains expert level in Air Magic permanently."
+					}
+				],
+				"templates" : {
+					"zobj012" : {
+						"animation" : "mapObjects/zobj008.def"
+					}
+				}
+			}
+		}
+	},
+
+	"wake-of-gods.mapobjects:earthMagicMushroom" : {
+		"types" : {
+			"earthMagicMushroom" : {
+				"name" : "Magic Earth Mushroom",
+				"description" : "(grants expert Earth Magic permanently)",
+				"onVisitedMessage" : "{Magic Earth Mushroom}\r\n\r\nYour hero already learned everything this mushroom had to offer.",
+				"visitMode" : "hero",
+				"rewards" : [
+					{
+						"secondary" : {
+							"earthMagic" : 3
+						},
+						"message" : "{Magic Earth Mushroom}\r\n\r\nThe influence of this mysterious mushroom awakens your affinity for Earth Magic. Your hero attains expert level in Earth Magic permanently."
+					}
+				]
+			}
+		}
+	},
+
+	"wake-of-gods.mapobjects:fireMagicMushroom" : {
+		"types" : {
+			"fireMagicMushroom" : {
+				"name" : "Magic Fire Mushroom",
+				"description" : "(grants expert Fire Magic permanently)",
+				"onVisitedMessage" : "{Magic Fire Mushroom}\r\n\r\nYour hero already learned everything this mushroom had to offer.",
+				"visitMode" : "hero",
+				"rewards" : [
+					{
+						"secondary" : {
+							"fireMagic" : 3
+						},
+						"message" : "{Magic Fire Mushroom}\r\n\r\nThe influence of this mysterious mushroom awakens your affinity for Fire Magic. Your hero attains expert level in Fire Magic permanently."
+					}
+				]
+			}
+		}
+	}
+}
