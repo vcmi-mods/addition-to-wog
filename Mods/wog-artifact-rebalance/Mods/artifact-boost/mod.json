@@ -9,7 +9,8 @@
 	},
 	"artifacts": [
 		"config/artifactBoost.json",
-		"config/artifactBoostText.json"
+		"config/artifactBoostText.json",
+		"config/magicWand.json"
 	],
 	"russian": {
 		"name": "Усиление артефактов",

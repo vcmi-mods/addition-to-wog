@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Artifact Boost — отчёт по артефактам</title>
+<style>
+  :root {
+    --bg: #f7f5f0;
+    --panel: #ffffff;
+    --panel-alt: #fbfaf7;
+    --border: #e0dbd1;
+    --border-strong: #cfc7b8;
+    --text: #26241f;
+    --muted: #7a7468;
+    --gold: #a8813a;
+    --ok: #3f7d2e;  --ok-bg: #eef6ea;
+    --warn: #a8620f; --warn-bg: #fdf3e5;
+    --bad: #b03030;  --bad-bg: #fbeded;
+    --na: #6b7280;   --na-bg: #f1f2f4;
+    --era: #1f4e79;
+    --orig: #5b4a7a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 36px 28px 72px;
+    background: var(--bg); color: var(--text);
+    font-family: "Segoe UI", "Noto Sans", system-ui, -apple-system, sans-serif;
+    font-size: 14px; line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1780px; margin: 0 auto; }
+
+  header {
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: 12px; padding: 26px 30px; margin-bottom: 26px;
+    box-shadow: 0 1px 2px rgba(38,36,31,.04);
+  }
+  h1 { font-size: 27px; font-weight: 700; margin: 0 0 8px; letter-spacing: -.2px; }
+  h1 .accent { color: var(--gold); }
+  .subtitle { color: var(--muted); margin: 0; font-size: 13.5px; max-width: 1180px; }
+
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 26px; }
+  .stat { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px;
+          box-shadow: 0 1px 2px rgba(38,36,31,.04); }
+  .stat .n { font-size: 25px; font-weight: 700; color: var(--gold); line-height: 1.15; }
+  .stat .l { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .8px; margin-top: 2px; }
+
+  .legend { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-bottom: 22px;
+            font-size: 12.5px; color: var(--muted); }
+  .legend .item { display: flex; align-items: center; gap: 7px; }
+
+  table {
+    width: 100%; border-collapse: separate; border-spacing: 0;
+    background: var(--panel); border: 1px solid var(--border-strong);
+    border-radius: 12px; overflow: hidden; margin-bottom: 40px;
+    box-shadow: 0 1px 3px rgba(38,36,31,.05);
+  }
+  thead th {
+    background: #f0ece3; color: #5c5344;
+    font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .85px;
+    text-align: left; padding: 13px 14px;
+    border-bottom: 1px solid var(--border-strong);
+  }
+  thead th:last-child { color: var(--orig); }
+  tbody td { padding: 15px 14px; vertical-align: top; border-bottom: 1px solid #eeeae1; }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:nth-child(even) td { background: var(--panel-alt); }
+  tbody tr:hover td { background: #fdfaf3; }
+
+  .name { font-weight: 700; color: #1d1c19; }
+  .id { display: block; font-family: ui-monospace, "Cascadia Code", "SF Mono", monospace;
+        font-size: 10.5px; color: var(--muted); font-weight: 400; margin-top: 4px; }
+  .arthead { display: flex; align-items: flex-start; gap: 10px; }
+  .arthead .articon {
+    flex: 0 0 auto; width: 44px; height: 44px;
+    display: flex; align-items: center; justify-content: center;
+    background: #f2efe8; border: 1px solid #e0dbd1; border-radius: 6px;
+  }
+  .arthead .articon img {
+    max-width: 40px; max-height: 40px;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+  }
+  .arthead .arttext { min-width: 0; }
+  .col-name { width: 15%; }
+  .col-desc { width: 20%; }
+  .col-fact { width: 26%; }
+  .col-era  { width: 24%; }
+  .col-orig { width: 19%; }
+
+  .desc { color: #3a3833; }
+  .desc b { color: #1d1c19; }
+  ul { margin: 0; padding-left: 16px; }
+  li { margin-bottom: 5px; }
+  li:last-child { margin-bottom: 0; }
+
+  code {
+    font-family: ui-monospace, "Cascadia Code", "SF Mono", monospace;
+    font-size: 11px; background: #f4f1ea; border: 1px solid #e4dfd4;
+    border-radius: 4px; padding: 1px 5px; color: #4a5d23; white-space: nowrap;
+  }
+  .era { color: var(--era); }
+  .era .note { display: block; color: var(--muted); font-size: 12px; margin-top: 7px; }
+
+  .orig { color: var(--orig); background: #faf8fd !important; }
+  .orig b { color: #463461; }
+  .origtext {
+    margin-top: 6px; padding-left: 10px;
+    border-left: 2px solid #ddd4ec;
+    color: #4f4763; font-size: 12.5px; line-height: 1.55;
+  }
+
+  .flag {
+    display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .7px;
+    text-transform: uppercase; border-radius: 999px; padding: 3px 10px; margin-bottom: 8px;
+  }
+  .flag.ok   { background: var(--ok-bg);   color: var(--ok);   border: 1px solid #cfe3c6; }
+  .flag.warn { background: var(--warn-bg); color: var(--warn); border: 1px solid #f0dcbb; }
+  .flag.bad  { background: var(--bad-bg);  color: var(--bad);  border: 1px solid #f0cfcf; }
+  .flag.na   { background: var(--na-bg);   color: var(--na);   border: 1px solid #dde0e4; }
+
+  h2 { font-size: 17px; font-weight: 700; margin: 40px 0 14px;
+       padding-bottom: 10px; border-bottom: 2px solid var(--border-strong); }
+  h2 .sub { font-weight: 400; color: var(--muted); font-size: 13px; }
+
+  .issues { background: var(--panel); border: 1px solid var(--border-strong);
+            border-left: 4px solid var(--warn); border-radius: 10px; padding: 22px 26px;
+            box-shadow: 0 1px 3px rgba(38,36,31,.05); }
+  .issues ol { margin: 0; padding-left: 22px; }
+  .issues li { margin-bottom: 14px; }
+  .issues li:last-child { margin-bottom: 0; }
+  .issues strong { color: #1d1c19; }
+
+  .done { background: var(--ok-bg); border: 1px solid #cfe3c6; border-left: 4px solid var(--ok);
+          border-radius: 10px; padding: 16px 22px; margin-bottom: 26px; color: #2f5c22; }
+  .done b { color: #244a1a; }
+
+  .muted { color: var(--muted); }
+  footer { margin-top: 40px; padding-top: 18px; border-top: 1px solid var(--border);
+           color: var(--muted); font-size: 12px; line-height: 1.8; }
+  footer code { font-size: 11px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>Artifact Boost — <span class="accent">отчёт по улучшенным артефактам</span></h1>
+    <p class="subtitle">
+      Мод <code>addition-to-wog.wog-artifact-rebalance.artifact-boost</code> в связке с
+      <code>enhanced-artifacts</code>. Описания сверены с текстами, которые реально применяет
+      движок VCMI 1.7.5; фактическое действие — с бонусами в конфигах;
+      оригинальные описания взяты из <code>artraits.txt</code> базовой Heroes III.
+    </p>
+  </header>
+
+  <div class="stats">
+    <div class="stat"><div class="n">25</div><div class="l">артефактов</div></div>
+    <div class="stat"><div class="n">21</div><div class="l">в artifact-boost</div></div>
+    <div class="stat"><div class="n">4</div><div class="l">сферы стихий</div></div>
+    <div class="stat"><div class="n">0</div><div class="l">расхождений</div></div>
+    </div>
+
+
+  <div class="legend">
+    <span class="item"><span class="flag ok">совпадает</span> описание соответствует коду</span>
+    <span class="item"><span class="flag warn">неточность</span> описание расходится с кодом</span>
+    <span class="item"><span class="flag bad">пропуск</span> эффект не описан вовсе</span>
+    <span class="item"><span class="flag na">без изменений</span> бонус идентичен базовому</span>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th class="col-name">Название артефакта</th>
+        <th class="col-desc">Описание в игре</th>
+        <th class="col-fact">Фактическое действие</th>
+        <th class="col-era">Действие в Era (каким задумывалось)</th>
+        <th class="col-orig">Описание в оригинале</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="name"><div class="arthead"><div class="articon"><img src="icons/birdOfPerception.png" alt="Птица Прозрения"></div><div class="arttext">Птица Прозрения<span class="id">birdOfPerception</span></div></div></td>
+        <td class="desc"><span class="flag ok">совпадает</span><br>
+          Даёт <b>+5%</b> к навыку Орлиный глаз и <b>6 существ 3-го уровня</b> в неделю в городе, где находится герой.</td>
+        <td><ul><li><code>LEARN_BATTLE_SPELL_CHANCE</code> +5%</li><li><code>CREATURE_GROWTH</code> → <code>creatureLevel3</code>, +6/нед., пропагатор <code>TOWN_AND_VISITOR</code></li></ul></td>
+        <td class="era">6 Королевских грифонов в неделю.<span class="note">Оригинал: еженедельно выдавал 6 Королевских грифонов (5-й уровень). В моде снижено до 6 существ 3-го уровня.</span></td>
+        <td class="orig"><b>Птица проницательности</b><div class="origtext">Эта статуэтка повышает ваш навык Орлиного взора на 5%.</div></td>
+      </tr>
+      <tr>
+        <td class="name"><div class="arthead"><div class="articon"><img src="icons/pendantOfLife.png" alt="Амулет Жизни"></div><div class="arttext">Амулет Жизни<span class="id">pendantOfLife</span></div></div></td>
+        <td class="desc"><span class="flag ok">совпадает</span><br>
+          Даёт вашим войскам иммунитет к заклинанию <b>Волна смерти</b> и приносит <b>24 существа 1-го уровня</b> в неделю в городе, где находится герой.</td>
+        <td><ul><li><code>SPELL_IMMUNITY</code> → <code>deathRipple</code></li><li><code>CREATURE_GROWTH</code> → <code>creatureLevel1</code>, +24/нед.</li><li><span class="muted">Бонус здоровья по уровням удалён</span></li></ul></td>
+        <td class="era">24 Феи в неделю.<span class="note">Оригинал: еженедельно 24 Феи. В моде — 24 существа 1-го уровня: Фея относится к 1-му уровню, поэтому у Оплота результат тот же.</span></td>
+        <td class="orig"><b>Кулон жизни</b><div class="origtext">Этот кулон защищает ваших воинов от заклинания «Волна Смерти».</div></td>
+      </tr>
+      <tr>
+        <td class="name"><div class="arthead"><div class="articon"><img src="icons/pendantOfDeath.png" alt="Амулет Смерти"></div><div class="arttext">Амулет Смерти<span class="id">pendantOfDeath</span></div></div></td>
+        <td class="desc"><span class="flag ok">совпадает</span><br>
+          Даёт вашей нежити иммунитет к заклинанию Уничтожить нежить. Кроме того, все отряды нежити в армии героя получают <b>+2 к атаке и +2 к защите</b>.</td>
+        <td><ul><li><code>SPELL_IMMUNITY</code> → <code>destroyUndead</code>, лимитер <code>IS_UNDEAD</code></li><li><code>PRIMARY_SKILL</code> attack <b>+2</b> <span class="muted">(IS_UNDEAD)</span></li><li><code>PRIMARY_SKILL</code> defence <b>+2</b> <span class="muted">(IS_UNDEAD)</span></li></ul></td>
+        <td class="era">12 Зомби в неделю.<span class="note">Оригинал: еженедельно 12 Зомби. Прирост и +1 скорости убраны; бонусы нежити к атаке и защите — добавка <code>enhanced-artifacts</code>.</span></td>
+        <td class="orig"><b>Кулон смерти</b><div class="origtext">Этот кулон защищает ваших воинов от заклинания «Убить нежить».</div></td>
+      </tr>
+      <tr>
+        <td class="name"><div class="arthead"><div class="articon"><img src="icons/pendantOfTotalRecall.png" alt="Амулет Полного Воспоминания"></div><div class="arttext">Амулет Полного Воспоминания<span class="id">pendantOfTotalRecall</span></div></div></td>
+        <td class="desc"><span class="flag ok">совпадает</span><br>
+          Иммунитет к «Забывчивости». <b>+10%</b> ко всему опыту героя. В начале боя — «Меткость» эксперта (+6 к атаке стрелков, 50 раундов).</td>
+        <td><ul><li><code>SPELL_IMMUNITY</code> → <code>forgetfulness</code></li><li><code>HERO_EXPERIENCE_GAIN_PERCENT</code> +10%</li><li><code>OPENING_BATTLE_SPELL</code> → <code>precision</code>, эксперт, 50 раундов</li></ul></td>
+        <td class="era">1000 опыта в неделю.<span class="note">Оригинал: еженедельно 1000 опыта. Заменено на постоянный +10% ко всему опыту.</span></td>
+        <td class="orig"><b>Кулон твердой памяти</b><div class="origtext">Этот кулон защищает ваших воинов от заклинания «Забывчивость».</div></td>
+      </tr>
+      <tr>
+        <td class="name"><div class="arthead"><div class="articon"><img src="icons/emblemOfCognizance.png" alt="Эмблема Познания"></div><div class="arttext">Эмблема Познания<span class="id">emblemOfCognizance</span></div></div></td>
+        <td class="desc"><span class="flag ok">совпадает</span><br>
+          Даёт <b>+15%</b> к навыку Орлиный глаз и приносит <b>2 золота в день за каждое существо</b> в армии героя.</td>
+        <td><ul><li><code>instanceBonuses</code>: <code>LEARN_BATTLE_SPELL_CHANCE</code> +15%</li><li><code>GENERATE_RESOURCE</code> → <code>gold</code>, <b>val 2</b> × количество существ в армии</li><li><code>updater</code>: <code>TIMES_ARMY_SIZE</code>, <code>stepSize: 1</code> — без минимума и максимума</li><li>Оба со <code>stacking: ALWAYS</code> — копии складываются</li></ul></td>
+        <td class="era">15 золота за каждое существо в неделю.<span class="note">Оригинал: платил 15 золота за каждого воина раз в неделю. В моде — 2 золота за каждого воина каждый день, что при недельном пересчёте даёт 14 золота против оригинальных 15.</span></td>
+        <td class="orig"><b>Символ знания</b><div class="origtext">Этот талисман повышает ваш навык Орлиного взора на 15%.</div></td>
+      </tr>
+      <tr>
+        <td class="name"><div class="arthead"><div class="articon"><img src="icons/stoicWatchman.png" alt="Стоический Страж"></div><div class="arttext">Стоический Страж<span class="id">stoicWatchman</span></div></div></td>
+        <td class="desc"><span class="flag ok">совпадает</span><br>
+          Даёт <b>+10%</b> к навыку Орлиный глаз и увеличивает радиус обзора <b>на 5</b>.</td>
+        <td><ul><li><code>LEARN_BATTLE_SPELL_CHANCE</code> +10%</li><li><code>SIGHT_RADIUS</code> +5</li></ul></td>
+        <td class="era">Раз в неделю открывал большую область карты.<span class="note">Оригинал: еженедельно раскрывал участок карты. Заменено на постоянный обзор +5.</span></td>
+        <td class="orig"><b>Стойкий часовой</b><div class="origtext">Эта статуэтка повышает ваш навык Орлиного взора на 10%.</div></td>
+      </tr>
+      <tr>
+        <td class="name"><div class="arthead"><div class="articon"><img src="icons/pendantOfSecondSight.png" alt="Амулет Второго Зрения"></div><div class="arttext">Амулет Второго Зрения<span class="id">pendantOfSecondSight</span></div></div></td>
+        <td class="desc"><span class="flag ok">совпадает</span><br>
+          Иммунитет к «Слепоте». Бесплатные улучшения в армии героя: Лучники, Лесные эльфы, Гремлины, Гоги, Бехолдеры, Орки, Ящеры, Воздушные элементали. В начале боя «Воздушный щит» эксперта.</td>
+        <td><ul><li><code>SPELL_IMMUNITY</code> → <code>blind</code></li><li>8 × <code>SPECIAL_UPGRADE</code>: archer→marksman, woodElf→grandElf, gremlin→masterGremlin, gog→magog, beholder→evilEye, orc→orcChieftain, lizardman→lizardWarrior, airElemental→stormElemental</li><li><code>OPENING_BATTLE_SPELL</code> → <code>airShield</code>, эксперт, 50 раундов</li></ul></td>
+        <td class="era">Раз в неделю улучшал этих существ.<span class="note">Оригинал: еженедельно производил апгрейд стрелков. Заменено на бесплатный апгрейд в любой момент.</span></td>
+        <td class="orig"><b>Кулон внутреннего зрения</b><div class="origtext">Этот кулон защищает ваших воинов от заклинания «Ослепление».</div></td>
+      </tr>
+      <tr>
+        <td class="name"><div class="arthead"><div class="articon"><img src="icons/pendantOfHoliness.png" alt="Амулет Святости"></div><div class="arttext">Амулет Святости<span class="id">pendantOfHoliness</span></div></div></td>
+        <td class="desc"><span class="flag ok">совпадает</span><br>
+          Иммунитет к «Проклятию». Обучает героя: Благословение, Лечение, Молитва. В начале боя «Благословение» эксперта.</td>
+        <td><ul><li><code>SPELL_IMMUNITY</code> → <code>curse</code></li><li>3 × <code>SPELL</code>: bless, cure, prayer</li><li><code>OPENING_BATTLE_SPELL</code> → <code>bless</code>, эксперт, 50 раундов</li></ul></td>
+        <td class="era">Раз в неделю давал случайное «святое» заклинание.<span class="note">Оригинал: еженедельно случайное святое заклинание. Заменено на постоянное обучение трём.</span></td>
+        <td class="orig"><b>Кулон святости</b><div class="origtext">Этот кулон защищает ваших воинов от заклинания «Проклятие».</div></td>
+      </tr>
+      <tr>
+        <td class="name"><div class="arthead"><div class="articon"><img src="icons/bootsOfPolarity.png" alt="Сапоги Полярности"></div><div class="arttext">Сапоги Полярности<span class="id">bootsOfPolarity</span></div></div></td>
+        <td class="desc"><span class="flag ok">совпадает</span><br>
+          Повышают сопротивление магии на <b>15%</b> и дают немного очков движения по земле.</td>
+        <td><ul><li><code>MAGIC_RESISTANCE</code> +15%</li><li><code>MOVEMENT</code> → <code>heroMovementLand</code>, <b>+300</b></li></ul></td>
+        <td class="era">Можно было обменять на разовый бонус к движению.<span class="note">Оригинал: обмен на одноразовый прирост движения. Заменено на постоянные +300 — половина от обычных Сапог скорости.</span></td>
+        <td class="orig"><b>Башмаки полярности</b><div class="origtext">Эти башмаки, которые носят на ногах, повышают ваше Сопротивление магии на 15%.</div></td>
+      </tr>
+      <tr>
+        <td class="name"><div class="arthead"><div class="articon"><img src="icons/garnitureOfInterference.png" alt="Гарнитур Помех"></div><div class="arttext">Гарнитур Помех<span class="id">garnitureOfInterference</span></div></div></td>
+        <td class="desc"><span class="flag ok">совпадает</span><br>
+          Повышает сопротивление магии на <b>5%</b> и увеличивает уровень владения <b>всеми школами магии на 1</b>.</td>
+        <td><ul><li><code>MAGIC_RESISTANCE</code> +5%</li><li><code>MAGIC_SCHOOL_SKILL</code> → <code>spellSchool.any</code>, +1</li></ul></td>
+        <td class="era">Можно было обменять на магический навык.<span class="note">Оригинал: обмен на изучение школы магии. Заменено на постоянный +1 ко всем школам.</span></td>
+        <td class="orig"><b>Наследный доспех</b><div class="origtext">Наследный доспех, который носят на шее, повышает ваше Сопротивление магии на 5%.</div></td>
+      </tr>
+      <tr>
+        <td class="name"><div class="arthead"><div class="articon"><img src="icons/pendantOfDispassion.png" alt="Амулет Бесстрастия"></div><div class="arttext">Амулет Бесстрастия<span class="id">pendantOfDispassion</span></div></div></td>
+        <td class="desc"><span class="flag ok">совпадает</span><br>
+          Иммунитет к «Бешенству». <b>+1 Знание</b>. В начале боя «Жажда крови» эксперта.</td>
+        <td><ul><li><code>SPELL_IMMUNITY</code> → <code>berserk</code></li><li><code>PRIMARY_SKILL</code> knowledge +1</li><li><code>OPENING_BATTLE_SPELL</code> → <code>bloodlust</code>, эксперт, 50 раундов</li></ul></td>
+        <td class="era">+1 Знание в неделю.<span class="note">Оригинал: еженедельно +1 Знание. Заменено на постоянный +1.</span></td>
+        <td class="orig"><b>Кулон бесстрастия</b><div class="origtext">Этот кулон защищает ваших воинов от заклинания «Берсерк».</div></td>
+      </tr>
+      <tr>
+        <td class="name"><div class="arthead"><div class="articon"><img src="icons/pendantOfFreeWill.png" alt="Амулет Свободной Воли"></div><div class="arttext">Амулет Свободной Воли<span class="id">pendantOfFreeWill</span></div></div></td>
+        <td class="desc"><span class="flag ok">совпадает</span><br>
+          Иммунитет к «Гипнозу». Бесплатные улучшения: Крестьяне → Разбойники, Каменные → Железные → Золотые → Алмазные големы. В начале боя «Каменная кожа» эксперта.</td>
+        <td><ul><li><code>SPELL_IMMUNITY</code> → <code>hypnotize</code></li><li><code>SPECIAL_UPGRADE</code>: peasant→rogue</li><li><code>SPECIAL_UPGRADE</code>: stoneGolem→ironGolem→goldGolem→diamondGolem</li><li><code>OPENING_BATTLE_SPELL</code> → <code>stoneSkin</code>, эксперт, 50 раундов</li></ul></td>
+        <td class="era">Раз в неделю улучшал этих существ.<span class="note">Оригинал: еженедельный апгрейд. Заменено на бесплатный апгрейд в любой момент.</span></td>
+        <td class="orig"><b>Кулон свободной воли</b><div class="origtext">Этот кулон защищает ваших воинов от заклинания «Гипноз».</div></td>
+      </tr>
+      <tr>
+        <td class="name"><div class="arthead"><div class="articon"><img src="icons/diplomatsRing.png" alt="Кольцо Дипломата"></div><div class="arttext">Кольцо Дипломата<span class="id">diplomatsRing</span></div></div></td>
+        <td class="desc"><span class="flag ok">совпадает</span><br>
+          Снижает стоимость капитуляции на <b>10%</b> и приносит <b>500 золота в день</b>.</td>
+        <td><ul><li><code>SURRENDER_DISCOUNT</code> +10%</li><li><code>GENERATE_RESOURCE</code> → gold, <b>+500/день</b></li></ul></td>
+        <td class="era">Можно было обменять на удвоение всех стеков 1-го уровня.<span class="note">Оригинал: обмен на удвоение стеков 1-го уровня. Заменено на постоянный доход 500 золота в день.</span></td>
+        <td class="orig"><b>Кольцо дипломата</b><div class="origtext">Кольцо дипломата, которое носят на пальце, уменьшает цену выкупа при сдаче в плен.</div></td>
+      </tr>
+      <tr>
+        <td class="name"><div class="arthead"><div class="articon"><img src="icons/surcoatOfCounterpoise.png" alt="Сюрко Противовеса"></div><div class="arttext">Сюрко Противовеса<span class="id">surcoatOfCounterpoise</span></div></div></td>
+        <td class="desc"><span class="flag ok">совпадает</span><br>
+          +<b>10%</b> сопротивление магии, <b>+1 Знание</b>, <b>+3 обзор</b>, <b>1000 золота в день</b>.</td>
+        <td><ul><li><code>MAGIC_RESISTANCE</code> +10%</li><li><code>PRIMARY_SKILL</code> knowledge +1</li><li><code>SIGHT_RADIUS</code> +3</li><li><code>GENERATE_RESOURCE</code> → gold, <b>+1000/день</b></li></ul></td>
+        <td class="era">Удваивал эффекты остальных улучшенных артефактов.<span class="note">Оригинал: множитель на другие бустеры. Реализовать нельзя — заменено набором постоянных бонусов.</span></td>
+        <td class="orig"><b>Плащ равновесия</b><div class="origtext">Этот плащ, который носят на плечах, повышает ваше Сопротивление магии на 10%.</div></td>
+      </tr>
+      <tr>
+        <td class="name"><div class="arthead"><div class="articon"><img src="icons/orbOfVulnerability.png" alt="Сфера Уязвимости"></div><div class="arttext">Сфера Уязвимости<span class="id">orbOfVulnerability</span></div></div></td>
+        <td class="desc"><span class="flag ok">совпадает</span><br>
+          Устраняет природное сопротивление магии у всех существ на поле боя. <b>1 существо 6-го уровня</b> в неделю в городе, где находится герой. В начале боя «Болезнь» эксперта по всем врагам.</td>
+        <td><ul><li><code>NEGATE_ALL_NATURAL_IMMUNITIES</code> ×2 (поле боя + герой врага)</li><li><code>MAGIC_RESISTANCE</code> 0, <code>INDEPENDENT_MIN</code>, battle-wide</li><li><code>SPELL_RESISTANCE_AURA</code> 0, battle-wide</li><li><code>CREATURE_GROWTH</code> → <code>creatureLevel6</code>, +1/нед.</li><li><code>OPENING_BATTLE_SPELL</code> → <code>disease</code>, эксперт</li></ul></td>
+        <td class="era">1 Архимаг + по одному за каждый уровень Мудрости в неделю.<span class="note">Оригинал: число зависело от Мудрости. В моде — 1 существо 6-го уровня в неделю фиксированно.</span></td>
+        <td class="orig"><b>Сфера уязвимости</b><div class="origtext">Во время сражения этот артефакт нейтрализует природную невосприимчивость к магии, которая может быть характерна для некоторых отрядов на поле боя.</div></td>
+      </tr>
+      <tr>
+        <td class="name"><div class="arthead"><div class="articon"><img src="icons/sphereOfPermanence.png" alt="Сфера Постоянства"></div><div class="arttext">Сфера Постоянства<span class="id">sphereOfPermanence</span></div></div></td>
+        <td class="desc"><span class="flag ok">совпадает</span><br>
+          Даёт вашим войскам иммунитет к заклинанию Развеять магию и приносит <b>2 существа 5-го уровня</b> в неделю в городе, где находится герой.</td>
+        <td><ul><li><code>SPELL_IMMUNITY</code> → <code>dispel</code>, <code>addInfo: 1</code></li><li><code>SPELL_IMMUNITY</code> → <code>dispelHelpful</code>, <code>addInfo: 1</code></li><li><code>CREATURE_GROWTH</code> → <code>creatureLevel5</code>, +2/нед., пропагатор <code>TOWN_AND_VISITOR</code></li></ul></td>
+        <td class="era">1 Могучий горгон + по одному за каждые 10 Защиты в неделю.<span class="note">Оригинал: прирост зависел от Защиты героя. Заменено на 2 существа 5-го уровня в неделю.</span></td>
+        <td class="orig"><b>Сфера постоянства</b><div class="origtext">Эта сфера делает ваших воинов невосприимчивыми к действию заклинания «Снять чары».</div></td>
+      </tr>
+      <tr>
+        <td class="name"><div class="arthead"><div class="articon"><img src="icons/statesmansMedal.png" alt="Медаль Государственного Мужа"></div><div class="arttext">Медаль Государственного Мужа<span class="id">statesmansMedal</span></div></div></td>
+        <td class="desc"><span class="flag ok">совпадает</span><br>
+          Снижает стоимость капитуляции на <b>10%</b> и приносит <b>500 золота в день</b>.</td>
+        <td><ul><li><code>SURRENDER_DISCOUNT</code> +10%</li><li><code>GENERATE_RESOURCE</code> → gold, <b>+500/день</b></li></ul></td>
+        <td class="era">Можно было обменять в городе на постройку до трёх зданий.<span class="note">Оригинал: обмен на строительство. Заменено на постоянный доход 500 золота в день.</span></td>
+        <td class="orig"><b>Медаль чиновника</b><div class="origtext">Медаль чиновника, которую носят на шее, уменьшает цену выкупа при сдаче в плен.</div></td>
+      </tr>
+      <tr>
+        <td class="name"><div class="arthead"><div class="articon"><img src="icons/ambassadorsSash.png" alt="Лента посла"></div><div class="arttext">Лента посла<span class="id">ambassadorsSash</span></div></div></td>
+        <td class="desc"><span class="flag ok">совпадает</span><br>
+          Снижает стоимость капитуляции на <b>10%</b> и приносит <b>500 золота в день</b>.</td>
+        <td><ul><li><code>SURRENDER_DISCOUNT</code> +10% <span class="muted">(ядро)</span></li><li><code>GENERATE_RESOURCE</code> → gold, <b>+500/день</b></li></ul></td>
+        <td class="era">Снижала цену выкупа при сдаче в плен.<span class="note">Оригинал: только скидка на капитуляцию. Мод добавил 500 золота в день.</span></td>
+        <td class="orig"><b>Лента посла</b><div class="origtext">Лента посла, которую носят на плечах, уменьшает цену выкупа при сдаче в плен.</div></td>
+      </tr>
+      <tr>
+        <td class="name"><div class="arthead"><div class="articon"><img src="icons/targOfTheRampagingOgre.png" alt="Тарч Неистового Огра"></div><div class="arttext">Тарч Неистового Огра<span class="id">targOfTheRampagingOgre</span></div></div></td>
+        <td class="desc"><span class="flag ok">совпадает</span><br>
+          Повышает Защиту на <b>5</b> и увеличивает весь опыт героя на <b>5%</b>.</td>
+        <td><ul><li><code>PRIMARY_SKILL</code> defence +5</li><li><code>HERO_EXPERIENCE_GAIN_PERCENT</code> +5%</li></ul></td>
+        <td class="era">Раз в неделю провоцировал бой с 30 Ограми.<span class="note">Оригинал: еженедельная стычка. Заменено на +5% ко всему опыту героя.</span></td>
+        <td class="orig"><b>Щит неистового огра</b><div class="origtext">Этот небольшой круглый щит, который держат в левой руке, добавляет к вашему навыку Защиты 5 единиц.</div></td>
+      </tr>
+      <tr>
+        <td class="name"><div class="arthead"><div class="articon"><img src="icons/deadMansBoots.png" alt="Сапоги Мертвеца"></div><div class="arttext">Сапоги Мертвеца<span class="id">deadMansBoots</span></div></div></td>
+        <td class="desc"><span class="flag ok">совпадает</span><br>
+          <b>+15%</b> Некромантия и <b>+2 к скорости</b> всем отрядам нежити в армии героя.</td>
+        <td><ul><li><code>UNDEAD_RAISE_PERCENTAGE</code> +15%</li><li><code>STACKS_SPEED</code> +2, лимитер <code>IS_UNDEAD</code></li></ul></td>
+        <td class="era">Раз в неделю создавал свою копию.<span class="note">Оригинал: еженедельно плодил копии. Прирост существ и апгрейд скелетов убраны — остались некромантия и скорость нежити.</span></td>
+        <td class="orig"><b>Башмаки мертвеца</b><div class="origtext">Эти башмаки, которые носят на ногах, повышают ваш навык Некромантии на 15%.</div></td>
+      </tr>
+      <tr>
+        <td class="name"><div class="arthead"><div class="articon"><img src="icons/magicWand.png" alt="Волшебная палочка"></div><div class="arttext">Волшебная палочка<span class="id">magicWand</span></div></div></td>
+        <td class="desc"><span class="flag ok">совпадает</span><br>
+          При атаке вашего героя в бою с шансом <b>25%</b> поражённый вражеский отряд превращается в существ того типа, который его ударил. Суммарное здоровье отряда сохраняется.<br><br>Действует только на живых врагов; преобразованный отряд остаётся на стороне противника.</td>
+        <td><ul><li><code>TRANSMUTATION</code> <b>25%</b></li><li>Подтип <code>transmutationPerHealth</code> — количество по сохранённому здоровью</li><li><code>addInfo</code> не указан → превращение в атакующего</li><li><code>propagator: ARMY</code></li><li><code>bonuses#override</code> — замена всех прежних бонусов</li></ul></td>
+        <td class="era">Каждый день случайно заменяла надетые артефакты героя. Пара слотов зависела от того, в какой Misc надет жезл.<span class="note">Оригинал: еженедельная трансформация артефактов, воспроизвести в VCMI нельзя. Заменено на боевую трансмутацию врагов.</span></td>
+        <td class="orig"><b>Волшебная палочка</b><div class="origtext">В Heroes III такого артефакта нет — он добавлен дополнением Wake of Gods. В оригинале каждый день случайно заменял надетые артефакты героя.</div></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Сферы стихий <span class="sub">— бонусы из enhanced-artifacts, текст в artifact-boost</span></h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th class="col-name">Название артефакта</th>
+        <th class="col-desc">Описание в игре</th>
+        <th class="col-fact">Фактическое действие</th>
+        <th class="col-era">Действие в Era (каким задумывалось)</th>
+        <th class="col-orig">Описание в оригинале</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="name"><div class="arthead"><div class="articon"><img src="icons/orbOfTheFirmament.png" alt="Сфера Небес"></div><div class="arttext">Сфера Небес<span class="id">orbOfTheFirmament</span></div></div></td>
+        <td class="desc"><span class="flag ok">совпадает</span><br>
+          +50% к урону заклинаний магии Воздуха. В начале боя «Оберег Воздуха» эксперта на все войска.</td>
+        <td><ul><li><code>SPELL_DAMAGE</code> → <code>spellSchool.air</code>, +50 <span class="muted">(ядро)</span></li><li><code>OPENING_BATTLE_SPELL</code> → <code>protectAir</code>, эксперт <span class="muted">(мод)</span></li></ul></td>
+        <td class="era">Базовый эффект ядра без изменений.<span class="note">В WoG отдельного поведения не было; мод добавил боевое заклинание.</span></td>
+        <td class="orig"><b>Сфера небесного свода</b><div class="origtext">Этот могущественный артефакт на 50% увелиичивает урон, наносимый заклинаниями Воздуха.</div></td>
+      </tr>
+      <tr>
+        <td class="name"><div class="arthead"><div class="articon"><img src="icons/orbOfSilt.png" alt="Сфера Ила"></div><div class="arttext">Сфера Ила<span class="id">orbOfSilt</span></div></div></td>
+        <td class="desc"><span class="flag ok">совпадает</span><br>
+          +50% к урону заклинаний магии Земли. В начале боя «Оберег Земли» эксперта.</td>
+        <td><ul><li><code>SPELL_DAMAGE</code> → <code>spellSchool.earth</code>, +50 <span class="muted">(ядро)</span></li><li><code>OPENING_BATTLE_SPELL</code> → <code>protectEarth</code>, эксперт <span class="muted">(мод)</span></li></ul></td>
+        <td class="era">Базовый эффект ядра без изменений.</td>
+        <td class="orig"><b>Сфера тверди земной</b><div class="origtext">Этот могущественный артефакт на 50% увеличивает урон, наносимый заклинаниями Земли.</div></td>
+      </tr>
+      <tr>
+        <td class="name"><div class="arthead"><div class="articon"><img src="icons/orbOfTempestuousFire.png" alt="Сфера Буйного Огня"></div><div class="arttext">Сфера Буйного Огня<span class="id">orbOfTempestuousFire</span></div></div></td>
+        <td class="desc"><span class="flag ok">совпадает</span><br>
+          +50% к урону заклинаний магии Огня. В начале боя «Оберег Огня» эксперта.</td>
+        <td><ul><li><code>SPELL_DAMAGE</code> → <code>spellSchool.fire</code>, +50 <span class="muted">(ядро)</span></li><li><code>OPENING_BATTLE_SPELL</code> → <code>protectFire</code>, эксперт <span class="muted">(мод)</span></li></ul></td>
+        <td class="era">Базовый эффект ядра без изменений.</td>
+        <td class="orig"><b>Сфера буйного пламени</b><div class="origtext">Этот могущественный артефакт на 50% увеличивает урон, наносимый заклинаниями Огня.</div></td>
+      </tr>
+      <tr>
+        <td class="name"><div class="arthead"><div class="articon"><img src="icons/orbOfDrivingRain.png" alt="Сфера Проливного Дождя"></div><div class="arttext">Сфера Проливного Дождя<span class="id">orbOfDrivingRain</span></div></div></td>
+        <td class="desc"><span class="flag ok">совпадает</span><br>
+          +50% к урону заклинаний магии Воды. В начале боя «Оберег Воды» эксперта.</td>
+        <td><ul><li><code>SPELL_DAMAGE</code> → <code>spellSchool.water</code>, +50 <span class="muted">(ядро)</span></li><li><code>OPENING_BATTLE_SPELL</code> → <code>protectWater</code>, эксперт <span class="muted">(мод)</span></li></ul></td>
+        <td class="era">Базовый эффект ядра без изменений.</td>
+        <td class="orig"><b>Сфера проливного дождя</b><div class="origtext">Этот могущественный артефакт на 50% увеличивает урон, наносимый заклинаниями Воды.</div></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <footer>
+    Источники: <code>artifactBoost.json</code>, <code>enhancedArtifacts.json</code>, <code>artifactBoostText.json</code>,
+    <code>translations/russian.json</code>, <code>/usr/share/vcmi/config/artifacts.json</code>,
+    <code>artraits.txt</code> из <code>H3bitmap.lod</code>.<br>
+    Тексты сверены с реально применёнными строками через <code>vcmiserver --translate-mod</code> (VCMI 1.7.5).<br>
+    Прирост существ действует только в городе, где находится герой — пропагатор <code>TOWN_AND_VISITOR</code>
+    привязывается к узлу <code>townAndVis</code> конкретного города.
+  </footer>
+
+</div>
+</body>
+</html>

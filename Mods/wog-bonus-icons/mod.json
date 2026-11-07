@@ -7,6 +7,9 @@
 	"compatibility": {
 		"min": "1.7.0"
 	},
+	"softDepends": [
+		"vcmi-extras.bonusicons.bonus icons"
+	],
 	"changelog": {
 		"1.0": [
 			"Restored original ability icons from the Wake of Gods expansion"

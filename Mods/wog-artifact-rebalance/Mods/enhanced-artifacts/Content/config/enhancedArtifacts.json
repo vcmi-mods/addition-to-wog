@@ -1,121 +1,7 @@
 {
 	"core:pendantOfLife": {
 		"class": "MAJOR",
-		"value": 5000,
-		"bonuses": {
-			"livingHealth1": {
-				"type": "STACK_HEALTH",
-				"val": 1,
-				"valueType": "ADDITIVE_VALUE",
-				"limiters": [
-					{
-						"type": "HAS_ANOTHER_BONUS_LIMITER",
-						"bonusType": "LIVING"
-					},
-					{
-						"type": "CREATURE_LEVEL_LIMITER",
-						"minLevel": 1,
-						"maxlevel": 2
-					}
-				]
-			},
-			"livingHealth2": {
-				"type": "STACK_HEALTH",
-				"val": 3,
-				"valueType": "ADDITIVE_VALUE",
-				"limiters": [
-					{
-						"type": "HAS_ANOTHER_BONUS_LIMITER",
-						"bonusType": "LIVING"
-					},
-					{
-						"type": "CREATURE_LEVEL_LIMITER",
-						"minLevel": 2,
-						"maxlevel": 3
-					}
-				]
-			},
-			"livingHealth3": {
-				"type": "STACK_HEALTH",
-				"val": 6,
-				"valueType": "ADDITIVE_VALUE",
-				"limiters": [
-					{
-						"type": "HAS_ANOTHER_BONUS_LIMITER",
-						"bonusType": "LIVING"
-					},
-					{
-						"type": "CREATURE_LEVEL_LIMITER",
-						"minLevel": 3,
-						"maxlevel": 4
-					}
-				]
-			},
-			"livingHealth4": {
-				"type": "STACK_HEALTH",
-				"val": 10,
-				"valueType": "ADDITIVE_VALUE",
-				"limiters": [
-					{
-						"type": "HAS_ANOTHER_BONUS_LIMITER",
-						"bonusType": "LIVING"
-					},
-					{
-						"type": "CREATURE_LEVEL_LIMITER",
-						"minLevel": 4,
-						"maxlevel": 5
-					}
-				]
-			},
-			"livingHealth5": {
-				"type": "STACK_HEALTH",
-				"val": 15,
-				"valueType": "ADDITIVE_VALUE",
-				"limiters": [
-					{
-						"type": "HAS_ANOTHER_BONUS_LIMITER",
-						"bonusType": "LIVING"
-					},
-					{
-						"type": "CREATURE_LEVEL_LIMITER",
-						"minLevel": 5,
-						"maxlevel": 6
-					}
-				]
-			},
-			"livingHealth6": {
-				"type": "STACK_HEALTH",
-				"val": 25,
-				"valueType": "ADDITIVE_VALUE",
-				"limiters": [
-					{
-						"type": "HAS_ANOTHER_BONUS_LIMITER",
-						"bonusType": "LIVING"
-					},
-					{
-						"type": "CREATURE_LEVEL_LIMITER",
-						"minLevel": 6,
-						"maxlevel": 7
-					}
-				]
-			},
-			"livingHealth7": {
-				"type": "STACK_HEALTH",
-				"val": 50,
-				"valueType": "ADDITIVE_VALUE",
-				"limiters": [
-					{
-						"type": "HAS_ANOTHER_BONUS_LIMITER",
-						"bonusType": "LIVING"
-					},
-					{
-						"type": "CREATURE_LEVEL_LIMITER",
-						"minLevel": 7,
-						"maxlevel": 99
-					}
-				]
-			}
-		}
+		"value": 5000
 	},
 	"core:pendantOfDeath": {
 		"class": "MAJOR",
@@ -124,7 +10,7 @@
 			"undeadAttack": {
 				"type": "PRIMARY_SKILL",
 				"subtype": "primarySkill.attack",
-				"val": 5,
+				"val": 2,
 				"valueType": "BASE_NUMBER",
 				"limiters": [
 					"IS_UNDEAD"
@@ -133,15 +19,7 @@
 			"undeadDefence": {
 				"type": "PRIMARY_SKILL",
 				"subtype": "primarySkill.defence",
-				"val": 5,
-				"valueType": "BASE_NUMBER",
-				"limiters": [
-					"IS_UNDEAD"
-				]
-			},
-			"undeadSpeed": {
-				"type": "STACKS_SPEED",
-				"val": 1,
+				"val": 2,
 				"valueType": "BASE_NUMBER",
 				"limiters": [
 					"IS_UNDEAD"
@@ -264,26 +142,6 @@
 			}
 		}
 	},
-	"core:sphereOfPermanence": {
-		"bonuses": {
-			"health": {
-				"type": "STACK_HEALTH",
-				"val": 10,
-				"valueType": "ADDITIVE_VALUE",
-				"limiters": [
-					"anyOf",
-					{
-						"type": "HAS_ANOTHER_BONUS_LIMITER",
-						"bonusType": "NON_LIVING"
-					},
-					{
-						"type": "HAS_ANOTHER_BONUS_LIMITER",
-						"bonusType": "MECHANICAL"
-					}
-				]
-			}
-		}
-	},
 	"core:collarOfConjuring": {
 		"bonuses": {
 			"spellDamage": {
@@ -321,15 +179,6 @@
 				"subtype": "spellSchool.any",
 				"val": 20,
 				"valueType": "BASE_NUMBER"
-			}
-		}
-	},
-	"core:deadMansBoots": {
-		"bonuses": {
-			"skeletonUpgrade": {
-				"type": "SPECIAL_UPGRADE",
-				"subtype": "creature.skeleton",
-				"addInfo": "creature.skeletonWarrior"
 			}
 		}
 	},

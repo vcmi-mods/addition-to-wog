@@ -1,0 +1,37 @@
+{
+	"artifact.wake-of-gods.stackartifacts.warlordsBannerHealth.name": "Знамя полководца здоровья",
+	"artifact.wake-of-gods.stackartifacts.warlordsBannerHealth.description": "{Знамя полководца здоровья}\n\nПока знамя надето, отряд получает +2 к здоровью и ещё +10% к своему здоровью в бою.",
+	"artifact.wake-of-gods.stackartifacts.warlordsBannerHealth.event": "Вы поднимаете знамя полководца здоровья.",
+
+	"artifact.wake-of-gods.stackartifacts.warlordsBannerAttack.name": "Знамя полководца атаки",
+	"artifact.wake-of-gods.stackartifacts.warlordsBannerAttack.description": "{Знамя полководца атаки}\n\nПока знамя надето, отряд получает +2 к атаке и ещё +10% к своей атаке в бою.",
+	"artifact.wake-of-gods.stackartifacts.warlordsBannerAttack.event": "Вы поднимаете знамя полководца атаки.",
+
+	"artifact.wake-of-gods.stackartifacts.warlordsBannerDefence.name": "Знамя полководца защиты",
+	"artifact.wake-of-gods.stackartifacts.warlordsBannerDefence.description": "{Знамя полководца защиты}\n\nПока знамя надето, отряд получает +2 к защите и ещё +10% к своей защите в бою.",
+	"artifact.wake-of-gods.stackartifacts.warlordsBannerDefence.event": "Вы поднимаете знамя полководца защиты.",
+
+	"artifact.wake-of-gods.stackartifacts.warlordsBannerDamage.name": "Знамя полководца урона",
+	"artifact.wake-of-gods.stackartifacts.warlordsBannerDamage.description": "{Знамя полководца урона}\n\nПока знамя надето, отряд получает +1 к урону и ещё +10% к своему урону в бою.",
+	"artifact.wake-of-gods.stackartifacts.warlordsBannerDamage.event": "Вы поднимаете знамя полководца урона.",
+
+	"artifact.wake-of-gods.stackartifacts.warlordsBannerSpeed.name": "Знамя полководца скорости",
+	"artifact.wake-of-gods.stackartifacts.warlordsBannerSpeed.description": "{Знамя полководца скорости}\n\nПока знамя надето, отряд получает +1 к скорости и ещё +10% к своей скорости в бою.",
+	"artifact.wake-of-gods.stackartifacts.warlordsBannerSpeed.event": "Вы поднимаете знамя полководца скорости.",
+
+	"artifact.wake-of-gods.stackartifacts.warlordsBannerExperience.name": "Знамя полководца опыта",
+	"artifact.wake-of-gods.stackartifacts.warlordsBannerExperience.description": "{Знамя полководца опыта}\n\nПока знамя надето, отряд получает на 50% больше опыта за бой.",
+	"artifact.wake-of-gods.stackartifacts.warlordsBannerExperience.event": "Вы поднимаете знамя полководца опыта.",
+
+	"artifact.wake-of-gods.stackartifacts.warlordsBannerReducer.name": "Знамя полководца пробивания",
+	"artifact.wake-of-gods.stackartifacts.warlordsBannerReducer.description": "{Знамя полководца пробивания}\n\nАтаки отряда игнорируют 25% защиты цели.",
+	"artifact.wake-of-gods.stackartifacts.warlordsBannerReducer.event": "Вы поднимаете знамя полководца пробивания.",
+
+	"artifact.wake-of-gods.stackartifacts.warlordsBannerBlocker.name": "Знамя полководца стойкости",
+	"artifact.wake-of-gods.stackartifacts.warlordsBannerBlocker.description": "{Знамя полководца стойкости}\n\nОтряд получает на 25% меньше урона от атак ближнего боя и от выстрелов.",
+	"artifact.wake-of-gods.stackartifacts.warlordsBannerBlocker.event": "Вы поднимаете знамя полководца стойкости.",
+
+	"artifact.wake-of-gods.stackartifacts.warlordsBannerRetaliate.name": "Знамя полководца ответного удара",
+	"artifact.wake-of-gods.stackartifacts.warlordsBannerRetaliate.description": "{Знамя полководца ответного удара}\n\nОтряд может наносить ответный удар на 2 раза больше за раунд.",
+	"artifact.wake-of-gods.stackartifacts.warlordsBannerRetaliate.event": "Вы поднимаете знамя полководца ответного удара."
+}

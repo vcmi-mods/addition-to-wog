@@ -1,0 +1,17 @@
+{
+	"wake-of-gods.level8units:magicWand": {
+		"bonuses#override": {
+			"transmutation": {
+				"type": "TRANSMUTATION",
+				"subtype": "transmutationPerHealth",
+				"val": 25,
+				"propagator": "ARMY"
+			}
+		},
+		"text": {
+			"name": "Magic Wand",
+			"description": "{Magic Wand}\r\n\r\nWhen your hero attacks in battle, there is a 25% chance that the struck enemy stack turns into creatures of the attacker's type. The total health of the transformed stack is preserved, so fewer but stronger creatures appear.\r\n\r\nOnly living enemies are affected, and the converted stack stays on the enemy side.",
+			"event": "You find the Magic Wand, dust it off, and stick it in your pack."
+		}
+	}
+}
