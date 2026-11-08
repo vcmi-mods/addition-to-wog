@@ -1,0 +1,20 @@
+{
+	"name": "Original Mine Layout",
+	"description": "Keeps wood and ore mines next to the starting towns, as in the original Heroes III random map generator.\n\nIn the Wake of Gods templates many zones in the middle of the map also ask for their own sawmill and ore pit. The generator places them near the centre of such a zone, so wood and ore mines end up scattered all over the map instead of sitting next to the towns.\n\nThis mod patches the built-in random map templates: the extra wood and ore mines are removed from all zones except the starting ones, and random sawmills and ore pits are banned there as well, so they cannot appear by chance either. Each starting zone keeps its own pair next to the town.\n\nMines of the other resources (mercury, sulphur, crystal, gems and gold) are not touched, so the far zones keep their treasure.\n\nSince it patches the templates themselves, maps generated before enabling the mod keep their old layout; regenerate the map to see the change.",
+	"author": "Igor Korsukov, DeepSeek",
+	"version": "1.0",
+	"modType": "Mechanics",
+	"compatibility": {
+		"min": "1.7.0"
+	},
+	"depends": [
+		"vcmi"
+	],
+	"templates": [
+		"config/mineLayout.json"
+	],
+	"russian": {
+		"name": "Шахты как в оригинале",
+		"description": "Оставляет шахты дерева и руды рядом со стартовыми городами, как в генераторе случайных карт оригинальной Heroes III.\n\nВ шаблонах Wake of Gods многие зоны в середине карты тоже требуют собственную лесопилку и рудную шахту. Генератор ставит их у центра такой зоны, поэтому дерево и руда разбросаны по всей карте вместо того, чтобы стоять рядом с городами.\n\nМод патчит встроенные шаблоны случайных карт: лишние шахты дерева и руды убираются из всех зон, кроме стартовых, а случайные лесопилки и рудные шахты там ещё и запрещаются, чтобы не появились по воле случая. У каждой стартовой зоны остаётся своя пара возле города.\n\nШахты остальных ресурсов (ртуть, сера, кристалл, самоцветы и золото) не тронуты, поэтому дальние зоны сохраняют свои сокровища.\n\nМод правит сами шаблоны, поэтому карты, сгенерированные до его включения, сохранят прежнюю раскладку — чтобы увидеть изменения, сгенерируйте карту заново."
+	}
+}
