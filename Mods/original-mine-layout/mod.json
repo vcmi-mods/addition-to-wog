@@ -3,6 +3,12 @@
 	"description": "Keeps wood and ore mines next to the starting towns, as in the original Heroes III random map generator.\n\nIn the Wake of Gods templates many zones in the middle of the map also ask for their own sawmill and ore pit. The generator places them near the centre of such a zone, so wood and ore mines end up scattered all over the map instead of sitting next to the towns.\n\nThis mod patches the built-in random map templates: the extra wood and ore mines are removed from all zones except the starting ones, and random sawmills and ore pits are banned there as well, so they cannot appear by chance either. Each starting zone keeps its own pair next to the town.\n\nMines of the other resources (mercury, sulphur, crystal, gems and gold) are not touched, so the far zones keep their treasure.\n\nSince it patches the templates themselves, maps generated before enabling the mod keep their old layout; regenerate the map to see the change.",
 	"author": "Igor Korsukov, DeepSeek",
 	"version": "1.0",
+	"changelog": {
+		"1.0": [
+			"Wood and ore mines kept next to starting towns",
+			"Extra wood and ore mines removed from far zones"
+		]
+	},
 	"modType": "Mechanics",
 	"compatibility": {
 		"min": "1.7.0"

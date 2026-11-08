@@ -1,4 +1,12 @@
 {
+	"mapObject.addition-to-wog.resource-or-skill-chest.treasureChest.resourceOrSkillChest.onSelect": "{Сундук с сокровищами}\n\nВы находите сундук с сокровищами. Внутри видны припасы и старые тома знаний. Взять можно только одну вещь.",
+
+	"mapObject.addition-to-wog.resource-or-skill-chest.treasureChest.resourceOrSkillChest.rewards.0": "{Сундук с сокровищами}\n\nВы забираете припасы, сложенные в сундуке. Ваш герой получает 5 единиц случайного ресурса.\n\nВместо этого можно было бы изучить старые тома и повысить один из навыков.",
+	"mapObject.addition-to-wog.resource-or-skill-chest.treasureChest.resourceOrSkillChest.rewards.1": "{Сундук с сокровищами}\n\nТома учат искусству войны. Атака вашего героя повышается на 1.\n\nВместо этого можно было бы забрать припасы из сундука.",
+	"mapObject.addition-to-wog.resource-or-skill-chest.treasureChest.resourceOrSkillChest.rewards.2": "{Сундук с сокровищами}\n\nТома учат искусству обороны. Защита вашего героя повышается на 1.\n\nВместо этого можно было бы забрать припасы из сундука.",
+	"mapObject.addition-to-wog.resource-or-skill-chest.treasureChest.resourceOrSkillChest.rewards.3": "{Сундук с сокровищами}\n\nТома открывают тайны магии. Сила магии вашего героя повышается на 1.\n\nВместо этого можно было бы забрать припасы из сундука.",
+	"mapObject.addition-to-wog.resource-or-skill-chest.treasureChest.resourceOrSkillChest.rewards.4": "{Сундук с сокровищами}\n\nТома расширяют понимание мира. Знание вашего героя повышается на 1.\n\nВместо этого можно было бы забрать припасы из сундука.",
+
 	"mapObject.addition-to-wog.resource-or-skill-chest.treasureChest.spellOrManaChest.onSelect": "{Сундук с сокровищами}\n\nВ сундуке лежат запечатанный свиток и склянка с магической эссенцией. Свиток пригодится сам по себе, но его можно и сжечь, чтобы обратить освобождённую магию прямо в очки заклинаний. Взять можно только одну вещь.",
 
 	"mapObject.addition-to-wog.resource-or-skill-chest.treasureChest.spellOrManaChest.rewards.0": "{Сундук с сокровищами}\n\nНа свитке заклинание первого или второго круга. Вы убираете его в рюкзак.\n\nВместо этого свиток можно сжечь и получить 45 очков заклинаний.",

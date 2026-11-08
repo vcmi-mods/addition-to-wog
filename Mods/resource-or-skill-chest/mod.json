@@ -3,6 +3,12 @@
 	"description": "Adds two new kinds of treasure chest and turns off the five decorative chest variants that come with the Wake of Gods decoration pack.\n\n## Resource or skill chest\n\nFive options on opening: take five units of a random resource, or raise one of the hero's four primary skills by one point.\n\n## Spell or mana chest\n\nHolds a scroll with a random spell and a choice of what to do with it: keep the scroll, or burn it for spell points. The spell circle grows with the hero's level: circles 1-2 up to level 5, 2-3 up to 11, 3-4 up to 17 and 4-5 from level 18. Burning the scroll restores spell points equal to 30 per circle: 45, 75, 105 or 135.\n\n## What is switched off\n\nThe five decorative chest variants from the Wake of Gods decoration pack (the dark wooden one, the one with coins spilling out, the orange one and two others) are removed from the random map generator, so only the regular chest and the two new ones appear.\n\nAll new chests have the same chance to appear on a generated map, roughly a quarter of the weight of the regular chest.",
 	"author": "Igor Korsukov, DeepSeek",
 	"version": "1.0",
+	"changelog": {
+		"1.0": [
+			"Two new chest types: resource or skill, spell or mana",
+			"Five decorative WoG chest variants disabled in RMG"
+		]
+	},
 	"modType": "Objects",
 	"compatibility": {
 		"min": "1.7.0"

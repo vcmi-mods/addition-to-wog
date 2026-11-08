@@ -1,0 +1,17 @@
+{
+	"mapObject.wake-of-gods.mapobjects.airMagicMushroom.airMagicMushroom.description": "(навсегда даёт экспертный уровень магии воздуха)",
+	"mapObject.wake-of-gods.mapobjects.airMagicMushroom.airMagicMushroom.onVisited": "{Волшебный воздушный гриб}\r\n\r\nВаш герой уже узнал всё, что мог дать этот гриб.",
+	"mapObject.wake-of-gods.mapobjects.airMagicMushroom.airMagicMushroom.rewards.0": "{Волшебный воздушный гриб}\r\n\r\nВлияние этого загадочного гриба пробуждает в вас склонность к магии воздуха. Ваш герой навсегда достигает экспертного уровня магии воздуха.",
+
+	"mapObject.wake-of-gods.mapobjects.waterMagicMushroom.waterMagicMushroom.description": "(навсегда даёт экспертный уровень магии воды)",
+	"mapObject.wake-of-gods.mapobjects.waterMagicMushroom.waterMagicMushroom.onVisited": "{Волшебный водяной гриб}\r\n\r\nВаш герой уже узнал всё, что мог дать этот гриб.",
+	"mapObject.wake-of-gods.mapobjects.waterMagicMushroom.waterMagicMushroom.rewards.0": "{Волшебный водяной гриб}\r\n\r\nВлияние этого загадочного гриба пробуждает в вас склонность к магии воды. Ваш герой навсегда достигает экспертного уровня магии воды.",
+
+	"mapObject.wake-of-gods.mapobjects.earthMagicMushroom.earthMagicMushroom.description": "(навсегда даёт экспертный уровень магии земли)",
+	"mapObject.wake-of-gods.mapobjects.earthMagicMushroom.earthMagicMushroom.onVisited": "{Земляной волшебный гриб}\r\n\r\nВаш герой уже узнал всё, что мог дать этот гриб.",
+	"mapObject.wake-of-gods.mapobjects.earthMagicMushroom.earthMagicMushroom.rewards.0": "{Земляной волшебный гриб}\r\n\r\nВлияние этого загадочного гриба пробуждает в вас склонность к магии земли. Ваш герой навсегда достигает экспертного уровня магии земли.",
+
+	"mapObject.wake-of-gods.mapobjects.fireMagicMushroom.fireMagicMushroom.description": "(навсегда даёт экспертный уровень магии огня)",
+	"mapObject.wake-of-gods.mapobjects.fireMagicMushroom.fireMagicMushroom.onVisited": "{Огненный волшебный гриб}\r\n\r\nВаш герой уже узнал всё, что мог дать этот гриб.",
+	"mapObject.wake-of-gods.mapobjects.fireMagicMushroom.fireMagicMushroom.rewards.0": "{Огненный волшебный гриб}\r\n\r\nВлияние этого загадочного гриба пробуждает в вас склонность к магии огня. Ваш герой навсегда достигает экспертного уровня магии огня."
+}

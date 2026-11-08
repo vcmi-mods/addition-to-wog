@@ -3,6 +3,12 @@
 	"description": "Gives town buildings the names used by the Russian WoG localization, so that the build window shows meaningful names instead of the generic \"Dwelling, Level N\".\n\nEvery dwelling receives its own name, and an upgraded dwelling repeats the name of its base building with a short prefix, so that upgrades are easy to tell apart at a glance in the town build window.\n\nThe same naming is applied to the levels of the Mage Guild, the Citadel and the Castle, the town hall chain and the Horde buildings.\n\nThe names are visible everywhere a building name appears: in the build window, in tooltips and in the in-game wiki.",
 	"author": "Igor Korsukov, DeepSeek",
 	"version": "1.0",
+	"changelog": {
+		"1.0": [
+			"Town buildings get their WoG names",
+			"Upgraded buildings marked with a short prefix"
+		]
+	},
 	"modType": "Interface",
 	"compatibility": {
 		"min": "1.7.0"

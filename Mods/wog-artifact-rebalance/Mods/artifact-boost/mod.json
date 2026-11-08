@@ -3,6 +3,11 @@
 	"description": "Improves artifacts that are usually considered too weak.\n\nThe mod does two things.\n\n## Extra abilities\n\nArtifacts that were weak on their own gain additional permanent effects. In the original Wake of Gods expansion most of these bonuses were granted once per week; since the weekly part cannot be reproduced here, they are permanent instead:\n\n- artifacts that used to bring creatures every week now increase the growth of the matching creatures in towns\n- artifacts that used to bring gold every week now produce gold every day\n- artifacts that used to grant experience now increase all experience your hero gains\n- artifacts that used to upgrade troops once per week now let you upgrade those troops for free in your hero's army\n- artifacts that used to be traded for something else now grant a permanent bonus of similar value\n\n## New powers\n\nMany artifacts also gain new abilities without changing their rarity: the Conjuring set pieces boost all spell damage, Pendants cast a beneficial expert spell on your whole army at the start of every battle, and a handful of artifacts let you upgrade specific troops for free.\n\nOne warning from the original manual still applies: with all these bonuses in place some artifacts become quite strong.",
 	"author": "Igor Korsukov, DeepSeek",
 	"version": "1.0",
+	"changelog": {
+		"1.0": [
+			"Extra abilities for 34 weak artifacts"
+		]
+	},
 	"modType": "Artifacts",
 	"compatibility": {
 		"min": "1.7.0"

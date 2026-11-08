@@ -3,6 +3,12 @@
 	"description": "Lets you decline the lesson from the Scholar and from the Witch Hut.\n\nNormally the Scholar and the Witch hand out a secondary skill, a spell or a primary stat the moment your hero visits them, and you have no say in it. With this mod the visit opens a choice dialog instead: take the knowledge, or politely refuse and keep the object on the map for a later visit.\n\nThis is useful when the offered skill would take the last free secondary skill slot and you would rather have a different one.",
 	"author": "Igor Korsukov, DeepSeek",
 	"version": "1.0",
+	"changelog": {
+		"1.0": [
+			"Scholar can be refused",
+			"Witch Hut can be refused"
+		]
+	},
 	"modType": "Mechanics",
 	"compatibility": {
 		"min": "1.7.0"
@@ -12,6 +18,9 @@
 	],
 	"russian": {
 		"name": "Учёный книжник и ведьма: урок по желанию",
-		"description": "Позволяет отказаться от урока Учёного книжника и от хижины ведьмы.\n\nОбычно Учёный и ведьма сразу выдают вторичный навык, заклинание или характеристику, как только герой их посещает, и повлиять на это нельзя. С этим модом при посещении появляется диалог с выбором: принять знания или вежливо отказаться и оставить объект на карте до следующего раза.\n\nЭто полезно, когда предложенный навык занял бы последний свободный слот вторичных навыков, а вы хотели бы другой."
+		"description": "Позволяет отказаться от урока Учёного книжника и от хижины ведьмы.\n\nОбычно Учёный и ведьма сразу выдают вторичный навык, заклинание или характеристику, как только герой их посещает, и повлиять на это нельзя. С этим модом при посещении появляется диалог с выбором: принять знания или вежливо отказаться и оставить объект на карте до следующего раза.\n\nЭто полезно, когда предложенный навык занял бы последний свободный слот вторичных навыков, а вы хотели бы другой.",
+		"translations": [
+			"config/translations/russian.json"
+		]
 	}
 }

@@ -5,16 +5,16 @@
 		},
 		"types": {
 			"scholar": {
-				"onSelectMessage": "{Учёный книжник}\r\n\r\nВыехав на прогалину, вы видите учёного книжника, отдыхающего рядом со своим конём. Он соглашается передать вам часть своих знаний, прежде чем продолжить путь.\r\n\r\nПринять его урок?",
+				"onSelectMessage": "{Scholar}\r\n\r\nRiding into a clearing, you see a scholarly sage resting by his horse. He agrees to share some of his knowledge with you before continuing on his way.\r\n\r\nAccept his lesson?",
 				"rewards": {
 					"modify@1": {
-						"message": "{Учёный книжник}\r\n\r\nВыехав на прогалину, вы видите учёного книжника, отдыхающего рядом со своим конём. Он соглашается передать вам часть своих знаний, прежде чем продолжить путь.\r\n\r\nПринять его урок?"
+						"message": "{Scholar}\r\n\r\nRiding into a clearing, you see a scholarly sage resting by his horse. He agrees to share some of his knowledge with you before continuing on his way.\r\n\r\nAccept his lesson?"
 					},
 					"modify@2": {
-						"message": "{Учёный книжник}\r\n\r\nВыехав на прогалину, вы видите учёного книжника, отдыхающего рядом со своим конём. Он соглашается передать вам часть своих знаний, прежде чем продолжить путь.\r\n\r\nПринять его урок?"
+						"message": "{Scholar}\r\n\r\nRiding into a clearing, you see a scholarly sage resting by his horse. He agrees to share some of his knowledge with you before continuing on his way.\r\n\r\nAccept his lesson?"
 					},
 					"modify@3": {
-						"message": "{Учёный книжник}\r\n\r\nВыехав на прогалину, вы видите учёного книжника, отдыхающего рядом со своим конём. Он соглашается передать вам часть своих знаний, прежде чем продолжить путь.\r\n\r\nПринять его урок?"
+						"message": "{Scholar}\r\n\r\nRiding into a clearing, you see a scholarly sage resting by his horse. He agrees to share some of his knowledge with you before continuing on his way.\r\n\r\nAccept his lesson?"
 					}
 				}
 			}
@@ -26,10 +26,10 @@
 		},
 		"types": {
 			"witchHut": {
-				"onSelectMessage": "{Хижина ведьмы}\r\n\r\nДревняя ведьма, живущая в жалкой лачуге, приветствует вас и предлагает обучить навыку %s для каких-то ей одной ведомых целей.\r\n\r\nПринять её урок?",
+				"onSelectMessage": "{Witch Hut}\r\n\r\nAn ancient witch, living in a miserable hovel, greets you and offers to teach you %s for purposes known only to her.\r\n\r\nAccept her lesson?",
 				"rewards": {
 					"modify@1": {
-						"message": "{Хижина ведьмы}\r\n\r\nДревняя ведьма, живущая в жалкой лачуге, приветствует вас и предлагает обучить навыку %s для каких-то ей одной ведомых целей.\r\n\r\nПринять её урок?"
+						"message": "{Witch Hut}\r\n\r\nAn ancient witch, living in a miserable hovel, greets you and offers to teach you %s for purposes known only to her.\r\n\r\nAccept her lesson?"
 					}
 				}
 			}

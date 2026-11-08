@@ -3,6 +3,13 @@
 	"description": "Adds mithril as a resource you can find in the world.\n\nMithril is the magical metal from the Wake of Gods expansion, used for the best commander artifacts. This mod brings it to VCMI as a self-contained resource.\n\nWhat you get:\n\n- **Mithril piles** scattered across the map like any other resource, with the original animation taken from the expansion\n- **Mithril in the Windmill** - the windmill can offer a small pile of mithril as its weekly random resource\n\nThere are deliberately no mithril mines or warehouses: mithril should be a rare find, not a steady income.\n\nThe random map generator places mithril piles with a moderate chance, so a generated map usually has a few of them.\n\n**Not fully implemented:**\n\n- **External dwellings cannot be upgraded for mithril.** In Wake of Gods mithril was spent to upgrade neutral dwellings; VCMI has no such mechanic, so here mithril is only a treasure you pick up and hold.\n- **Mithril cannot be removed from the market in VCMI 1.7.5.** A market always lists every registered resource: both the server and the client simply take the full resource list, and a resource has no \"not for sale\" flag. The option to limit which resources a market trades appeared only in later VCMI versions. As a workaround the price is set to 4000 gold, so buying mithril is impractical (about 13 333 gold per unit at a level 5 market) while a found pile can still be sold for a moderate amount.\n\nThis mod conflicts with the Mithril mod from the Wake of Gods pack, which registers the same resource together with a mine and a warehouse. Enable only one of the two.",
 	"author": "Igor Korsukov, DeepSeek",
 	"version": "1.0",
+	"changelog": {
+		"1.0": [
+			"Mithril added as a standalone resource",
+			"Mithril piles on the map and in the Windmill",
+			"Price set to 4000 gold, 1-5 units per pile"
+		]
+	},
 	"modType": "Resources",
 	"compatibility": {
 		"min": "1.7.0"

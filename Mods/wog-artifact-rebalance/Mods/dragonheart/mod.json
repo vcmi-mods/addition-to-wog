@@ -3,6 +3,11 @@
 	"description": "Makes the Dragonheart relic noticeably stronger.\n\nOriginally the artifact summoned dragons worth a small amount of health, so the summoning only started once the hero had plenty of Spell Power. With this mod the total health of summoned dragons is about a hundred times the hero's Spell Power, so the relic becomes useful much earlier.\n\nA small note: the game calculates the amount strictly from Spell Power, without a fixed extra portion, so the result is roughly one dragon per point of Spell Power instead of an exact \"100 plus 100 per point\".",
 	"author": "Igor Korsukov, DeepSeek",
 	"version": "1.0",
+	"changelog": {
+		"1.0": [
+			"Dragonheart summons about 100x more dragon health"
+		]
+	},
 	"modType": "Artifacts",
 	"compatibility": {
 		"min": "1.7.0"
