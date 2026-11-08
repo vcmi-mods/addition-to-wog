@@ -1,0 +1,29 @@
+{
+	"core:resource": {
+		"types": {
+			"mithril": {
+				"aiValue": 2000,
+				"resource": "mithril",
+				"amounts": [ 1, 2, 3, 4, 5 ],
+				"rmg": {
+					"value": 2000,
+					"rarity": 200
+				},
+				"templates": {
+					"mithril": {
+						"animation": "mithril/Zmithr.def",
+						"mask": [
+							"VV",
+							"VA"
+						],
+						"visitableFrom": [
+							"+++",
+							"+++",
+							"+++"
+						]
+					}
+				}
+			}
+		}
+	}
+}

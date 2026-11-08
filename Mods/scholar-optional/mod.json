@@ -1,0 +1,17 @@
+{
+	"name": "Optional Scholar Training",
+	"description": "Lets you decline the lesson from the Scholar.\n\nNormally the Scholar hands out a secondary skill, a spell or a primary stat the moment your hero visits him, and you have no say in it. With this mod the visit opens a choice dialog instead: take the knowledge, or politely refuse and keep the Scholar on the map for a later visit.\n\nThis is useful when the offered skill would take the last free secondary skill slot and you would rather have a different one.",
+	"author": "Igor Korsukov, DeepSeek",
+	"version": "1.0",
+	"modType": "Mechanics",
+	"compatibility": {
+		"min": "1.7.0"
+	},
+	"objects": [
+		"config/objects/scholar.json"
+	],
+	"russian": {
+		"name": "Учёный книжник: урок по желанию",
+		"description": "Позволяет отказаться от урока Учёного книжника.\n\nОбычно Учёный сразу выдаёт вторичный навык, заклинание или характеристику, как только герой его посещает, и повлиять на это нельзя. С этим модом при посещении появляется диалог с выбором: принять знания или вежливо отказаться и оставить Учёного на карте до следующего раза.\n\nЭто полезно, когда предложенный навык занял бы последний свободный слот вторичных навыков, а вы хотели бы другой."
+	}
+}

@@ -1,0 +1,24 @@
+{
+	"name": "Mithril Resource",
+	"description": "Adds mithril as a resource you can find in the world.\n\nMithril is the magical metal from the Wake of Gods expansion: worth 400 gold per unit and used for the best commander artifacts. This mod brings it to VCMI as a self-contained resource.\n\nWhat you get:\n\n- **Mithril piles** scattered across the map like any other resource, with the original animation taken from the expansion\n- **Mithril in the Windmill** - the windmill can offer a small pile of mithril as its weekly random resource\n\nThere are deliberately no mithril mines or warehouses: mithril should be a rare find, not a steady income.\n\nThe random map generator places mithril piles with a moderate chance, so a generated map usually has a few of them.\n\nThis mod conflicts with the Mithril mod from the Wake of Gods pack, which registers the same resource together with a mine and a warehouse. Enable only one of the two.",
+	"author": "Igor Korsukov, DeepSeek",
+	"version": "1.0",
+	"modType": "Resources",
+	"compatibility": {
+		"min": "1.7.0"
+	},
+	"conflicts": [
+		"wake-of-gods.mithril"
+	],
+	"resources": [
+		"config/resources.json"
+	],
+	"objects": [
+		"config/objects/pile.json",
+		"config/objects/mills.json"
+	],
+	"russian": {
+		"name": "Ресурс мирфил",
+		"description": "Добавляет мирфил как ресурс, который можно найти в мире.\n\nМирфил — магический металл из дополнения Wake of Gods: стоит 400 золота за единицу и используется для лучших артефактов командиров. Этот мод переносит его в VCMI как самостоятельный ресурс.\n\nЧто вы получаете:\n\n- **Кучки мирфила** разбросаны по карте, как любой другой ресурс, с оригинальной анимацией из дополнения\n- **Мирфил на мельнице** — мельница может выдать небольшую кучку мирфила в качестве еженедельного случайного ресурса\n\nЖил и складов мирфила намеренно нет: мирфил должен быть редкой находкой, а не постоянным доходом.\n\nГенератор случайных карт ставит кучки мирфила с умеренным шансом, поэтому на сгенерированной карте их обычно несколько.\n\nЭтот мод конфликтует с модом Mithril из набора Wake of Gods: тот регистрирует тот же ресурс вместе с жилой и складом. Включайте только один из двух.",
+	}
+}

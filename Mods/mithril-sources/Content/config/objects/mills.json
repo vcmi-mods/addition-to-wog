@@ -1,0 +1,20 @@
+{
+	"core:windmill": {
+		"types": {
+			"windmill": {
+				"rewards": [
+					{
+						"message": 170,
+						"resources": [
+							{
+								"anyOf": [ "ore", "mercury", "gems", "sulfur", "crystal", "mithril" ],
+								"min": 3,
+								"max": 6
+							}
+						]
+					}
+				]
+			}
+		}
+	}
+}

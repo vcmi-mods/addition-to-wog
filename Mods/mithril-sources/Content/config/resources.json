@@ -1,0 +1,11 @@
+{
+	"mithril": {
+		"name": "Mithril",
+		"price": 400,
+		"images": {
+			"small": "mithril/small.png",
+			"medium": "mithril/medium.png",
+			"large": "mithril/large.png"
+		}
+	}
+}
