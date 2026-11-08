@@ -62,14 +62,14 @@ add('pendantOfDeath', 'ok',
     'Даёт вашей нежити иммунитет к заклинанию Уничтожить нежить. Кроме того, все отряды нежити в армии героя получают <b>+2 к атаке и +2 к защите</b>.',
     '<li>%s → %s, лимитер %s</li><li>%s attack <b>+2</b> <span class="muted">(IS_UNDEAD)</span></li><li>%s defence <b>+2</b> <span class="muted">(IS_UNDEAD)</span></li>' % (
         C('SPELL_IMMUNITY'), C('destroyUndead'), C('IS_UNDEAD'), C('PRIMARY_SKILL'), C('PRIMARY_SKILL')),
-    '12 Зомби в неделю.<span class="note">Оригинал: еженедельно 12 Зомби. Прирост и +1 скорости убраны; бонусы нежити к атаке и защите — добавка <code>enhanced-artifacts</code>.</span>')
+    '12 Зомби в неделю.<span class="note">Оригинал: еженедельно 12 Зомби. Прирост и +1 скорости убраны; бонусы нежити к атаке и защите добавлены этим модом.</span>')
 
 add('pendantOfTotalRecall', 'ok',
-    'Иммунитет к «Забывчивости». <b>+10%</b> ко всему опыту героя. В начале боя — «Меткость» эксперта (+6 к атаке стрелков, 50 раундов).',
-    '<li>%s → %s</li><li>%s +10%%</li><li>%s → %s, эксперт, 50 раундов</li>' % (
-        C('SPELL_IMMUNITY'), C('forgetfulness'), C('HERO_EXPERIENCE_GAIN_PERCENT'),
+    'Иммунитет к «Забывчивости». В начале боя — «Меткость» эксперта.',
+    '<li>%s → %s</li><li>%s → %s, эксперт, 50 раундов</li>' % (
+        C('SPELL_IMMUNITY'), C('forgetfulness'),
         C('OPENING_BATTLE_SPELL'), C('precision')),
-    '1000 опыта в неделю.<span class="note">Оригинал: еженедельно 1000 опыта. Заменено на постоянный +10% ко всему опыту.</span>')
+    '1000 опыта в неделю.<span class="note">Оригинал: еженедельно 1000 опыта. Бонус опыта убран; осталась только «Меткость» в начале боя.</span>')
 
 add('emblemOfCognizance', 'ok',
     'Даёт <b>+15%</b> к навыку Орлиный глаз и приносит <b>2 золота в день за каждое существо</b> в армии героя.',
@@ -172,6 +172,12 @@ add('magicWand', 'ok',
         C('TRANSMUTATION'), C('transmutationPerHealth'), C('addInfo'), C('propagator: ARMY'), C('bonuses#override')),
     'Каждый день случайно заменяла надетые артефакты героя. Пара слотов зависела от того, в какой Misc надет жезл.<span class="note">Оригинал: еженедельная трансформация артефактов, воспроизвести в VCMI нельзя. Заменено на боевую трансмутацию врагов.</span>',
     scope='wake-of-gods.level8units')
+
+add('collarOfConjuring', 'ok',
+    'Увеличивает длительность всех ваших заклинаний на <b>1 ход</b> и увеличивает весь опыт героя на <b>10%</b>.',
+    '<li>%s +1 <span class="muted">(ядро)</span></li><li>%s <b>+10%%</b> <span class="muted">(мод)</span></li>' % (
+        C('SPELL_DURATION'), C('HERO_EXPERIENCE_GAIN_PERCENT')),
+    'Увеличивало длительность заклинаний на 1.<span class="note">Оригинал: только +1 к длительности. Бонус +10% опыта добавлен этим модом.</span>')
 
 boost_rows = list(rows)
 

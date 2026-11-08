@@ -1,24 +1,17 @@
 {
 	"name": "WoG Artifact Rebalance",
-	"description": "Improves many weak Heroes III artifacts, following the two optional artifact tweaks from the Wake of Gods expansion.\n\nThe mod is split into three independent parts:\n\n- **Artifact Boost** - adds extra abilities to artifacts that are usually considered too weak\n- **Enhanced Artifacts** - gives several weak artifacts new powers and raises their rarity\n- **Dragonheart** - makes the Dragonheart relic summon more dragons\n\nIn the original expansion both artifact tweaks were optional too, and the manual warned that turning on both at once makes some artifacts overly powerful.\n\nOne difference from the original: the weekly effects (getting creatures, gold or experience every week, trading an artifact for something else) cannot be reproduced here. Where they existed, the effect was replaced with a permanent bonus of similar strength, and this is mentioned in the artifact description.",
+	"description": "Improves weak Heroes III artifacts, following the artifact tweaks from the Wake of Gods expansion.\n\nThe mod is split into two independent parts:\n\n- **Artifact Boost** - adds extra abilities to weak artifacts and raises the rarity of several of them\n- **Dragonheart** - makes the Dragonheart relic summon more dragons\n\nIn the original expansion these artifact tweaks were optional, and the manual warned that switching them on makes some artifacts noticeably stronger than usual.\n\nOne difference from the original: the weekly effects (getting creatures, gold or experience every week, trading an artifact for something else) cannot be reproduced here. Where they existed, the effect was replaced with a permanent bonus of similar strength, and this is mentioned in the artifact description.",
 	"author": "Igor Korsukov, DeepSeek",
 	"version": "1.0",
 	"modType": "Artifacts",
 	"compatibility": {
 		"min": "1.7.0"
 	},
-	"changelog": {
-		"1.0": [
-			"Recovered Artifact Boost (script02.erm) as a submod",
-			"Recovered Enhanced Artifacts (script71.erm) as a submod",
-			"Weekly effects converted to permanent equivalents where the engine allows it"
-		]
-	},
 	"depends": [
 		"wake-of-gods"
 	],
 	"russian": {
 		"name": "Ребаланс артефактов WoG",
-		"description": "Улучшает многие слабые артефакты Heroes III, повторяя две необязательные доработки артефактов из дополнения Wake of Gods.\n\nМод разделён на три независимые части:\n\n- **Artifact Boost** — добавляет дополнительные свойства артефактам, которые обычно считаются слишком слабыми\n- **Enhanced Artifacts** — даёт нескольким слабым артефактам новые возможности и повышает их редкость\n- **Dragonheart** — заставляет реликвию Драконье сердце призывать больше драконов\n\nВ оригинальном дополнении обе доработки тоже были необязательными, а руководство предупреждало, что при включении обеих сразу некоторые артефакты становятся слишком сильными.\n\nОдно отличие от оригинала: еженедельные эффекты (получение существ, золота или опыта каждую неделю, обмен артефакта на что-то другое) здесь воспроизвести нельзя. Там, где они были, эффект заменён постоянным бонусом сопоставимой силы, и об этом сказано в описании артефакта."
+		"description": "Улучшает слабые артефакты Heroes III, повторяя доработки артефактов из дополнения Wake of Gods.\n\nМод разделён на две независимые части:\n\n- **Artifact Boost** — добавляет дополнительные свойства слабым артефактам и повышает редкость некоторых из них\n- **Dragonheart** — заставляет реликвию Драконье сердце призывать больше драконов\n\nВ оригинальном дополнении эти доработки были необязательными, а руководство предупреждало, что при их включении некоторые артефакты становятся заметно сильнее обычного.\n\nОдно отличие от оригинала: еженедельные эффекты (получение существ, золота или опыта каждую неделю, обмен артефакта на что-то другое) здесь воспроизвести нельзя. Там, где они были, эффект заменён постоянным бонусом сопоставимой силы, и об этом сказано в описании артефакта."
 	}
 }

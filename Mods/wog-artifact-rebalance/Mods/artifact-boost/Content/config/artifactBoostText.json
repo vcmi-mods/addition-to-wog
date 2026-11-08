@@ -23,7 +23,7 @@
 	"core:pendantOfTotalRecall": {
 		"text": {
 			"name": "Pendant of Total Recall",
-			"description": "{Pendant of Total Recall}\n\nRenders your units immune to the Forgetfulness spell. Increases all experience your hero gains by 10%.\n\nAt the start of every battle casts Expert Precision on all your troops (+6 Attack to shooters, 50 rounds).",
+			"description": "{Pendant of Total Recall}\n\nRenders your units immune to the Forgetfulness spell. At the start of every battle casts Expert Precision on all your troops.",
 			"event": "You pick up the Pendant of Total Recall."
 		}
 	},
@@ -165,6 +165,13 @@
 			"name": "Ambassador's Sash",
 			"description": "{Ambassador's Sash}\n\nReduces the cost of surrendering by 10% and produces 500 gold per day.",
 			"event": "You pick up the Ambassador's Sash, and your words carry weight in any negotiation."
+		}
+	},
+	"core:collarOfConjuring": {
+		"text": {
+			"name": "Collar of Conjuring",
+			"description": "{Collar of Conjuring}\n\nIncreases the duration of all your spells by 1 turn and increases all experience your hero gains by 10%.",
+			"event": "You pick up the Collar of Conjuring, and it seems to hum with the echo of ancient spells."
 		}
 	}
 }
