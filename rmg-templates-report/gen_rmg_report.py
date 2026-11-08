@@ -242,7 +242,9 @@ SIZE_ORDER = {s: i for i, s in enumerate(
 
 
 def size_rank(min_size, max_size):
-    return SIZE_ORDER.get(str(max_size), -1)
+    """'L+u' -> ранг 'L+': регистр не важен, суффикс подземелья на порядок не влияет."""
+    key = str(max_size).upper().replace("U", "").strip()
+    return SIZE_ORDER.get(key, -1)
 
 
 def players_rank(p):
@@ -277,10 +279,12 @@ def towns_text(towns):
 def row(it, idx):
     towns = it["towns"]
     note = esc(it["note"])
-    if it["authorNote"]:
-        note += f'<span class="author-note">«{esc(it["authorNote"])}»</span>'
+    if towns:
+        note += f'<span class="towns">города: {towns_text(towns)}</span>'
     if it["monsters"]:
         note += f'<span class="meta">монстры: {esc(", ".join(it["monsters"]))}</span>'
+    if it["authorNote"]:
+        note += f'<span class="author-note">«{esc(it["authorNote"])}»</span>'
     return f"""
       <tr data-group="{it['group']}" data-i="{idx}">
         <td class="c-name"><span class="name">{esc(it['name'])}</span><span class="file">{esc(it['file'])}</span></td>
@@ -293,28 +297,24 @@ def row(it, idx):
         <td data-v="{it['guardMax']}" class="num">{guard_text(it['guardMax'])}</td>
         <td data-v="{it['treMax']}" class="num">{it['treMax']:,}</td>
         <td data-v="{it['density']}" class="num">{it['density']}</td>
-        <td data-v="{1 if it['underground'] else 0}" class="c-under">{'есть' if it['underground'] else '—'}</td>
         <td data-v="{it['conns']}" class="num">{it['conns']}</td>
-        <td class="c-towns">{towns_text(towns)}</td>
         <td class="c-note">{note}</td>
       </tr>"""
 
 
 COLUMNS = [
-    ("Шаблон", "text"),
-    ("Размер", "num"),
-    ("Игроки", "num"),
-    ("Зоны", "num"),
-    ("Старт", "num"),
-    ("Сокр.", "num"),
-    ("Города", "num"),
-    ("Охрана", "num"),
-    ("Макс. награда", "num"),
-    ("Плотн.", "num"),
-    ("Подзем.", "num"),
-    ("Связей", "num"),
-    ("Города: +разрешены / -запрещены", "text"),
-    ("Особенность", "text"),
+    ("Шаблон", "text", "", "13%"),
+    ("Размер", "num", "Минимальный и максимальный размер; «u» — есть подземелье", "6.6%"),
+    ("Игроки", "num", "", "4%"),
+    ("Зоны", "num", "Общее число зон", "3.6%"),
+    ("Старт", "num", "Стартовые зоны игроков; +N — зоны компьютера", "4.2%"),
+    ("Сокр.", "num", "Число зон-сокровищниц", "3.6%"),
+    ("Города", "num", "Нейтральные города", "4.2%"),
+    ("Охрана", "num", "Максимальная сила стража на связях", "4.4%"),
+    ("Награда", "num", "Максимальная ценность сокровища", "4.8%"),
+    ("Плотн.", "num", "Суммарная плотность сокровищниц", "4.2%"),
+    ("Связей", "num", "Число связей между зонами", "4.2%"),
+    ("Особенность", "text", "", "43.6%"),
 ]
 
 
@@ -323,8 +323,11 @@ def table_block(items, gid, gtitle, gblurb, idx0):
     for i, it in enumerate(items):
         rows.append(row(it, idx0 + i))
     heads = "".join(
-        f'<th class="{typ}" data-type="{typ}">{esc(title)}<span class="arrow"></span></th>'
-        for title, typ in COLUMNS
+        f'<th class="{typ}" data-type="{typ}"{" title=" + chr(34) + esc(tip) + chr(34) if tip else ""}>{esc(title)}<span class="arrow"></span></th>'
+        for title, typ, tip, _w in COLUMNS
+    )
+    cols = "".join(
+        f'<col style="width:{w}">' for _t, _ty, _tip, w in COLUMNS
     )
     return f"""
   <section class="group" data-group="{gid}">
@@ -334,6 +337,7 @@ def table_block(items, gid, gtitle, gblurb, idx0):
     </div>
     <div class="table-scroll">
       <table class="sortable">
+        <colgroup>{cols}</colgroup>
         <thead><tr>{heads}</tr></thead>
         <tbody>{''.join(rows)}</tbody>
       </table>
@@ -374,13 +378,13 @@ def main():
   }
   * { box-sizing: border-box; }
   body {
-    margin: 0; padding: 36px 28px 72px;
+    margin: 0; padding: 28px 20px 60px;
     background: var(--bg); color: var(--text);
     font-family: "Segoe UI", "Noto Sans", system-ui, -apple-system, sans-serif;
     font-size: 14px; line-height: 1.6;
     -webkit-font-smoothing: antialiased;
   }
-  .wrap { max-width: 1900px; margin: 0 auto; }
+  .wrap { max-width: 1290px; margin: 0 auto; }
 
   header {
     background: var(--panel); border: 1px solid var(--border);
@@ -427,47 +431,48 @@ def main():
 
   .table-scroll { overflow-x: auto; border-radius: 12px; }
   table {
-    width: 100%; border-collapse: separate; border-spacing: 0;
+    width: 100%; table-layout: fixed; border-collapse: separate; border-spacing: 0;
     background: var(--panel); border: 1px solid var(--border-strong);
-    border-radius: 12px; overflow: hidden; font-size: 13px;
+    border-radius: 12px; overflow: hidden; font-size: 12.5px;
   }
   thead th {
     position: sticky; top: 0; z-index: 2;
     background: #f0ece3; color: #5c5344;
-    font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .75px;
-    text-align: left; padding: 11px 12px; white-space: nowrap;
+    font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px;
+    text-align: left; padding: 9px 7px; white-space: nowrap; overflow: hidden;
     border-bottom: 1px solid var(--border-strong);
     cursor: pointer; user-select: none;
   }
   thead th:hover { background: #e9e3d6; color: var(--text); }
   thead th.num { text-align: right; }
-  thead th .arrow { display: inline-block; width: 10px; margin-left: 4px; opacity: .28; }
-  thead th .arrow::after { content: "↕"; font-size: 10px; }
+  thead th .arrow { display: inline-block; width: 8px; margin-left: 2px; opacity: .25; }
+  thead th .arrow::after { content: "↕"; font-size: 9px; }
   thead th.sorted-asc .arrow, thead th.sorted-desc .arrow { opacity: 1; color: var(--gold); }
   thead th.sorted-asc .arrow::after { content: "↑"; }
   thead th.sorted-desc .arrow::after { content: "↓"; }
 
-  tbody td { padding: 10px 12px; vertical-align: top; border-bottom: 1px solid #eeeae1; }
+  tbody td { padding: 8px 7px; vertical-align: top; border-bottom: 1px solid #eeeae1; }
   tbody tr:last-child td { border-bottom: none; }
   tbody tr:nth-child(even) td { background: var(--panel-alt); }
   tbody tr:hover td { background: #fdfaf3; }
   tbody td.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
 
-  .c-name { min-width: 190px; }
-  .name { font-weight: 700; color: #1d1c19; display: block; }
+  .c-name { min-width: 0; }
+  .name { font-weight: 700; color: #1d1c19; display: block; font-size: 12.5px;
+          overflow-wrap: break-word; }
   .file { display: block; font-family: ui-monospace, "Cascadia Code", "SF Mono", monospace;
-          font-size: 10.5px; color: var(--muted); margin-top: 3px; }
-  .c-size { white-space: nowrap; font-size: 12.5px; color: #4a4437; }
-  .c-towns { max-width: 230px; font-size: 11.5px; line-height: 1.9; }
-  .c-towns .plus { background: var(--ok-bg); color: var(--ok); border-radius: 4px; padding: 1px 5px; }
-  .c-towns .minus { background: var(--neg-bg); color: var(--neg); border-radius: 4px; padding: 1px 5px;
-                    text-decoration: line-through; }
-  .c-note { min-width: 380px; max-width: 620px; font-size: 12.5px; color: #3d3830; }
-  .c-note .author-note { display: block; margin-top: 5px; font-style: italic; color: var(--muted); font-size: 11.5px; }
-  .c-note .meta { display: block; margin-top: 5px; color: var(--muted); font-size: 11.5px; }
-  .c-under { white-space: nowrap; font-size: 12px; color: var(--muted); }
+          font-size: 9.5px; color: var(--muted); margin-top: 2px;
+          overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .c-size { white-space: nowrap; font-size: 11px; color: #4a4437; padding-right: 4px; }
+  .c-note { font-size: 11.5px; color: #3d3830; line-height: 1.5; overflow-wrap: break-word; }
+  .c-note .towns { display: block; margin-top: 5px; font-size: 10.5px; line-height: 1.9; }
+  .c-note .plus { background: var(--ok-bg); color: var(--ok); border-radius: 3px; padding: 0 3px; }
+  .c-note .minus { background: var(--neg-bg); color: var(--neg); border-radius: 3px; padding: 0 3px;
+                   text-decoration: line-through; }
+  .c-note .author-note { display: block; margin-top: 4px; font-style: italic; color: var(--muted); font-size: 10.5px; }
+  .c-note .meta { display: block; margin-top: 4px; color: var(--muted); font-size: 10.5px; }
   .zero { color: #b8b0a2; }
-  .cpu { color: var(--warn); font-size: 11px; margin-left: 2px; }
+  .cpu { color: var(--warn); font-size: 9.5px; margin-left: 1px; }
 
   .hidden { display: none !important; }
 
@@ -611,9 +616,12 @@ def main():
     <p><b>Как читать размеры.</b> S / M / L / XL / H / G — от маленькой до гигантской;
     суффикс «+» — шаг вверх, «u» — наличие подземного уровня. Диапазон «M → XL+» означает,
     что шаблон подстраивается под выбранный в лобби размер в этих пределах.</p>
-    <p><b>Охрана</b> — максимальная сила стража на связях между зонами (0 — связей без охраны нет).
+    <p><b>Охрана</b> — максимальная сила стража на связях между зонами.
+    <b>Награда</b> — максимальная ценность сокровища в зоне.
     <b>Плотность</b> — суммарная density сокровищниц по всем зонам.
-    <b>Старт</b> — число стартовых зон игроков; «+N» — дополнительные стартовые зоны компьютера.</p>
+    <b>Старт</b> — число стартовых зон игроков; «+N» — дополнительные стартовые зоны компьютера.
+    В колонке «Особенность» через запятую перечислены разрешённые (зелёные) и запрещённые
+    игрокам (зачёркнутые красные) города.</p>
     <p>Отчёт сгенерирован из установленного VCMI 1.7.5 скриптом <code>gen_rmg_report.py</code>.</p>
   </footer>
 
