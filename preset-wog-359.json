@@ -23,20 +23,13 @@
    "wog-tactics": true,
    "scholar-optional": true,
    "mithril-sources": true,
-   "original-mine-layout": true
+   "original-mine-layout": true,
+   "resource-or-skill-chest": true,
+   "wog-bonus-icons": true
   },
   "addition-to-wog.wog-artifact-rebalance": {
    "artifact-boost": true,
-   "dragonheart": true,
-   "enhanced-artifacts": true
-  },
-  "andruids-expansion": {
-   "damned utopia": true,
-   "initiative": true,
-   "minotaur warlock": true,
-   "minotaur warlock.new mino warlock": true,
-   "plaguetent": true,
-   "powerbond": true
+   "dragonheart": true
   },
   "market-of-time": {
    "andruids": true,
