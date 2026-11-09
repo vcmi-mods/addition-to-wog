@@ -2,9 +2,15 @@
 """
 Генерирует mineLayout.json — патч шаблонов случайных карт VCMI.
 
-Убирает дерево и руду из всех зон, КРОМЕ стартовых (playerStart и cpuStart),
-где пара шахт должна стоять возле замка, как в оригинальной Heroes III.
-Шахты остальных ресурсов не трогаются.
+Правило: дерево и руда должны стоять только рядом с замком.
+- В стартовых зонах (playerStart и cpuStart) остаётся РОВНО одна лесопилка
+  и ровно один рудник. Движок ставит первую шахту каждого ресурса отдельным
+  проходом рядом с центром зоны (у замка), поэтому лишние надо убрать —
+  иначе вторая шахта встаёт где попало в пределах зоны.
+- Во всех остальных зонах дерево и руда убираются полностью, а случайные
+  лесопилки и рудники запрещаются, чтобы не появились из пула наград.
+- Шахты остальных ресурсов (ртуть, сера, кристалл, самоцветы, золото)
+  не трогаются.
 
 Запуск:  python3 gen_mine_layout.py
 """
@@ -13,7 +19,6 @@ import copy
 import glob
 import json
 import os
-import re
 
 RMG = "/usr/share/vcmi/Mods/vcmi/Content/config/rmg"
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)),
@@ -22,8 +27,10 @@ OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)),
 # Оба типа зон дают игроку город со стартовой парой шахт.
 START_ZONE_TYPES = {"playerStart", "cpuStart"}
 
-# Запрет случайных лесопилок и рудных шахт в нестартовых зонах.
+# Запрет случайных лесопилок и рудных шахт.
 BAN_RANDOM_WOOD_ORE = {"bannedObjects": {"mine": {"sawmill": True, "orePit": True}}}
+
+WOOD, ORE = "wood", "ore"
 
 
 def strip_comments(text):
@@ -71,8 +78,8 @@ def load_templates():
     return result
 
 
-def source_mines(zones, zone_id, seen=None):
-    """Шахты зоны с учётом цепочки minesLikeZone."""
+def resolve_mines(zones, zone_id, seen=None):
+    """Итоговый набор шахт зоны с учётом цепочки minesLikeZone."""
     seen = seen or set()
     zid = str(zone_id)
     if zid in seen:
@@ -81,40 +88,54 @@ def source_mines(zones, zone_id, seen=None):
     zone = zones.get(zid, {})
     nxt = zone.get("minesLikeZone")
     if nxt is not None and nxt != -1:
-        return source_mines(zones, nxt, seen)
-    return zone.get("mines") or {}
+        return resolve_mines(zones, nxt, seen)
+    return copy.deepcopy(zone.get("mines") or {})
 
 
 def build_patch(templates):
     patch = {}
     for name, zones in templates.items():
         patched = {}
+
         for zid, zone in zones.items():
-            # Стартовые зоны не трогаем: там пара шахт нужна у замка.
-            if zone.get("type") in START_ZONE_TYPES:
+            is_start = zone.get("type") in START_ZONE_TYPES
+            mines = resolve_mines(zones, zid)
+
+            if is_start:
+                # В старте нужна ровно одна лесопилка и один рудник.
+                wood, ore = mines.get(WOOD, 0), mines.get(ORE, 0)
+                if wood <= 1 and ore <= 1:
+                    continue  # уже правильный набор, трогать нечего
+
+                kept = dict(mines)
+                kept[WOOD] = 1
+                kept[ORE] = 1
+                if not wood:
+                    kept.pop(WOOD, None)
+                if not ore:
+                    kept.pop(ORE, None)
+
+                entry = {"mines": kept}
+                # Если зона наследовала — отключаем наследование и пишем явно.
+                if zone.get("minesLikeZone", -1) != -1:
+                    entry["minesLikeZone"] = -1
+                patched[zid] = entry
                 continue
 
-            inherit = zone.get("minesLikeZone")
-            if inherit is not None and inherit != -1:
-                inherited = source_mines(zones, inherit)
-                if not (inherited.get("wood") or inherited.get("ore")):
-                    continue  # наследовать нечего убирать
-                # Явная копия всех ресурсов источника, кроме дерева и руды.
-                explicit = {r: n for r, n in inherited.items()
-                            if r not in ("wood", "ore") and n}
-                patched[zid] = {
-                    "minesLikeZone": -1,
-                    "mines": explicit,
-                    "customObjects": copy.deepcopy(BAN_RANDOM_WOOD_ORE),
-                }
+            # Не стартовая зона: дерево и руду убираем полностью.
+            if not (mines.get(WOOD) or mines.get(ORE)):
                 continue
 
-            own = zone.get("mines") or {}
-            if own.get("wood") or own.get("ore"):
-                patched[zid] = {
-                    "mines": {"wood": 0, "ore": 0},
-                    "customObjects": copy.deepcopy(BAN_RANDOM_WOOD_ORE),
-                }
+            # Пустой объект при мерже ничего не затирает — нужны явные нули.
+            explicit = {r: n for r, n in mines.items()
+                        if r not in (WOOD, ORE) and n}
+            explicit[WOOD] = 0
+            explicit[ORE] = 0
+            entry = {"mines": explicit,
+                     "customObjects": copy.deepcopy(BAN_RANDOM_WOOD_ORE)}
+            if zone.get("minesLikeZone", -1) != -1:
+                entry["minesLikeZone"] = -1
+            patched[zid] = entry
 
         if patched:
             patch["vcmi:" + name] = {"zones": patched}
@@ -122,14 +143,35 @@ def build_patch(templates):
 
 
 def verify(patch, templates):
-    """Ни одна стартовая зона не должна лишиться дерева или руды."""
+    """Каждая стартовая зона должна получить ровно 1 лесопилку и 1 рудник."""
     problems = []
     for key, val in patch.items():
         name = key.split(":", 1)[1]
         zones = templates[name]
-        for zid in val["zones"]:
-            if zones[zid].get("type") in START_ZONE_TYPES:
-                problems.append((name, zid, zones[zid].get("type")))
+        for zid, entry in val["zones"].items():
+            zone = zones[zid]
+            is_start = zone.get("type") in START_ZONE_TYPES
+            mines = entry.get("mines") or {}
+
+            if is_start:
+                wood, ore = mines.get(WOOD, 0), mines.get(ORE, 0)
+                if wood != 1 or ore != 1:
+                    problems.append((name, zid, "start zone must keep 1/1", wood, ore))
+            else:
+                if mines.get(WOOD) or mines.get(ORE):
+                    problems.append((name, zid, "non-start must have no wood/ore", mines))
+
+    # Ни одна нестартовая зона не должна остаться с деревом/рудой.
+    for name, zones in templates.items():
+        patched = patch.get("vcmi:" + name, {}).get("zones", {})
+        for zid, zone in zones.items():
+            if zone.get("type") in START_ZONE_TYPES:
+                continue
+            final = patched.get(zid, {}).get("mines")
+            if final is None:
+                final = resolve_mines(zones, zid)
+                if final.get(WOOD) or final.get(ORE):
+                    problems.append((name, zid, "unpatched non-start still has wood/ore", final))
     return problems
 
 
@@ -139,8 +181,8 @@ def main():
 
     problems = verify(patch, templates)
     if problems:
-        print("ОШИБКА: патч затрагивает стартовые зоны:", len(problems))
-        for p in problems[:10]:
+        print("ОШИБКА проверки:", len(problems))
+        for p in problems[:15]:
             print("   ", p)
         raise SystemExit(1)
 
@@ -149,8 +191,14 @@ def main():
         f.write("\n")
 
     zones_total = sum(len(v["zones"]) for v in patch.values())
+    start_fixed = sum(
+        1 for name, val in patch.items()
+        for zid in val["zones"]
+        if templates[name.split(":", 1)[1]][zid].get("type") in START_ZONE_TYPES
+    )
     print(f"OK: {OUT}")
     print(f"templates: {len(patch)}, zones patched: {zones_total}")
+    print(f"start zones trimmed to 1 wood + 1 ore: {start_fixed}")
 
 
 if __name__ == "__main__":
