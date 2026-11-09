@@ -29,6 +29,7 @@ ARTIFACTS = {
     'deadMansBoots':           56,
     'ambassadorsSash':         68,
     'collarOfConjuring':       76,
+    'speculum':                52,
     'orbOfTheFirmament':       79,
     'orbOfSilt':               80,
     'orbOfTempestuousFire':    81,

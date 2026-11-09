@@ -593,5 +593,14 @@
 				"addInfo": "creature.warUnicorn"
 			}
 		}
+	},
+	"core:speculum": {
+		"bonuses#override": {
+			"sight": {
+				"type": "SIGHT_RADIUS",
+				"val": 2,
+				"valueType": "BASE_NUMBER"
+			}
+		}
 	}
 }

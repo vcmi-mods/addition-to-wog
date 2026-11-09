@@ -179,6 +179,12 @@ add('collarOfConjuring', 'ok',
         C('SPELL_DURATION'), C('HERO_EXPERIENCE_GAIN_PERCENT')),
     'Увеличивало длительность заклинаний на 1.<span class="note">Оригинал: только +1 к длительности. Бонус +10% опыта добавлен этим модом.</span>')
 
+add('speculum', 'ok',
+    'Увеличивает зону обозрения героя на <b>2 клетки</b> вместо 1.',
+    '<li>%s <b>+2</b> <span class="muted">(мод, вместо +1 в ядре)</span></li><li>%s — замена всех прежних бонусов</li>' % (
+        C('SIGHT_RADIUS'), C('bonuses#override')),
+    'Зона обозрения +1.<span class="note">Оригинал: +1 к зоне обозрения. Мод удваивает бонус до +2.</span>')
+
 boost_rows = list(rows)
 
 # ---------------- сферы стихий ----------------

@@ -173,5 +173,12 @@
 			"description": "{Collar of Conjuring}\n\nIncreases the duration of all your spells by 1 turn and increases all experience your hero gains by 10%.",
 			"event": "You pick up the Collar of Conjuring, and it seems to hum with the echo of ancient spells."
 		}
+	},
+	"core:speculum": {
+		"text": {
+			"name": "Speculum",
+			"description": "{Speculum}\n\nIncreases the hero's sight radius by 2 tiles instead of 1.",
+			"event": "A merchant from distant lands offers you his people's newest invention in exchange for provisions. This device, which makes faraway objects seem close, is called... a speculum."
+		}
 	}
 }
