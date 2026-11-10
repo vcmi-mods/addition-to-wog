@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Artifact Boost — artifact report</title>
+<style>
+  :root {
+    --bg: #f7f5f0;
+    --panel: #ffffff;
+    --panel-alt: #fbfaf7;
+    --border: #e0dbd1;
+    --border-strong: #cfc7b8;
+    --text: #26241f;
+    --muted: #7a7468;
+    --gold: #a8813a;
+    --ok: #3f7d2e;  --ok-bg: #eef6ea;
+    --warn: #a8620f; --warn-bg: #fdf3e5;
+    --bad: #b03030;  --bad-bg: #fbeded;
+    --na: #6b7280;   --na-bg: #f1f2f4;
+    --era: #1f4e79;
+    --orig: #5b4a7a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 36px 28px 72px;
+    background: var(--bg); color: var(--text);
+    font-family: "Segoe UI", "Noto Sans", system-ui, -apple-system, sans-serif;
+    font-size: 14px; line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1780px; margin: 0 auto; }
+
+  header {
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: 12px; padding: 26px 30px; margin-bottom: 26px;
+    box-shadow: 0 1px 2px rgba(38,36,31,.04);
+  }
+  h1 { font-size: 27px; font-weight: 700; margin: 0 0 8px; letter-spacing: -.2px; }
+  h1 .accent { color: var(--gold); }
+  .subtitle { color: var(--muted); margin: 0; font-size: 13.5px; max-width: 1180px; }
+
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 26px; }
+  .stat { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px;
+          box-shadow: 0 1px 2px rgba(38,36,31,.04); }
+  .stat .n { font-size: 25px; font-weight: 700; color: var(--gold); line-height: 1.15; }
+  .stat .l { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .8px; margin-top: 2px; }
+
+  .legend { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-bottom: 22px;
+            font-size: 12.5px; color: var(--muted); }
+  .legend .item { display: flex; align-items: center; gap: 7px; }
+
+  table {
+    width: 100%; border-collapse: separate; border-spacing: 0;
+    background: var(--panel); border: 1px solid var(--border-strong);
+    border-radius: 12px; overflow: hidden; margin-bottom: 40px;
+    box-shadow: 0 1px 3px rgba(38,36,31,.05);
+  }
+  thead th {
+    background: #f0ece3; color: #5c5344;
+    font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .85px;
+    text-align: left; padding: 13px 14px;
+    border-bottom: 1px solid var(--border-strong);
+  }
+  thead th:last-child { color: var(--orig); }
+  tbody td { padding: 15px 14px; vertical-align: top; border-bottom: 1px solid #eeeae1; }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:nth-child(even) td { background: var(--panel-alt); }
+  tbody tr:hover td { background: #fdfaf3; }
+
+  .name { font-weight: 700; color: #1d1c19; }
+  .id { display: block; font-family: ui-monospace, "Cascadia Code", "SF Mono", monospace;
+        font-size: 10.5px; color: var(--muted); font-weight: 400; margin-top: 4px; }
+  .arthead { display: flex; align-items: flex-start; gap: 10px; }
+  .arthead .articon {
+    flex: 0 0 auto; width: 44px; height: 44px;
+    display: flex; align-items: center; justify-content: center;
+    background: #f2efe8; border: 1px solid #e0dbd1; border-radius: 6px;
+  }
+  .arthead .articon img {
+    max-width: 40px; max-height: 40px;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+  }
+  .arthead .arttext { min-width: 0; }
+  .col-name { width: 15%; }
+  .col-desc { width: 20%; }
+  .col-fact { width: 26%; }
+  .col-era  { width: 24%; }
+  .col-orig { width: 19%; }
+
+  .desc { color: #3a3833; }
+  .desc b { color: #1d1c19; }
+  ul { margin: 0; padding-left: 16px; }
+  li { margin-bottom: 5px; }
+  li:last-child { margin-bottom: 0; }
+
+  code {
+    font-family: ui-monospace, "Cascadia Code", "SF Mono", monospace;
+    font-size: 11px; background: #f4f1ea; border: 1px solid #e4dfd4;
+    border-radius: 4px; padding: 1px 5px; color: #4a5d23; white-space: nowrap;
+  }
+  .era { color: var(--era); }
+  .era .note { display: block; color: var(--muted); font-size: 12px; margin-top: 7px; }
+
+  .orig { color: var(--orig); background: #faf8fd !important; }
+  .orig b { color: #463461; }
+  .origtext {
+    margin-top: 6px; padding-left: 10px;
+    border-left: 2px solid #ddd4ec;
+    color: #4f4763; font-size: 12.5px; line-height: 1.55;
+  }
+
+  .flag {
+    display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .7px;
+    text-transform: uppercase; border-radius: 999px; padding: 3px 10px; margin-bottom: 8px;
+  }
+  .flag.ok   { background: var(--ok-bg);   color: var(--ok);   border: 1px solid #cfe3c6; }
+  .flag.warn { background: var(--warn-bg); color: var(--warn); border: 1px solid #f0dcbb; }
+  .flag.bad  { background: var(--bad-bg);  color: var(--bad);  border: 1px solid #f0cfcf; }
+  .flag.na   { background: var(--na-bg);   color: var(--na);   border: 1px solid #dde0e4; }
+
+  h2 { font-size: 17px; font-weight: 700; margin: 40px 0 14px;
+       padding-bottom: 10px; border-bottom: 2px solid var(--border-strong); }
+  h2 .sub { font-weight: 400; color: var(--muted); font-size: 13px; }
+
+  .issues { background: var(--panel); border: 1px solid var(--border-strong);
+            border-left: 4px solid var(--warn); border-radius: 10px; padding: 22px 26px;
+            box-shadow: 0 1px 3px rgba(38,36,31,.05); }
+  .issues ol { margin: 0; padding-left: 22px; }
+  .issues li { margin-bottom: 14px; }
+  .issues li:last-child { margin-bottom: 0; }
+  .issues strong { color: #1d1c19; }
+
+  .done { background: var(--ok-bg); border: 1px solid #cfe3c6; border-left: 4px solid var(--ok);
+          border-radius: 10px; padding: 16px 22px; margin-bottom: 26px; color: #2f5c22; }
+  .done b { color: #244a1a; }
+
+  .muted { color: var(--muted); }
+  footer { margin-top: 40px; padding-top: 18px; border-top: 1px solid var(--border);
+           color: var(--muted); font-size: 12px; line-height: 1.8; }
+  footer code { font-size: 11px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>Artifact Boost — <span class="accent">report on the improved artifacts</span></h1>
+    <p class="subtitle">
+      Mod <code>addition-to-wog.wog-artifact-rebalance.artifact-boost</code>. Descriptions were checked against the strings
+      the VCMI 1.7.5 engine actually applies; the actual effect — against the bonuses in the configs;
+      the original descriptions are taken from <code>artraits.txt</code> of the base Heroes III.
+    </p>
+  </header>
+
+  <div class="stats">
+    <div class="stat"><div class="n">26</div><div class="l">artifacts</div></div>
+    <div class="stat"><div class="n">22</div><div class="l">in artifact-boost</div></div>
+    <div class="stat"><div class="n">4</div><div class="l">elemental orbs</div></div>
+    <div class="stat"><div class="n">0</div><div class="l">discrepancies</div></div>
+    </div>
+
+
+  <div class="legend">
+    <span class="item"><span class="flag ok">matches</span> the description matches the code</span>
+    <span class="item"><span class="flag warn">inaccuracy</span> the description diverges from the code</span>
+    <span class="item"><span class="flag bad">gap</span> the effect is not described at all</span>
+    <span class="item"><span class="flag na">unchanged</span> the bonus is identical to the base one</span>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th class="col-name">Artifact name</th>
+        <th class="col-desc">In-game description</th>
+        <th class="col-fact">Actual effect</th>
+        <th class="col-era">Era behavior (as intended)</th>
+        <th class="col-orig">Original description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="name"><div class="arthead"><div class="articon"><img src="icons/birdOfPerception.png" alt="Bird of Perception"></div><div class="arttext">Bird of Perception<span class="id">birdOfPerception</span></div></div></td>
+        <td class="desc"><span class="flag ok">matches</span><br>
+          Grants <b>+5%</b> to the Eagle Eye skill and <b>6 level 3 creatures</b> per week to the town where the hero is located.</td>
+        <td><ul><li><code>LEARN_BATTLE_SPELL_CHANCE</code> +5%</li><li><code>CREATURE_GROWTH</code> → <code>creatureLevel3</code>, +6/week, propagator <code>TOWN_AND_VISITOR</code></li></ul></td>
+        <td class="era">6 Royal Griffins per week.<span class="note">Original: granted 6 Royal Griffins (level 5) weekly. Reduced in the mod to 6 level 3 creatures.</span></td>
+        <td class="orig"><b>Bird of Perception</b><div class="origtext">This figurine increases your Eagle Eye skill by 5%.</div></td>
+      </tr>
+      <tr>
+        <td class="name"><div class="arthead"><div class="articon"><img src="icons/pendantOfLife.png" alt="Pendant of Life"></div><div class="arttext">Pendant of Life<span class="id">pendantOfLife</span></div></div></td>
+        <td class="desc"><span class="flag ok">matches</span><br>
+          Renders your units immune to the <b>Death Ripple</b> spell and grants <b>24 level 1 creatures</b> per week to the town where the hero is located.</td>
+        <td><ul><li><code>SPELL_IMMUNITY</code> → <code>deathRipple</code></li><li><code>CREATURE_GROWTH</code> → <code>creatureLevel1</code>, +24/week</li><li><span class="muted">Per-level health bonus removed</span></li></ul></td>
+        <td class="era">24 Sprites per week.<span class="note">Original: 24 Sprites weekly. The mod grants 24 level 1 creatures: the Sprite is level 1, so for Rampart the result is the same.</span></td>
+        <td class="orig"><b>Pendant of Life</b><div class="origtext">This pendant protects your warriors from the Death Ripple spell.</div></td>
+      </tr>
+      <tr>
+        <td class="name"><div class="arthead"><div class="articon"><img src="icons/pendantOfDeath.png" alt="Pendant of Death"></div><div class="arttext">Pendant of Death<span class="id">pendantOfDeath</span></div></div></td>
+        <td class="desc"><span class="flag ok">matches</span><br>
+          Renders your undead units immune to the Destroy Undead spell. In addition, all undead stacks in the hero's army gain <b>+2 Attack and +2 Defense</b>.</td>
+        <td><ul><li><code>SPELL_IMMUNITY</code> → <code>destroyUndead</code>, limiter <code>IS_UNDEAD</code></li><li><code>PRIMARY_SKILL</code> attack <b>+2</b> <span class="muted">(IS_UNDEAD)</span></li><li><code>PRIMARY_SKILL</code> defence <b>+2</b> <span class="muted">(IS_UNDEAD)</span></li></ul></td>
+        <td class="era">12 Zombies per week.<span class="note">Original: 12 Zombies weekly. Growth and +1 speed removed; the undead Attack and Defense bonuses were added by this mod.</span></td>
+        <td class="orig"><b>Pendant of Death</b><div class="origtext">This pendant protects your warriors from the Destroy Undead spell.</div></td>
+      </tr>
+      <tr>
+        <td class="name"><div class="arthead"><div class="articon"><img src="icons/pendantOfTotalRecall.png" alt="Pendant of Total Recall"></div><div class="arttext">Pendant of Total Recall<span class="id">pendantOfTotalRecall</span></div></div></td>
+        <td class="desc"><span class="flag ok">matches</span><br>
+          Immunity to Forgetfulness. At the start of every battle casts Expert Precision.</td>
+        <td><ul><li><code>SPELL_IMMUNITY</code> → <code>forgetfulness</code></li><li><code>OPENING_BATTLE_SPELL</code> → <code>precision</code>, expert, 50 rounds</li></ul></td>
+        <td class="era">1000 experience per week.<span class="note">Original: 1000 experience weekly. The experience bonus was removed; only the opening Precision remains.</span></td>
+        <td class="orig"><b>Pendant of Total Recall</b><div class="origtext">This pendant protects your warriors from the Forgetfulness spell.</div></td>
+      </tr>
+      <tr>
+        <td class="name"><div class="arthead"><div class="articon"><img src="icons/emblemOfCognizance.png" alt="Emblem of Cognizance"></div><div class="arttext">Emblem of Cognizance<span class="id">emblemOfCognizance</span></div></div></td>
+        <td class="desc"><span class="flag ok">matches</span><br>
+          Grants <b>+15%</b> to the Eagle Eye skill and produces <b>2 gold per day for every creature</b> in the hero's army.</td>
+        <td><ul><li><code>instanceBonuses</code>: <code>LEARN_BATTLE_SPELL_CHANCE</code> +15%</li><li><code>GENERATE_RESOURCE</code> → <code>gold</code>, <b>val 2</b> × army size</li><li><code>updater</code>: <code>TIMES_ARMY_SIZE</code>, <code>stepSize: 1</code> — no minimum or maximum</li><li>Both with <code>stacking: ALWAYS</code> — copies add up</li></ul></td>
+        <td class="era">15 gold per creature per week.<span class="note">Original: paid 15 gold per warrior once a week. The mod pays 2 gold per warrior every day, which over a week gives 14 gold versus the original 15.</span></td>
+        <td class="orig"><b>Emblem of Cognizance</b><div class="origtext">This talisman increases your Eagle Eye skill by 15%.</div></td>
+      </tr>
+      <tr>
+        <td class="name"><div class="arthead"><div class="articon"><img src="icons/stoicWatchman.png" alt="Stoic Watchman"></div><div class="arttext">Stoic Watchman<span class="id">stoicWatchman</span></div></div></td>
+        <td class="desc"><span class="flag ok">matches</span><br>
+          Grants <b>+10%</b> to the Eagle Eye skill and increases the sight radius <b>by 5</b>.</td>
+        <td><ul><li><code>LEARN_BATTLE_SPELL_CHANCE</code> +10%</li><li><code>SIGHT_RADIUS</code> +5</li></ul></td>
+        <td class="era">Revealed a large map area once a week.<span class="note">Original: revealed part of the map weekly. Replaced with a permanent +5 sight radius.</span></td>
+        <td class="orig"><b>Stoic Watchman</b><div class="origtext">This figurine increases your Eagle Eye skill by 10%.</div></td>
+      </tr>
+      <tr>
+        <td class="name"><div class="arthead"><div class="articon"><img src="icons/pendantOfSecondSight.png" alt="Pendant of Second Sight"></div><div class="arttext">Pendant of Second Sight<span class="id">pendantOfSecondSight</span></div></div></td>
+        <td class="desc"><span class="flag ok">matches</span><br>
+          Immunity to Blind. Free upgrades in the hero's army: Archers, Wood Elves, Gremlins, Gogs, Beholders, Orcs, Lizardmen, Air Elementals. At the start of every battle casts Expert Air Shield.</td>
+        <td><ul><li><code>SPELL_IMMUNITY</code> → <code>blind</code></li><li>8 × <code>SPECIAL_UPGRADE</code>: archer→marksman, woodElf→grandElf, gremlin→masterGremlin, gog→magog, beholder→evilEye, orc→orcChieftain, lizardman→lizardWarrior, airElemental→stormElemental</li><li><code>OPENING_BATTLE_SPELL</code> → <code>airShield</code>, expert, 50 rounds</li></ul></td>
+        <td class="era">Upgraded these creatures once a week.<span class="note">Original: upgraded shooters weekly. Replaced with a free upgrade at any moment.</span></td>
+        <td class="orig"><b>Pendant of Second Sight</b><div class="origtext">This pendant protects your warriors from the Blind spell.</div></td>
+      </tr>
+      <tr>
+        <td class="name"><div class="arthead"><div class="articon"><img src="icons/pendantOfHoliness.png" alt="Pendant of Holiness"></div><div class="arttext">Pendant of Holiness<span class="id">pendantOfHoliness</span></div></div></td>
+        <td class="desc"><span class="flag ok">matches</span><br>
+          Immunity to Curse. Teaches the hero: Bless, Cure, Prayer. At the start of every battle casts Expert Bless.</td>
+        <td><ul><li><code>SPELL_IMMUNITY</code> → <code>curse</code></li><li>3 × <code>SPELL</code>: bless, cure, prayer</li><li><code>OPENING_BATTLE_SPELL</code> → <code>bless</code>, expert, 50 rounds</li></ul></td>
+        <td class="era">Gave a random "holy" spell once a week.<span class="note">Original: a random holy spell weekly. Replaced with permanent training in all three.</span></td>
+        <td class="orig"><b>Pendant of Holiness</b><div class="origtext">This pendant protects your warriors from the Curse spell.</div></td>
+      </tr>
+      <tr>
+        <td class="name"><div class="arthead"><div class="articon"><img src="icons/bootsOfPolarity.png" alt="Boots of Polarity"></div><div class="arttext">Boots of Polarity<span class="id">bootsOfPolarity</span></div></div></td>
+        <td class="desc"><span class="flag ok">matches</span><br>
+          Increases magic resistance by <b>15%</b> and grants a few land movement points.</td>
+        <td><ul><li><code>MAGIC_RESISTANCE</code> +15%</li><li><code>MOVEMENT</code> → <code>heroMovementLand</code>, <b>+300</b></li></ul></td>
+        <td class="era">Could be traded for a one-time movement bonus.<span class="note">Original: exchanged for a one-time movement boost. Replaced with a permanent +300 — half of the usual Boots of Speed.</span></td>
+        <td class="orig"><b>Boots of Polarity</b><div class="origtext">These boots, worn on the feet, increase your Magic Resistance skill by 15%.</div></td>
+      </tr>
+      <tr>
+        <td class="name"><div class="arthead"><div class="articon"><img src="icons/garnitureOfInterference.png" alt="Garniture of Interference"></div><div class="arttext">Garniture of Interference<span class="id">garnitureOfInterference</span></div></div></td>
+        <td class="desc"><span class="flag ok">matches</span><br>
+          Increases magic resistance by <b>5%</b> and raises the mastery level of <b>all magic schools by 1</b>.</td>
+        <td><ul><li><code>MAGIC_RESISTANCE</code> +5%</li><li><code>MAGIC_SCHOOL_SKILL</code> → <code>spellSchool.any</code>, +1</li></ul></td>
+        <td class="era">Could be traded for a magic skill.<span class="note">Original: exchanged for learning a magic school. Replaced with a permanent +1 to all schools.</span></td>
+        <td class="orig"><b>Garniture of Interference</b><div class="origtext">This hereditary armor, worn on the neck, increases your Magic Resistance skill by 5%.</div></td>
+      </tr>
+      <tr>
+        <td class="name"><div class="arthead"><div class="articon"><img src="icons/pendantOfDispassion.png" alt="Pendant of Dispassion"></div><div class="arttext">Pendant of Dispassion<span class="id">pendantOfDispassion</span></div></div></td>
+        <td class="desc"><span class="flag ok">matches</span><br>
+          Immunity to Berserk. <b>+1 Knowledge</b>. At the start of every battle casts Expert Bloodlust.</td>
+        <td><ul><li><code>SPELL_IMMUNITY</code> → <code>berserk</code></li><li><code>PRIMARY_SKILL</code> knowledge +1</li><li><code>OPENING_BATTLE_SPELL</code> → <code>bloodlust</code>, expert, 50 rounds</li></ul></td>
+        <td class="era">+1 Knowledge per week.<span class="note">Original: +1 Knowledge weekly. Replaced with a permanent +1.</span></td>
+        <td class="orig"><b>Pendant of Dispassion</b><div class="origtext">This pendant protects your warriors from the Berserk spell.</div></td>
+      </tr>
+      <tr>
+        <td class="name"><div class="arthead"><div class="articon"><img src="icons/pendantOfFreeWill.png" alt="Pendant of Free Will"></div><div class="arttext">Pendant of Free Will<span class="id">pendantOfFreeWill</span></div></div></td>
+        <td class="desc"><span class="flag ok">matches</span><br>
+          Immunity to Hypnotize. Free upgrades: Peasants -> Rogues, Stone -> Iron -> Gold -> Diamond Golems. At the start of every battle casts Expert Stone Skin.</td>
+        <td><ul><li><code>SPELL_IMMUNITY</code> → <code>hypnotize</code></li><li><code>SPECIAL_UPGRADE</code>: peasant→rogue</li><li><code>SPECIAL_UPGRADE</code>: stoneGolem→ironGolem→goldGolem→diamondGolem</li><li><code>OPENING_BATTLE_SPELL</code> → <code>stoneSkin</code>, expert, 50 rounds</li></ul></td>
+        <td class="era">Upgraded these creatures once a week.<span class="note">Original: weekly upgrade. Replaced with a free upgrade at any moment.</span></td>
+        <td class="orig"><b>Pendant of Free Will</b><div class="origtext">This pendant protects your warriors from the Hypnotize spell.</div></td>
+      </tr>
+      <tr>
+        <td class="name"><div class="arthead"><div class="articon"><img src="icons/diplomatsRing.png" alt="Diplomat's Ring"></div><div class="arttext">Diplomat's Ring<span class="id">diplomatsRing</span></div></div></td>
+        <td class="desc"><span class="flag ok">matches</span><br>
+          Reduces the cost of surrendering by <b>10%</b> and produces <b>500 gold per day</b>.</td>
+        <td><ul><li><code>SURRENDER_DISCOUNT</code> +10%</li><li><code>GENERATE_RESOURCE</code> → gold, <b>+500/day</b></li></ul></td>
+        <td class="era">Could be traded for doubling all level 1 stacks.<span class="note">Original: exchanged for doubling level 1 stacks. Replaced with a permanent income of 500 gold per day.</span></td>
+        <td class="orig"><b>Diplomat's Ring</b><div class="origtext">The Diplomat's Ring, worn on the finger, reduces the cost of surrender.</div></td>
+      </tr>
+      <tr>
+        <td class="name"><div class="arthead"><div class="articon"><img src="icons/surcoatOfCounterpoise.png" alt="Surcoat of Counterpoise"></div><div class="arttext">Surcoat of Counterpoise<span class="id">surcoatOfCounterpoise</span></div></div></td>
+        <td class="desc"><span class="flag ok">matches</span><br>
+          <b>+10%</b> magic resistance, <b>+1 Knowledge</b>, <b>+3 sight radius</b>, <b>1000 gold per day</b>.</td>
+        <td><ul><li><code>MAGIC_RESISTANCE</code> +10%</li><li><code>PRIMARY_SKILL</code> knowledge +1</li><li><code>SIGHT_RADIUS</code> +3</li><li><code>GENERATE_RESOURCE</code> → gold, <b>+1000/day</b></li></ul></td>
+        <td class="era">Doubled the effects of the other boosted artifacts.<span class="note">Original: a multiplier on other boosters. Impossible to reproduce — replaced with a set of permanent bonuses.</span></td>
+        <td class="orig"><b>Surcoat of Counterpoise</b><div class="origtext">This surcoat, worn on the shoulders, increases your Magic Resistance skill by 10%.</div></td>
+      </tr>
+      <tr>
+        <td class="name"><div class="arthead"><div class="articon"><img src="icons/orbOfVulnerability.png" alt="Orb of Vulnerability"></div><div class="arttext">Orb of Vulnerability<span class="id">orbOfVulnerability</span></div></div></td>
+        <td class="desc"><span class="flag ok">matches</span><br>
+          Removes the natural magic resistance of all creatures on the battlefield. <b>1 level 6 creature</b> per week to the town where the hero is located. At the start of every battle casts Expert Disease on all enemies.</td>
+        <td><ul><li><code>NEGATE_ALL_NATURAL_IMMUNITIES</code> ×2 (battlefield + enemy hero)</li><li><code>MAGIC_RESISTANCE</code> 0, <code>INDEPENDENT_MIN</code>, battle-wide</li><li><code>SPELL_RESISTANCE_AURA</code> 0, battle-wide</li><li><code>CREATURE_GROWTH</code> → <code>creatureLevel6</code>, +1/week</li><li><code>OPENING_BATTLE_SPELL</code> → <code>disease</code>, expert</li></ul></td>
+        <td class="era">1 Arch Mage + one per Wisdom level per week.<span class="note">Original: the amount depended on Wisdom. The mod grants a fixed 1 level 6 creature per week.</span></td>
+        <td class="orig"><b>Orb of Vulnerability</b><div class="origtext">During combat, this artifact neutralizes the natural magic immunity that some troops on the battlefield may have.</div></td>
+      </tr>
+      <tr>
+        <td class="name"><div class="arthead"><div class="articon"><img src="icons/sphereOfPermanence.png" alt="Sphere of Permanence"></div><div class="arttext">Sphere of Permanence<span class="id">sphereOfPermanence</span></div></div></td>
+        <td class="desc"><span class="flag ok">matches</span><br>
+          Renders your units immune to the Dispel spell and grants <b>2 level 5 creatures</b> per week to the town where the hero is located.</td>
+        <td><ul><li><code>SPELL_IMMUNITY</code> → <code>dispel</code>, <code>addInfo: 1</code></li><li><code>SPELL_IMMUNITY</code> → <code>dispelHelpful</code>, <code>addInfo: 1</code></li><li><code>CREATURE_GROWTH</code> → <code>creatureLevel5</code>, +2/week, propagator <code>TOWN_AND_VISITOR</code></li></ul></td>
+        <td class="era">1 Mighty Gorgon + one per 10 Defense per week.<span class="note">Original: growth depended on the hero's Defense. Replaced with 2 level 5 creatures per week.</span></td>
+        <td class="orig"><b>Sphere of Permanence</b><div class="origtext">This sphere makes your warriors immune to the effects of the Dispel spell.</div></td>
+      </tr>
+      <tr>
+        <td class="name"><div class="arthead"><div class="articon"><img src="icons/statesmansMedal.png" alt="Statesman's Medal"></div><div class="arttext">Statesman's Medal<span class="id">statesmansMedal</span></div></div></td>
+        <td class="desc"><span class="flag ok">matches</span><br>
+          Reduces the cost of surrendering by <b>10%</b> and produces <b>500 gold per day</b>.</td>
+        <td><ul><li><code>SURRENDER_DISCOUNT</code> +10%</li><li><code>GENERATE_RESOURCE</code> → gold, <b>+500/day</b></li></ul></td>
+        <td class="era">Could be traded in a town for building up to three structures.<span class="note">Original: exchanged for construction. Replaced with a permanent income of 500 gold per day.</span></td>
+        <td class="orig"><b>Statesman's Medal</b><div class="origtext">The Statesman's Medal, worn around the neck, reduces the cost of surrender.</div></td>
+      </tr>
+      <tr>
+        <td class="name"><div class="arthead"><div class="articon"><img src="icons/ambassadorsSash.png" alt="Ambassador's Sash"></div><div class="arttext">Ambassador's Sash<span class="id">ambassadorsSash</span></div></div></td>
+        <td class="desc"><span class="flag ok">matches</span><br>
+          Reduces the cost of surrendering by <b>10%</b> and produces <b>500 gold per day</b>.</td>
+        <td><ul><li><code>SURRENDER_DISCOUNT</code> +10% <span class="muted">(core)</span></li><li><code>GENERATE_RESOURCE</code> → gold, <b>+500/day</b></li></ul></td>
+        <td class="era">Reduced the cost of surrender.<span class="note">Original: only the surrender discount. The mod added 500 gold per day.</span></td>
+        <td class="orig"><b>Ambassador's Sash</b><div class="origtext">The Ambassador's Sash, worn on the shoulders, reduces the cost of surrender.</div></td>
+      </tr>
+      <tr>
+        <td class="name"><div class="arthead"><div class="articon"><img src="icons/targOfTheRampagingOgre.png" alt="Targ of the Rampaging Ogre"></div><div class="arttext">Targ of the Rampaging Ogre<span class="id">targOfTheRampagingOgre</span></div></div></td>
+        <td class="desc"><span class="flag ok">matches</span><br>
+          Increases Defense by <b>5</b> and increases all experience the hero gains by <b>5%</b>.</td>
+        <td><ul><li><code>PRIMARY_SKILL</code> defence +5</li><li><code>HERO_EXPERIENCE_GAIN_PERCENT</code> +5%</li></ul></td>
+        <td class="era">Provoked a fight with 30 Ogres once a week.<span class="note">Original: a weekly skirmish. Replaced with +5% to all hero experience.</span></td>
+        <td class="orig"><b>Targ of the Rampaging Ogre</b><div class="origtext">This small round shield, held in the left hand, adds 5 to your Defense skill.</div></td>
+      </tr>
+      <tr>
+        <td class="name"><div class="arthead"><div class="articon"><img src="icons/deadMansBoots.png" alt="Dead Man's Boots"></div><div class="arttext">Dead Man's Boots<span class="id">deadMansBoots</span></div></div></td>
+        <td class="desc"><span class="flag ok">matches</span><br>
+          <b>+15%</b> Necromancy and <b>+2 speed</b> to all undead stacks in the hero's army.</td>
+        <td><ul><li><code>UNDEAD_RAISE_PERCENTAGE</code> +15%</li><li><code>STACKS_SPEED</code> +2, limiter <code>IS_UNDEAD</code></li></ul></td>
+        <td class="era">Created a copy of itself once a week.<span class="note">Original: spawned copies weekly. Creature growth and Skeleton upgrades removed — only Necromancy and undead speed remain.</span></td>
+        <td class="orig"><b>Dead Man's Boots</b><div class="origtext">These boots, worn on the feet, increase your Necromancy skill by 15%.</div></td>
+      </tr>
+      <tr>
+        <td class="name"><div class="arthead"><div class="articon"><img src="icons/magicWand.png" alt="Magic Wand"></div><div class="arttext">Magic Wand<span class="id">magicWand</span></div></div></td>
+        <td class="desc"><span class="flag ok">matches</span><br>
+          When your hero attacks in battle, there is a <b>25%</b> chance that the struck enemy stack turns into creatures of the attacker's type. The total health of the stack is preserved.<br><br>Only living enemies are affected; the converted stack stays on the enemy side.</td>
+        <td><ul><li><code>TRANSMUTATION</code> <b>25%</b></li><li>Subtype <code>transmutationPerHealth</code> — amount based on preserved health</li><li><code>addInfo</code> not set → transforms into the attacker</li><li><code>propagator: ARMY</code></li><li><code>bonuses#override</code> — replaces all previous bonuses</li></ul></td>
+        <td class="era">Randomly replaced the hero's equipped artifacts every day. The pair of slots depended on which Misc slot the wand occupied.<span class="note">Original: weekly artifact transformation, impossible to reproduce in VCMI. Replaced with combat transmutation of enemies.</span></td>
+        <td class="orig"><b>Magic Wand</b><div class="origtext">Heroes III has no such artifact — it was added by the Wake of Gods expansion. Originally it randomly replaced the hero's equipped artifacts every day.</div></td>
+      </tr>
+      <tr>
+        <td class="name"><div class="arthead"><div class="articon"><img src="icons/collarOfConjuring.png" alt="Collar of Conjuring"></div><div class="arttext">Collar of Conjuring<span class="id">collarOfConjuring</span></div></div></td>
+        <td class="desc"><span class="flag ok">matches</span><br>
+          Increases the duration of all your spells by <b>1 turn</b> and increases all experience the hero gains by <b>10%</b>.</td>
+        <td><ul><li><code>SPELL_DURATION</code> +1 <span class="muted">(core)</span></li><li><code>HERO_EXPERIENCE_GAIN_PERCENT</code> <b>+10%</b> <span class="muted">(mod)</span></li></ul></td>
+        <td class="era">Increased spell duration by 1.<span class="note">Original: only +1 duration. The +10% experience bonus was added by this mod.</span></td>
+        <td class="orig"><b>Collar of Conjuring</b><div class="origtext">This collar, worn around the neck, increases the duration of all your spells by 1.</div></td>
+      </tr>
+      <tr>
+        <td class="name"><div class="arthead"><div class="articon"><img src="icons/speculum.png" alt="Speculum"></div><div class="arttext">Speculum<span class="id">speculum</span></div></div></td>
+        <td class="desc"><span class="flag ok">matches</span><br>
+          Increases the hero's sight radius by <b>2 tiles</b> instead of 1.</td>
+        <td><ul><li><code>SIGHT_RADIUS</code> <b>+2</b> <span class="muted">(mod, instead of +1 in core)</span></li><li><code>bonuses#override</code> — replaces all previous bonuses</li></ul></td>
+        <td class="era">Sight radius +1.<span class="note">Original: +1 to sight radius. The mod doubles the bonus to +2.</span></td>
+        <td class="orig"><b>Speculum</b><div class="origtext">The Speculum increases your sight radius by 1 tile.</div></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Elemental orbs <span class="sub">— +50% school damage and an expert ward at the start of battle</span></h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th class="col-name">Artifact name</th>
+        <th class="col-desc">In-game description</th>
+        <th class="col-fact">Actual effect</th>
+        <th class="col-era">Era behavior (as intended)</th>
+        <th class="col-orig">Original description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="name"><div class="arthead"><div class="articon"><img src="icons/orbOfTheFirmament.png" alt="Orb of the Firmament"></div><div class="arttext">Orb of the Firmament<span class="id">orbOfTheFirmament</span></div></div></td>
+        <td class="desc"><span class="flag ok">matches</span><br>
+          +50% damage to Air magic spells. At the start of every battle casts Expert Air Protection on all troops.</td>
+        <td><ul><li><code>SPELL_DAMAGE</code> → <code>spellSchool.air</code>, +50 <span class="muted">(core)</span></li><li><code>OPENING_BATTLE_SPELL</code> → <code>protectAir</code>, expert <span class="muted">(mod)</span></li></ul></td>
+        <td class="era">Base core effect, unchanged.<span class="note">WoG had no separate behavior; the mod added the opening battle spell.</span></td>
+        <td class="orig"><b>Orb of the Firmament</b><div class="origtext">This powerful artifact increases the damage of Air spells by 50%.</div></td>
+      </tr>
+      <tr>
+        <td class="name"><div class="arthead"><div class="articon"><img src="icons/orbOfSilt.png" alt="Orb of Silt"></div><div class="arttext">Orb of Silt<span class="id">orbOfSilt</span></div></div></td>
+        <td class="desc"><span class="flag ok">matches</span><br>
+          +50% damage to Earth magic spells. At the start of every battle casts Expert Earth Protection.</td>
+        <td><ul><li><code>SPELL_DAMAGE</code> → <code>spellSchool.earth</code>, +50 <span class="muted">(core)</span></li><li><code>OPENING_BATTLE_SPELL</code> → <code>protectEarth</code>, expert <span class="muted">(mod)</span></li></ul></td>
+        <td class="era">Base core effect, unchanged.</td>
+        <td class="orig"><b>Orb of Silt</b><div class="origtext">This powerful artifact increases the damage of Earth spells by 50%.</div></td>
+      </tr>
+      <tr>
+        <td class="name"><div class="arthead"><div class="articon"><img src="icons/orbOfTempestuousFire.png" alt="Orb of Tempestuous Fire"></div><div class="arttext">Orb of Tempestuous Fire<span class="id">orbOfTempestuousFire</span></div></div></td>
+        <td class="desc"><span class="flag ok">matches</span><br>
+          +50% damage to Fire magic spells. At the start of every battle casts Expert Fire Protection.</td>
+        <td><ul><li><code>SPELL_DAMAGE</code> → <code>spellSchool.fire</code>, +50 <span class="muted">(core)</span></li><li><code>OPENING_BATTLE_SPELL</code> → <code>protectFire</code>, expert <span class="muted">(mod)</span></li></ul></td>
+        <td class="era">Base core effect, unchanged.</td>
+        <td class="orig"><b>Orb of Tempestuous Fire</b><div class="origtext">This powerful artifact increases the damage of Fire spells by 50%.</div></td>
+      </tr>
+      <tr>
+        <td class="name"><div class="arthead"><div class="articon"><img src="icons/orbOfDrivingRain.png" alt="Orb of Driving Rain"></div><div class="arttext">Orb of Driving Rain<span class="id">orbOfDrivingRain</span></div></div></td>
+        <td class="desc"><span class="flag ok">matches</span><br>
+          +50% damage to Water magic spells. At the start of every battle casts Expert Water Protection.</td>
+        <td><ul><li><code>SPELL_DAMAGE</code> → <code>spellSchool.water</code>, +50 <span class="muted">(core)</span></li><li><code>OPENING_BATTLE_SPELL</code> → <code>protectWater</code>, expert <span class="muted">(mod)</span></li></ul></td>
+        <td class="era">Base core effect, unchanged.</td>
+        <td class="orig"><b>Orb of Driving Rain</b><div class="origtext">This powerful artifact increases the damage of Water spells by 50%.</div></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <footer>
+    Sources: <code>artifactBoost.json</code>, <code>artifactBoostText.json</code>, <code>magicWand.json</code>,
+    <code>translations/russian.json</code>, <code>/usr/share/vcmi/config/artifacts.json</code>,
+    <code>artraits.txt</code> from <code>H3bitmap.lod</code>.<br>
+    Texts were verified against the strings actually applied via <code>vcmiserver --translate-mod</code> (VCMI 1.7.5).<br>
+    Creature growth only applies in the town where the hero is located — the <code>TOWN_AND_VISITOR</code> propagator
+    is bound to the <code>townAndVis</code> node of a specific town.
+  </footer>
+
+</div>
+</body>
+</html>
