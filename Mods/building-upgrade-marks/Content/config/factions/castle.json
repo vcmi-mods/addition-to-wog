@@ -1,0 +1,83 @@
+{
+	"core:castle": {
+		"town": {
+			"buildings": {
+				"mageGuild2": {
+					"name": "Mage Guild Level 2"
+				},
+				"mageGuild3": {
+					"name": "Mage Guild Level 3"
+				},
+				"mageGuild4": {
+					"name": "Mage Guild Level 4"
+				},
+				"villageHall": {
+					"name": "Village Hall"
+				},
+				"townHall": {
+					"name": "Town Hall"
+				},
+				"cityHall": {
+					"name": "City Hall"
+				},
+				"capitol": {
+					"name": "Capitol"
+				},
+				"citadel": {
+					"name": "Citadel"
+				},
+				"castle": {
+					"name": "Castle"
+				},
+				"dwellingLvl1": {
+					"name": "Guardhouse"
+				},
+				"dwellingLvl2": {
+					"name": "Archers' Tower"
+				},
+				"dwellingLvl3": {
+					"name": "Griffin Tower"
+				},
+				"dwellingLvl4": {
+					"name": "Barracks"
+				},
+				"dwellingLvl5": {
+					"name": "Monastery"
+				},
+				"dwellingLvl6": {
+					"name": "Training Grounds"
+				},
+				"dwellingLvl7": {
+					"name": "Portal of Glory"
+				},
+				"dwellingUpLvl1": {
+					"name": "Upg. Guardhouse"
+				},
+				"dwellingUpLvl2": {
+					"name": "Upg. Archers' Tower"
+				},
+				"dwellingUpLvl3": {
+					"name": "Upg. Griffin Tower"
+				},
+				"dwellingUpLvl4": {
+					"name": "Upg. Barracks"
+				},
+				"dwellingUpLvl5": {
+					"name": "Upg. Monastery"
+				},
+				"dwellingUpLvl6": {
+					"name": "Upg. Training Grounds"
+				},
+				"dwellingUpLvl7": {
+					"name": "Upg. Portal of Glory"
+				},
+				"horde1": {
+					"name": "Griffin Bastion"
+				},
+				"horde1Upgr": {
+					"name": "Upg. Griffin Bastion"
+				}
+			}
+		}
+	}
+}

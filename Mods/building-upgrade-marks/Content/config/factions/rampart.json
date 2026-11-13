@@ -1,0 +1,92 @@
+{
+	"core:rampart": {
+		"town": {
+			"buildings": {
+				"mageGuild2": {
+					"name": "Mage Guild Level 2"
+				},
+				"mageGuild3": {
+					"name": "Mage Guild Level 3"
+				},
+				"mageGuild4": {
+					"name": "Mage Guild Level 4"
+				},
+				"mageGuild5": {
+					"name": "Mage Guild Level 5"
+				},
+				"villageHall": {
+					"name": "Village Hall"
+				},
+				"townHall": {
+					"name": "Town Hall"
+				},
+				"cityHall": {
+					"name": "City Hall"
+				},
+				"capitol": {
+					"name": "Capitol"
+				},
+				"citadel": {
+					"name": "Citadel"
+				},
+				"castle": {
+					"name": "Castle"
+				},
+				"dwellingLvl1": {
+					"name": "Centaur Stables"
+				},
+				"dwellingLvl2": {
+					"name": "Dwarf Cottage"
+				},
+				"dwellingLvl3": {
+					"name": "Homestead"
+				},
+				"dwellingLvl4": {
+					"name": "Enchanted Spring"
+				},
+				"dwellingLvl5": {
+					"name": "Dendroid Arches"
+				},
+				"dwellingLvl6": {
+					"name": "Unicorn Glade"
+				},
+				"dwellingLvl7": {
+					"name": "Dragon Cliffs"
+				},
+				"dwellingUpLvl1": {
+					"name": "Upg. Centaur Stables"
+				},
+				"dwellingUpLvl2": {
+					"name": "Upg. Dwarf Cottage"
+				},
+				"dwellingUpLvl3": {
+					"name": "Upg. Homestead"
+				},
+				"dwellingUpLvl4": {
+					"name": "Upg. Enchanted Spring"
+				},
+				"dwellingUpLvl5": {
+					"name": "Upg. Dendroid Arches"
+				},
+				"dwellingUpLvl6": {
+					"name": "Upg. Unicorn Glade"
+				},
+				"dwellingUpLvl7": {
+					"name": "Upg. Dragon Cliffs"
+				},
+				"horde1": {
+					"name": "Miners' Guild"
+				},
+				"horde1Upgr": {
+					"name": "Upg. Miners' Guild"
+				},
+				"horde2": {
+					"name": "Dendroid Saplings"
+				},
+				"horde2Upgr": {
+					"name": "Upg. Dendroid Saplings"
+				}
+			}
+		}
+	}
+}

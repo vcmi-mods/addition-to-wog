@@ -1,0 +1,80 @@
+{
+	"core:stronghold": {
+		"town": {
+			"buildings": {
+				"mageGuild2": {
+					"name": "Mage Guild Level 2"
+				},
+				"mageGuild3": {
+					"name": "Mage Guild Level 3"
+				},
+				"villageHall": {
+					"name": "Village Hall"
+				},
+				"townHall": {
+					"name": "Town Hall"
+				},
+				"cityHall": {
+					"name": "City Hall"
+				},
+				"capitol": {
+					"name": "Capitol"
+				},
+				"citadel": {
+					"name": "Citadel"
+				},
+				"castle": {
+					"name": "Castle"
+				},
+				"dwellingLvl1": {
+					"name": "Goblin Barracks"
+				},
+				"dwellingLvl2": {
+					"name": "Wolf Pen"
+				},
+				"dwellingLvl3": {
+					"name": "Orc Tower"
+				},
+				"dwellingLvl4": {
+					"name": "Ogre Fort"
+				},
+				"dwellingLvl5": {
+					"name": "Cliff Nest"
+				},
+				"dwellingLvl6": {
+					"name": "Cyclops Cave"
+				},
+				"dwellingLvl7": {
+					"name": "Behemoth Lair"
+				},
+				"dwellingUpLvl1": {
+					"name": "Upg. Goblin Barracks"
+				},
+				"dwellingUpLvl2": {
+					"name": "Upg. Wolf Pen"
+				},
+				"dwellingUpLvl3": {
+					"name": "Upg. Orc Tower"
+				},
+				"dwellingUpLvl4": {
+					"name": "Upg. Ogre Fort"
+				},
+				"dwellingUpLvl5": {
+					"name": "Upg. Cliff Nest"
+				},
+				"dwellingUpLvl6": {
+					"name": "Upg. Cyclops Cave"
+				},
+				"dwellingUpLvl7": {
+					"name": "Upg. Behemoth Lair"
+				},
+				"horde1": {
+					"name": "Mess Hall"
+				},
+				"horde1Upgr": {
+					"name": "Upg. Mess Hall"
+				}
+			}
+		}
+	}
+}
