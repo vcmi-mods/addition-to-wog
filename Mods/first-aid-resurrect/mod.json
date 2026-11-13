@@ -1,0 +1,37 @@
+{
+	"name": "First Aid Tent Resurrection",
+	"description": "The First Aid Tent brings back fallen creatures instead of only healing wounded ones, and the First Aid skill heals much more.\n\nHealing amount for each level of the skill:\n\n- no skill: 50\n- basic: 100 + 50 = 150\n- advanced: 150 + 50 = 200\n- expert: 200 + 50 = 250\n\nOne limitation to know about: the tent only considers a stack that has both casualties and a wounded top creature. A stack that lost whole creatures but whose top creature is unharmed is still skipped.\n\nThe mod cannot be used together with other mods that rebalance First Aid, because they change the same First Aid spell and skill: the resurrection and the healing amount would be overwritten by whichever mod loads last.",
+	"author": "Igor Korsukov",
+	"version": "1.0",
+	"modType": "Mechanics",
+	"compatibility": {
+		"min": "1.7.0"
+	},
+	"conflicts": [
+		"pvp-balance.skills",
+		"simple-game-balance.skills-balance",
+		"hota.gamebalance.skills.firstaid",
+		"hirki-plus-patch.skills.first aid",
+		"an-expansion.war-machine.war-machine-2"
+	],
+	"changelog": {
+		"1.0": [
+			"First aid spell now uses healLevel resurrect",
+			"First Aid Tent gains extra spell power so resurrection restores whole creatures",
+			"Undead, non-living, mechanical and gargoyles are excluded from resurrection"
+		]
+	},
+	"creatures": [
+		"config/firstAidTentPower.json"
+	],
+	"spells": [
+		"config/firstAidResurrect.json"
+	],
+	"skills": [
+		"config/firstAidSkill.json"
+	],
+	"russian": {
+		"name": "Палатка первой помощи: воскрешение",
+		"description": "Палатка первой помощи возвращает погибших существ, а не только лечит раненых, и навык Первая помощь лечит значительно сильнее.\n\nСила лечения для каждого уровня навыка:\n\n- нет навыка: 50\n- базовый: 100 + 50 = 150\n- продвинутый: 150 + 50 = 200\n- экспертный: 200 + 50 = 250\n\nОб одном ограничении стоит знать: палатка рассматривает только те отряды, где есть и потери, и раненое верхнее существо. Отряд, потерявший целых существ, но с невредимым верхним, по-прежнему пропускается.\n\nМод несовместим с другими модами, которые перебалансируют Первую помощь, потому что они меняют те же заклинание и навык: воскрешение и сила лечения будут перезаписаны тем модом, который загрузится последним."
+	}
+}
