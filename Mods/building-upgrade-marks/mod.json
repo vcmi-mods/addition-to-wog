@@ -1,0 +1,34 @@
+{
+	"name": "Town Building Names with Upgrade Marks",
+	"description": "Gives names to city buildings as in WoG, upgradeable buildings are marked with the prefix \"Upg.\"",
+	"author": "Igor Korsukov",
+	"version": "1.0",
+	"changelog": {
+		"1.0": [
+			"Town buildings get their WoG names",
+			"Upgraded buildings marked with a short prefix"
+		]
+	},
+	"modType": "Interface",
+	"compatibility": {
+		"min": "1.7.0"
+	},
+	"factions": [
+		"config/factions/castle.json",
+		"config/factions/rampart.json",
+		"config/factions/tower.json",
+		"config/factions/inferno.json",
+		"config/factions/necropolis.json",
+		"config/factions/dungeon.json",
+		"config/factions/stronghold.json",
+		"config/factions/fortress.json",
+		"config/factions/conflux.json"
+	],
+	"russian": {
+		"name": "Названия городских построек с пометкой обновления",
+		"description": "Даёт названия городским постройкам как в WoG, улучшаемые постройки помечаются префиксом \"Ул.\"",
+		"translations": [
+			"config/translations/russian.json"
+		]
+	}
+}

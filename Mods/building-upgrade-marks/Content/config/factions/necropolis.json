@@ -1,0 +1,86 @@
+{
+	"core:necropolis": {
+		"town": {
+			"buildings": {
+				"mageGuild2": {
+					"name": "Mage Guild Level 2"
+				},
+				"mageGuild3": {
+					"name": "Mage Guild Level 3"
+				},
+				"mageGuild4": {
+					"name": "Mage Guild Level 4"
+				},
+				"mageGuild5": {
+					"name": "Mage Guild Level 5"
+				},
+				"villageHall": {
+					"name": "Village Hall"
+				},
+				"townHall": {
+					"name": "Town Hall"
+				},
+				"cityHall": {
+					"name": "City Hall"
+				},
+				"capitol": {
+					"name": "Capitol"
+				},
+				"citadel": {
+					"name": "Citadel"
+				},
+				"castle": {
+					"name": "Castle"
+				},
+				"dwellingLvl1": {
+					"name": "Cursed Temple"
+				},
+				"dwellingLvl2": {
+					"name": "Graveyard"
+				},
+				"dwellingLvl3": {
+					"name": "Tomb of Souls"
+				},
+				"dwellingLvl4": {
+					"name": "Estate"
+				},
+				"dwellingLvl5": {
+					"name": "Mausoleum"
+				},
+				"dwellingLvl6": {
+					"name": "Hall of Darkness"
+				},
+				"dwellingLvl7": {
+					"name": "Dragon Vault"
+				},
+				"dwellingUpLvl1": {
+					"name": "Upg. Cursed Temple"
+				},
+				"dwellingUpLvl2": {
+					"name": "Upg. Graveyard"
+				},
+				"dwellingUpLvl3": {
+					"name": "Upg. Tomb of Souls"
+				},
+				"dwellingUpLvl4": {
+					"name": "Upg. Estate"
+				},
+				"dwellingUpLvl5": {
+					"name": "Upg. Mausoleum"
+				},
+				"dwellingUpLvl6": {
+					"name": "Upg. Hall of Darkness"
+				},
+				"dwellingUpLvl7": {
+					"name": "Upg. Dragon Vault"
+				},
+				"horde1": {
+					"name": "Unearthed Graves"
+				},
+				"horde1Upgr": {
+					"name": "Upg. Unearthed Graves"
+				}
+			}
+		}
+	}
+}

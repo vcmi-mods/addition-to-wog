@@ -1,0 +1,86 @@
+{
+	"core:conflux": {
+		"town": {
+			"buildings": {
+				"mageGuild2": {
+					"name": "Mage Guild Level 2"
+				},
+				"mageGuild3": {
+					"name": "Mage Guild Level 3"
+				},
+				"mageGuild4": {
+					"name": "Mage Guild Level 4"
+				},
+				"mageGuild5": {
+					"name": "Mage Guild Level 5"
+				},
+				"villageHall": {
+					"name": "Village Hall"
+				},
+				"townHall": {
+					"name": "Town Hall"
+				},
+				"cityHall": {
+					"name": "City Hall"
+				},
+				"capitol": {
+					"name": "Capitol"
+				},
+				"citadel": {
+					"name": "Citadel"
+				},
+				"castle": {
+					"name": "Castle"
+				},
+				"dwellingLvl1": {
+					"name": "Magic Lantern"
+				},
+				"dwellingLvl2": {
+					"name": "Altar of Air"
+				},
+				"dwellingLvl3": {
+					"name": "Altar of Water"
+				},
+				"dwellingLvl4": {
+					"name": "Altar of Fire"
+				},
+				"dwellingLvl5": {
+					"name": "Altar of Earth"
+				},
+				"dwellingLvl6": {
+					"name": "Altar of Thought"
+				},
+				"dwellingLvl7": {
+					"name": "Pyre"
+				},
+				"dwellingUpLvl1": {
+					"name": "Upg. Magic Lantern"
+				},
+				"dwellingUpLvl2": {
+					"name": "Upg. Altar of Air"
+				},
+				"dwellingUpLvl3": {
+					"name": "Upg. Altar of Water"
+				},
+				"dwellingUpLvl4": {
+					"name": "Upg. Altar of Fire"
+				},
+				"dwellingUpLvl5": {
+					"name": "Upg. Altar of Earth"
+				},
+				"dwellingUpLvl6": {
+					"name": "Upg. Altar of Thought"
+				},
+				"dwellingUpLvl7": {
+					"name": "Upg. Pyre"
+				},
+				"horde1": {
+					"name": "Garden of Life"
+				},
+				"horde1Upgr": {
+					"name": "Upg. Garden of Life"
+				}
+			}
+		}
+	}
+}

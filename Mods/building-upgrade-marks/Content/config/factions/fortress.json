@@ -1,0 +1,80 @@
+{
+	"core:fortress": {
+		"town": {
+			"buildings": {
+				"mageGuild2": {
+					"name": "Mage Guild Level 2"
+				},
+				"mageGuild3": {
+					"name": "Mage Guild Level 3"
+				},
+				"villageHall": {
+					"name": "Village Hall"
+				},
+				"townHall": {
+					"name": "Town Hall"
+				},
+				"cityHall": {
+					"name": "City Hall"
+				},
+				"capitol": {
+					"name": "Capitol"
+				},
+				"citadel": {
+					"name": "Citadel"
+				},
+				"castle": {
+					"name": "Castle"
+				},
+				"dwellingLvl1": {
+					"name": "Gnoll Hut"
+				},
+				"dwellingLvl2": {
+					"name": "Lizard Den"
+				},
+				"dwellingLvl3": {
+					"name": "Serpent Fly Hive"
+				},
+				"dwellingLvl4": {
+					"name": "Basilisk Pit"
+				},
+				"dwellingLvl5": {
+					"name": "Gorgon Lair"
+				},
+				"dwellingLvl6": {
+					"name": "Wyvern Nest"
+				},
+				"dwellingLvl7": {
+					"name": "Hydra Pond"
+				},
+				"dwellingUpLvl1": {
+					"name": "Upg. Gnoll Hut"
+				},
+				"dwellingUpLvl2": {
+					"name": "Upg. Lizard Den"
+				},
+				"dwellingUpLvl3": {
+					"name": "Upg. Serpent Fly Hive"
+				},
+				"dwellingUpLvl4": {
+					"name": "Upg. Basilisk Pit"
+				},
+				"dwellingUpLvl5": {
+					"name": "Upg. Gorgon Lair"
+				},
+				"dwellingUpLvl6": {
+					"name": "Upg. Wyvern Nest"
+				},
+				"dwellingUpLvl7": {
+					"name": "Upg. Hydra Pond"
+				},
+				"horde1": {
+					"name": "Captain's Quarters"
+				},
+				"horde1Upgr": {
+					"name": "Upg. Captain's Quarters"
+				}
+			}
+		}
+	}
+}
