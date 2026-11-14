@@ -1,0 +1,29 @@
+{
+	"name": "Magic Mushrooms permanent",
+	"description": "A Magic Mushroom teaches your hero an expert level in its school of magic, and the skill stays with the hero forever.\n\nWhat the mod does:\n\n- **The skill is permanent**: visiting a mushroom gives your hero expert level in the matching school of magic, and the skill does not disappear at the end of the week\n- **Fixed graphics**: the Air and Water mushrooms had their pictures swapped, now each one looks right\n- **Once per hero**: the skill is already learned, so there is nothing left to learn\n\nAll four mushrooms are affected: Water, Air, Earth and Fire.",
+	"author": "Igor Korsukov, DeepSeek",
+	"version": "1.0",
+	"modType": "Objects",
+	"compatibility": {
+		"min": "1.7.0"
+	},
+	"depends": [
+		"wake-of-gods.mapobjects"
+	],
+	"changelog": {
+		"1.0": [
+			"Mushrooms grant Expert magic school permanently",
+			"Fixed swapped Air / Water mushroom graphics"
+		]
+	},
+	"objects": [
+		"config/mushrooms.json"
+	],
+	"russian": {
+		"name": "Магические грибы навсегда",
+		"description": "Магический гриб обучает героя экспертной школе магии, и навык остаётся у героя навсегда.\n\nЧто делает мод:\n\n- **Навык остаётся навсегда**: посещение гриба даёт герою экспертный уровень в соответствующей школе магии, и навык не исчезает в конце недели\n- **Исправлены картинки**: у воздушного и водяного грибов были перепутаны изображения, теперь каждый выглядит правильно\n- **Раз на героя**: навык уже выучен, учить заново нечего\n\nЗатронуты все четыре гриба: воды, воздуха, земли и огня.",
+		"translations": [
+			"config/translations/russian.json"
+		]
+	}
+}
